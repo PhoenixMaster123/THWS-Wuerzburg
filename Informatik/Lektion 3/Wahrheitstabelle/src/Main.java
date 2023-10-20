@@ -22,7 +22,7 @@ public class Main {
         }
         else if(einzelzeichen1 == 't' && einzelzeichen2 == 't')
         {
-            System.out.println("Ausgabewert: 2");
+            System.out.println("Ausgabewert: 3");
         }
         else
         {
