@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         // a)
         Scanner sc = new Scanner(System.in);
-        int zahl = Integer.parseInt(sc.nextLine());
+        int zahl = sc.nextInt(); // Integer.parseInt(sc.nextLine());
 
         if (zahl % 7 == 0) {
             System.out.println(zahl);
