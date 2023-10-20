@@ -6,7 +6,21 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String num = sc.nextLine();
 
-        if(num.length() > 7)
+        if (num.length() > 7) {
+            System.out.println("Lenght kann nicht mehr als 7 Zeichen sein");
+        }
+
+        if (num.startsWith("50") || num.startsWith("51") || num.startsWith("61")) {
+            System.out.println("Die Matrikelnummer" + num +" ist korrekt ");
+            // Variant 2:  System.out.printf("Die Matrikelnummer %s ist korrekt", num);
+        } else {
+            System.out.println("Matrikelnummer" + num + " ist falsch");
+        }
+    }
+}
+
+        ///////////////////////////// Variant 2 ///////////////////////////////
+        /* if(num.length() > 7)
         {
             System.out.println("Lenght kann nicht mehr als 7 Zeichen sein");
         }
@@ -23,8 +37,6 @@ public class Main {
                 System.out.printf("Matrikelnummer %d ist falsch",number);
             }
         }
-
-
-
     }
-}
+
+         */
