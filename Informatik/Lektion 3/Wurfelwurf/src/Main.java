@@ -30,7 +30,8 @@ public class Main {
             System.out.println("Sechs gewürfelt");
         }
         //////////////////////////////// Variant 2 ////////////////////////////
-        /*int start = 1;
+        /*
+        int start = 1;
         int end = 7;
 
         Random generator = new Random();
@@ -59,7 +60,8 @@ public class Main {
         else
         {
             System.out.println("Sechs gewürfelt");
-        }*/
+        }
+        */
 
     }
 }
