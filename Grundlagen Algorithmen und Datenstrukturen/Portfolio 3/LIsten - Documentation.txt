@@ -1,0 +1,73 @@
+List DefinierenL:
+
+(define lst1 (list 'a 'b 'c))
+
+Commands:
+(first lst1) -> a => car
+(rest lst1) -> b c => cdr
+(last lst1) -> c
+
+(define lst1 (list 'a 'b 'c))
+(define lst2 (list 'x 'y 'z))
+
+List kombinieren:
+(append lst1 lst2) -> (a b c x y z)
+
+List sortiren:
+(define lst1 (list 1 2 3 5 4))
+(sort lst1 <) -> (1 2 3 4 5)
+
+List lenght:
+(define lst1 (list 1 2 3 5 4))
+(length lst1) -> 5
+
+List reverse:
+(define lst1 (list 1 2 3 4 5))
+(reverse lst1) - > (5 4 3 2 1)
+
+List filtrieren:
+(define lst1 (list 1 2 3 4 5))
+(filter even? lst1) -> (2 4)
+
+(define lst1 (list 1 2 3 4 5))
+(member 3 lst1) -> (3 4 5)
+
+Remove element:
+(define my-list '(1 2 3 2 4 5))
+
+(define new-list (remove 2 my-list)) -> (1 3 2 4 5)
+
+-> member -> Überprüft, ob ein Element in der Liste vorhanden ist und gibt die restliche Liste ab diesem Element zurück.
+
+(define lst1 (list 1 2 3 4 5))
+(list-ref lst1 3)
+-> 4 give the element on position 3
+
+
+(define lst1 (list 1 2 3 4 5))
+(memq 4 lst1)
+
+memq -> Checks if an element is a member of a list using eq? for comparison.
+
+foldl or fold-left: Applies a binary function to the elements of a list from left to right, accumulating a result.
+
+(foldl + 0 '(1 2 3 4)) ; Output: 10 (sum of elements)
+
+(define (drop n lst)
+  (if (<= n 0) lst (drop (- n 1) (cdr lst))))
+
+(drop 2 '(1 2 3 4)) ; Output: (3 4)
+
+
+list-tail: Returns the tail of a list starting from a given index.
+
+(list-tail '(1 2 3 4) 2) ; Output: (3 4)
+
+
+(define (intersperse elem lst)
+  (if (null? lst)
+      '()
+      (cons (car lst) (cons elem (intersperse elem (cdr lst))))))
+
+(intersperse 'x '(1 2 3 4)) ; Output: (1 x 2 x 3 x 4)
+
