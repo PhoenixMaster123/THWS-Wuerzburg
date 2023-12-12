@@ -140,3 +140,11 @@
 ;(same-strukture? '(a (b . c) (d e f)) '(1 (2 . 3) (4 5 6))) -> #t
 ;(same-strukture? '(a b (c . d)) '(1 2 (3 4))) -> #f
 ;(same-strukture? '(a b c d) '(1 2 3 4 5)) -> #f
+
+; Tower of Hanoi
+(define hanoi (lambda (n source temp destination)
+                (if (= n 1)
+                    (list 'Move source destination)
+                    (list (hanoi (- n 1) source destination temp)
+                          (hanoi 1 source temp destination)
+                          (hanoi (- n 1) temp source destination)))))
