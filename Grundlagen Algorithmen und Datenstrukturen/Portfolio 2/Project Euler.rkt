@@ -1,8 +1,5 @@
 #lang racket
-
-
-
-;Problem 16
+; Problem 16
 
 (define (sum n)
   (helper-sum (expt 2 1000) 0))
@@ -12,7 +9,6 @@
       ergebnis
       (helper-sum (quotient n 10) (+ (remainder n 10) ergebnis))))
   
-
 ; Problem 20
 
 (define (fakt n)
