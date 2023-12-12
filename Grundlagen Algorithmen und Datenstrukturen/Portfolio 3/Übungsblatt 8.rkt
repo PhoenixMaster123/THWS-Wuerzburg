@@ -20,8 +20,6 @@
       (append newList (list counter currentElement))
       (append newList (list currentElement))))
   
-  
-
 ; Beispielaufruf der Funktion
 ;(compress '(a a a a a a a a a a))
 ;(compress '(a b b c c c a b c))
