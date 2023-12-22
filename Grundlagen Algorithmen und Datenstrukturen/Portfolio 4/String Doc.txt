@@ -1,0 +1,35 @@
+(string-length "Hello") -> 5 ; Returns the length of the string.
+
+(string-append "Hello" ", " "World") -> "Hello, World" ; Concatenates multiple strings into a single string.
+
+(substring "Hello, World!" 0 5) -> "Hello" ;  Returns the substring starting from index 0 up to (but not including) index 5.
+
+(string-ref "Hello" 1) -> #\e ; Returns the character at index 1 of the string.
+
+(string=? "abc" "abc") -> #t ;  Checks if two strings are equal.
+
+(string<? "abc" "def") -> #t ; Checks if the first string is lexicographically less than the second.
+
+(string>? "abc" "def") -> #f ; Checks if the first string is lexicographically greater than the second.
+
+(define make (make-string 4 #\b))
+(string-set! make 1 #\a)
+(display make)
+-> bbbb -> babb
+; ich brauche make-string, um string-set! zu verwenden 
+
+(string-join '("one" "two" "three") " ") -> "one two three" ; Joins a list of strings into a single string using the specified delimiter.
+
+(string-trim " hello ") -> "hello" ; Removes leading and trailing whitespace from a string.
+
+(string-upcase "hello") -> "HELLO" ;  Converts a string to uppercase.
+
+(string-downcase "HELLO") -> "hello" ;  Converts a string to lowercase.
+
+(string-contains? "abcdef" "cd") -> #t ; Checks if the second string is a substring of the first.
+
+(string-prefix? "abcdef" "abc") -> #t  ; Checks if the second string is a prefix of the first.
+
+(string-suffix? "abcdef" "ef") -> #t   ; Checks if the second string is a suffix of the first.
+
+(string-replace "Hello, world!" "world" "Scheme") -> "Hello, Scheme!" ; Returns a new string where all occurrences of a substring are replaced.
