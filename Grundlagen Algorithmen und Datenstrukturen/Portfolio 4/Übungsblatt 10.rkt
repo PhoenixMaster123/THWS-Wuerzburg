@@ -1,0 +1,77 @@
+#lang racket
+
+;Aufgabe 1
+
+;///////////////////////////////////////////////////////////// Variant 1 - My //////////////////////////////////////////////
+(define (removeFirstLast string)
+ (helper-remove (string->list string) '() (length (string->list string))))
+
+(define (helper-remove lst result lengthLst)
+  (if (null? lst)
+      (list->string result)
+      (helper-remove (cdr lst) (cond ((= (length lst) lengthLst) result)
+                                     ((= (length lst) 1) result)
+                                     (else (append result (list (car lst))))) lengthLst)))
+
+;///////////////////////////////////////////////////////////// Variant 2 - AI //////////////////////////////////////////////
+(define (removeFirstLast2 string)
+  (let ((chars (string->list string)))
+    (list->string (drop-right (cdr chars) 1))))
+;///////////////////////////////////////////////////////////// Variant 3 - My //////////////////////////////////////////////
+(define (removeFirstLast3 string)
+  (helper-remove2 (cdr (string->list string)) '()))
+
+(define (helper-remove2 chars result)
+  (if (null? chars)
+      (list->string result)
+      (if (null? (cdr chars))
+          (list->string result)
+          (helper-remove2 (cdr chars) (append result (list (car chars)))))))
+
+;///////////////////////////////////////////////////////////// Variant 4 - My //////////////////////////////////////////////
+(define (removeFirstLast4 string)
+  (helper-remove3 (cdr (string->list string)) '()))
+
+(define (helper-remove3 lst result)
+  (if (null? lst)
+      (list->string result)
+      (helper-remove3 (cdr lst) (if (> (length lst) 1) (append result (list (car lst)))  result))))
+
+; Aufgabe 2
+
+(define (sicheresPasswort passwort)
+  (checker (string->list passwort) 0 0 0 (string-length passwort)))
+
+(define (checker lst symbols kleinBuchstaben grossBuchstaben length)
+  (if (null? lst)
+      (cond ((< length 8) #f)
+            ((< symbols 2) #f)
+            ((or (< kleinBuchstaben 2) (< grossBuchstaben 2)) #f)
+            (else #t))
+      (checker (cdr lst)
+               (if (and (>= (char->integer (car lst)) 33) (<= (char->integer (car lst)) 64)) (+ 1 symbols) symbols)
+               (if (and (>= (char->integer (car lst)) 97) (<= (char->integer (car lst)) 122)) (+ kleinBuchstaben 1) kleinBuchstaben)
+               (if (and (>= (char->integer (car lst)) 65) (<= (char->integer (car lst)) 90)) (+ grossBuchstaben 1) grossBuchstaben)
+               length)))
+
+; Aufgabe 3
+
+(define (isAnagramm anagramm string2)
+  (helper-anagramm (string->list anagramm) (string->list string2)))
+
+(define (helper-anagramm lst lst2)
+  (cond ((null? lst) #t)             
+        ((member (car lst) lst2) (helper-anagramm (cdr lst) lst2))
+        (else #f)))   
+
+; Aufgabe 4
+
+
+(define (vektor-add . vektoren)
+ (apply map + vektoren))
+
+;In Scheme, the use of the dot . in a parameter list is known as the "rest" or "rest argument" feature.
+;It allows a function to accept a variable number of arguments beyond a certain point. When you define a function with a dotted-tail parameter
+;like (sum . something),it means that the variable something will capture any remaining arguments passed to the function as a list.
+
+
