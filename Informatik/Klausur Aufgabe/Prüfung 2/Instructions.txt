@@ -1,0 +1,11 @@
+Instructions:
+
+Aufgabe 3
+
+Warum private:
+
+Der Satz, der darauf hinweist, dass Sie das private-Schlüsselwort verwenden müssen, ist:
+
+"Eine Bestellung soll eine Bestellnummer haben und mehrere (d.h. bis maximal 50) Artikel enthalten können."
+
+Da die Artikel in einer Bestellung möglicherweise eine begrenzte Anzahl haben und nicht direkt von außen verändert oder zugegriffen werden sollten, deutet dies darauf hin, dass Sie die Artikel in der Klasse Bestellung als private Attribute deklarieren sollten. Der Zugriff auf die Artikel sollte durch Methoden der Klasse erfolgen, um die Kontrolle über die Datenintegrität zu behalten.
