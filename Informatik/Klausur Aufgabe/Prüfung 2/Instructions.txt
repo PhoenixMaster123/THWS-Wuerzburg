@@ -1,6 +1,4 @@
-Instructions:
-
-Aufgabe 3
+Instructions für Aufgabe 3:
 
 Warum private:
 
