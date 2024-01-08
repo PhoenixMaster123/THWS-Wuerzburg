@@ -78,7 +78,6 @@
 
 ; Aufgabe 4
 
-
 (define (vektor-add . vektoren)
  (apply map + vektoren))
 
