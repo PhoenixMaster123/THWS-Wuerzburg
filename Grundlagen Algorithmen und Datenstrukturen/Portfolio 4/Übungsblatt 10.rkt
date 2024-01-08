@@ -57,12 +57,24 @@
 ; Aufgabe 3
 
 (define (isAnagramm anagramm string2)
-  (helper-anagramm (string->list anagramm) (string->list string2)))
+  (define (ohneLeerzeichnen liste) (filter (lambda (x) (not (equal? #\space x))) liste))
+  (define (compare a b) (char-ci<? a b))
+  (equal? (sort (ohneLeerzeichnen (string->list (string-downcase anagramm))) compare)
+        (sort (ohneLeerzeichnen (string->list (string-downcase string2))) compare)))
 
-(define (helper-anagramm lst lst2)
-  (cond ((null? lst) #t)             
-        ((member (car lst) lst2) (helper-anagramm (cdr lst) lst2))
-        (else #f)))   
+
+;///////////////////////////////////////////////////////////// Variant 2 //////////////////////////////////////////////
+(define (isAnagramm2 anagramm string2)
+  (define (ohneLeerzeichnen liste)
+    (filter (lambda (x) (not (equal? #\space x))) liste))
+
+  (define (helper-anagramm lst1 lst2)
+    (cond ((null? lst1) (null? lst2))
+          ((member (car lst1) lst2) (helper-anagramm (cdr lst1) (remove (car lst1) lst2)))
+          (else #f)))
+
+  (helper-anagramm (ohneLeerzeichnen (string->list (string-downcase anagramm)))
+                   (ohneLeerzeichnen (string->list (string-downcase string2)))))  
 
 ; Aufgabe 4
 
