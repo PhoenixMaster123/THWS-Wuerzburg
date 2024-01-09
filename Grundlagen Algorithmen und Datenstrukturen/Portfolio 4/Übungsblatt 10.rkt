@@ -49,13 +49,14 @@
             ((or (< kleinBuchstaben 2) (< grossBuchstaben 2)) #f)
             (else #t))
       (checker (cdr lst)
-               (if (and (>= (char->integer (car lst)) 33) (<= (char->integer (car lst)) 64)) (+ 1 symbols) symbols)
-               (if (and (>= (char->integer (car lst)) 97) (<= (char->integer (car lst)) 122)) (+ kleinBuchstaben 1) kleinBuchstaben)
-               (if (and (>= (char->integer (car lst)) 65) (<= (char->integer (car lst)) 90)) (+ grossBuchstaben 1) grossBuchstaben)
+               (if (and (char-lower-case? (car lst)) (char-alphabetic? (car lst))) (+ kleinBuchstaben 1) kleinBuchstaben)
+               (if (and (char-upper-case? (car lst)) (char-alphabetic? (car lst))) (+ grossBuchstaben 1) grossBuchstaben)
+                (if (char-symbolic? (car lst)) (+ 1 symbols) symbols)
                length)))
 
 ; Aufgabe 3
 
+;///////////////////////////////////////////////////////////// Variant 1 //////////////////////////////////////////////
 (define (isAnagramm anagramm string2)
   (define (ohneLeerzeichnen liste) (filter (lambda (x) (not (equal? #\space x))) liste))
   (define (compare a b) (char-ci<? a b))
