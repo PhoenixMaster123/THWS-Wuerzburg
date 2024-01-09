@@ -114,6 +114,8 @@
 ;(alle-kleineren2 3 '((3 4 (6 3 (9)) 8)))
 ;(alle-kleineren2 22 '((19 20) (21 22) (23 24)))
 
+;Aufgabe 4
+
 (define (suche-schrittzahl n)
   (define (is-eins-schrittzahl zahl vorherigeZahl)
     (let*(
