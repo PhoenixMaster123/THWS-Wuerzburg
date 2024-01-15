@@ -76,12 +76,14 @@
 ;(define (vector-add vec1 vec2)
 ;  (vector-map + vec1 vec2)) -> muss mit gleich Laenge sein
 
+;/////////////////////////////////////////////////////////////////// Variant 1 - My ////////////////////////////////////////
 (define (vector-add vec1 vec2)
   (helper-vector vec1 vec2 0 #()))
 
 (define (helper-vector vec1 vec2 position result)
  (cond ((and (<= (vector-length vec1) position) (<= (vector-length vec2) position)) result)
-       ((>= position (vector-length vec1)) (vector-append result 
+       ((>= position (vector-length vec1)) (helper-vector vec1 vec2 (+ position 1) (vector-append result (vector (vector-ref vec2 position)))))
+       ((>= position (vector-length vec2)) (helper-vector vec1 vec1 (+ position 1) (vector-append result (vector (vector-ref vec1 position)))))
       (else (helper-vector vec1 vec2 (+ position 1) (vector-append result (vector (+ (vector-ref vec1 position) (vector-ref vec2 position))))))))
 
 ;(define (helper-vector vec1 vec2 position result)
