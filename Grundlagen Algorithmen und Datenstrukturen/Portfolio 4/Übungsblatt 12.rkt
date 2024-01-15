@@ -47,14 +47,15 @@
 
 ;/////////////////////////////////////////////////////////////////// Varinat 1 /////////////////////////////////////////////
 (define (string-enthalten satz wort)
-  (string-helper (string->list satz) (string->list wort) #f))
+  (string-helper (string->list satz) (string->list wort) #f satz))
 
-(define (string-helper lst1 lst2 temp)
+(define (string-helper lst1 lst2 temp satz)
   (cond
     ((or (null? lst1) (null? lst2)) temp)
-    ((char=? (car lst1) (car lst2)) (string-helper (cdr lst1) (cdr lst2) #t))
-    ((and (eq? temp #t) (eq? (char=? (car lst1) (car lst2)) #f)) #f)
-    (else (string-helper (cdr lst1) lst2 temp))))
+    ((char=? (car lst1) (car lst2)) (string-helper (cdr lst1) (cdr lst2) #t satz))
+    ((and (eq? temp #t) (eq? (car lst1) (car lst2))) (string-helper (cdr lst1) (cdr lst2) #f satz))
+    (else (string-helper (cdr lst1) lst2 temp satz))))
+
 
 ;(string-enthalten "Heute ist Dienstag" "tag") - tag nicht vollständig
 
@@ -62,7 +63,20 @@
 (define (string-enthalten2 satz wort)
   (string-contains? satz wort))
 
+
 ;(string-enthalten "Heute ist Dienstag" "ist") - vollständig
+
+;/////////////////////////////////////////////////////////////////// Varinat 3 /////////////////////////////////////////////
+(define (string-enthalten3 satz wort)
+  (define (list-erhalten satz wort save)
+    (cond ((or (> (length wort) (length satz)) (null? satz)) #f)
+          ((and (null? (cdr wort)) (eq? (car wort) (car satz))) #t)
+          ((eq? (car wort) (car satz)) (list-erhalten (cdr satz) (cdr wort) save))
+          ((= (length save) (length wort)) (list-erhalten (cdr satz) wort save))
+          (else (list-erhalten (cdr satz) save save))))
+  (list-erhalten (string->list satz) (string->list wort) (string->list wort)))
+
+
 
 ; Aufgabe 3
 
@@ -70,28 +84,33 @@
 (define (tokenizer satz token)
   (string-split satz token))
 
+(define (tokenizer2 satz token)
+  (string-split2 (string->list satz) token '()))
+
+(define (string-split2 satz token result)
+  (if (null? satz)
+      result
+      (string-split2 (cdr satz) token (if (eq? (car satz) token)
+                                          (append result (list (list->string result)))
+                                          result))))
 
 ; Aufgabe 4
 
 ;(define (vector-add vec1 vec2)
 ;  (vector-map + vec1 vec2)) -> muss mit gleich Laenge sein
 
-;/////////////////////////////////////////////////////////////////// Variant 1 - My ////////////////////////////////////////
 (define (vector-add vec1 vec2)
   (helper-vector vec1 vec2 0 #()))
-
+;/////////////////////////////////////////////////////////////////// Variant 1 - My ////////////////////////////////////////
 (define (helper-vector vec1 vec2 position result)
  (cond ((and (<= (vector-length vec1) position) (<= (vector-length vec2) position)) result)
        ((>= position (vector-length vec1)) (helper-vector vec1 vec2 (+ position 1) (vector-append result (vector (vector-ref vec2 position)))))
        ((>= position (vector-length vec2)) (helper-vector vec1 vec1 (+ position 1) (vector-append result (vector (vector-ref vec1 position)))))
       (else (helper-vector vec1 vec2 (+ position 1) (vector-append result (vector (+ (vector-ref vec1 position) (vector-ref vec2 position))))))))
 
-;(define (helper-vector vec1 vec2 position result)
-;  (cond ((and (>= position (vector-length vec1)) (>= position (vector-length vec2))) result)
-       ; (else helper-vector vec1 vec2 (+ position 1) (vector-append result (vector (+ (vector-ref vec1 position) (vector-ref vec2 position)))))))
-
 ; Beispielaufruf:
-;(vector-add #(1 1 1) #(4 5 6)) ; Ausgabe: #(5 6 6 7)
+;(vector-add #(1 1 1 1 1 52 5 3) #(4 5 3 1 2 4 5 7 8)) ; Ausgabe: #(5 6 6)
+;(vector-add #() #())
 
 ;/////////////////////////////////////////////////////////////////// Varinat 2 - My Variant mit vector->list /////////////////////////////////////////////
 (define (vector-add4 vec1 vec2)
@@ -102,6 +121,26 @@
         ((null? lst1) (helper-vector2 lst1 (cdr lst2) (append result (list (car lst2)))))
         ((null? lst2) (helper-vector2 (cdr lst1) lst2 (append result (list (car lst1)))))
         (else (helper-vector2 (cdr lst1) (cdr lst2) (append result (list (+ (car lst1) (car lst2))))))))
+
+;///////////////////////////////////////////////////////////////// Variant 3 ////////////////////////////////////////////////////////////////////
+
+(define (vector-add5 vec1 vec2)
+  (define l1 (vector-length vec1))
+  (define l2 (vector-length vec2))
+  (define (iter newv vad zähler)
+    (cond [(= zähler (vector-length newv)) newv]
+          [else (vector-set! newv zähler (+ (vector-ref newv zähler) (if (>= zähler (vector-length vad))
+                                                                         0
+                                                                         (vector-ref vad zähler)) )) (iter newv vad (+ zähler 1))])) 
+(iter (cond ((= l1 l2) vec1)
+            ((< l1 l2) vec2)
+            ((> l1 l2) vec1))
+      (cond ((= l1 l2) vec2)
+            ((< l1 l2) vec1)
+            ((> l1 l2) vec2))
+      0))
+(vector-add (vector 1 2 3) (vector 1 2 3))
+(vector-add (vector 1 2 3) (vector 1 2 3 4 5)) 
 
 ; Beispielaufruf:
 ;(vector-add4 #(1 1 1) #(4 5 6)) ; Ausgabe: #(5 6 7)
@@ -137,8 +176,28 @@
 
 ; Aufgabe 5
 
+;/////////////////////////////////////////////////////////////////// Varinat 1 /////////////////////////////////////////////
 (define (bubble-sort vec comparator)
 (vector-sort vec comparator))
+
+;/////////////////////////////////////////////////////////////////// Varinat 2 /////////////////////////////////////////////
+(define (bubbleH L) 
+    (bubble-sort-aux (length L) L))
+
+(define (bubble-sort2 L)
+    (if (null? (cdr L))   
+        L    
+        (if (< (car L) (cadr L))   
+            (cons (car L) (bubble-sort2 (cdr L)))   
+            (cons (cadr L) (bubble-sort2 (cons (car L) (cddr L)))))))
+
+(define (bubble-sort-aux N L)    
+    (cond ((= N 1) (bubble-sort2 L))   
+          (else (bubble-sort-aux (- N 1) (bubble-sort2 L)))))
+
+;(bubbleH '(5 10 9 8 7))
+
+
 
 ; Aufgabe 6
 ;/////////////////////////////////////////////////////////////////// Varinat 1 vector->list/////////////////////////////////////////////
@@ -158,8 +217,3 @@
   (if (= (vector-length vecIndices) position)
       result
       (helper-apply2 start operator vecVal vecIndices (operator (vector-ref vecVal (vector-ref vecIndices position)) result) (+ position 1))))
-
-
-
-
-
