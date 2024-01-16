@@ -75,6 +75,21 @@
                       (if (= pos 0)
                           (vector-append result (vector (+ (* (vector-ref v1 pos) c1) (* (vector-ref v2 pos) c1))))
                           (vector-append result (vector (+ (* (vector-ref v1 pos) c2) (* (vector-ref v2 pos) c2))))))))
+
+; Determinante 
+
+(define (determinante vec1 vec2 vec3)
+  (helper-determinante vec1 vec2 vec3 0))
+
+(define (helper-determinante vec1 vec2 vec3 result)
+  (+ result (- (+
+             (* (vector-ref vec1 0) (vector-ref vec2 1) (vector-ref vec3 2))
+             (* (vector-ref vec1 2) (vector-ref vec2 0) (vector-ref vec3 1))
+             (* (vector-ref vec1 1) (vector-ref vec2 2) (vector-ref vec3 0)))
+               
+               (* (vector-ref vec1 2) (vector-ref vec2 1) (vector-ref vec3 0))
+               (* (vector-ref vec1 1) (vector-ref vec2 0) (vector-ref vec3 2))
+               (* (vector-ref vec1 0) (vector-ref vec2 2) (vector-ref vec3 1)))))
    
 
 
