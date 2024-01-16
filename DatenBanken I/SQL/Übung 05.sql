@@ -17,8 +17,8 @@ GROUP BY artist.name;
 
 SELECT audiocd.id, audiocd.title
 FROM audiocd
-JOIN track on track.audiocd_id = audiocd.id
-JOIN song on song.id = track.song_id
+JOIN track ON track.audiocd_id = audiocd.id
+JOIN song ON song.id = track.song_id
 WHERE audiocd.title = song.name
 GROUP BY audiocd.id, audiocd.title;
 
@@ -27,7 +27,7 @@ GROUP BY audiocd.id, audiocd.title;
 SELECT *
 FROM
 
-(SELECT audiocd.id , audiocd.trackcount, count(*)
+(SELECT audiocd.id , audiocd.trackcount, COUNT(*)
 FROM audiocd
 JOIN track ON audiocd.id = track.audiocd_id
 GROUP BY audiocd.id , audiocd.trackcount) AS COMPARE(audioid, audiocd , realtracks)
@@ -38,9 +38,9 @@ WHERE audiocd <> realtracks;
 
 SELECT audiocd.title
 FROM audiocd
-JOIN track on audiocd.id = track.audiocd_id
-JOIN song on track.song_id = song.id
-WHERE song.name like '%Music%' or song.name like '%ll%'
-group by audiocd.title
-having count(audiocd.title) >= 2
+JOIN track ON audiocd.id = track.audiocd_id
+JOIN song ON track.song_id = song.id
+WHERE song.name LIKE '%Music%' OR song.name LIKE '%ll%'
+GROUP BY audiocd.title
+HAVING COUNT(audiocd.title) >= 2
 
