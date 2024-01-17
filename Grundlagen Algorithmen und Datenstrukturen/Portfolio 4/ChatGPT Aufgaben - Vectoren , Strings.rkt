@@ -106,13 +106,16 @@
 
 ; String - Polindrom?
 
+;///////////////////////////////////////////// Variant 1 ////////////////////////////////////////
 (define (polindrom? str)
   (helper-palindrom? (string->list (string-downcase str))))
 
 (define (helper-palindrom? lst)
   (if (equal? (car lst) (last lst)) #t #f))
-   
 
+;///////////////////////////////////////////// Variant 2 ////////////////////////////////////////
+(define (polindrom2? str)
+  (helper-palindrom2? (string->list str)))
 
-
-      
+(define (helper-palindrom2? lst)
+  (if (char-ci=? (car lst) (last lst)) #t #f))
