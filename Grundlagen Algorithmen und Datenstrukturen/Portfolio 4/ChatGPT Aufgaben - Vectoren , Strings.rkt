@@ -90,6 +90,27 @@
                (* (vector-ref vec1 2) (vector-ref vec2 1) (vector-ref vec3 0))
                (* (vector-ref vec1 1) (vector-ref vec2 0) (vector-ref vec3 2))
                (* (vector-ref vec1 0) (vector-ref vec2 2) (vector-ref vec3 1)))))
+
+; String-remove
+
+(define (entfernen str wort index)
+  (entfernen-helper (string-split str) wort index 1 '()))
+
+(define (entfernen-helper string wort index counter result)
+  (if (null? string)
+      (string-join result " ")
+      (cond ((and (equal? (car string) wort) (= index counter)) (entfernen-helper (cdr string) wort index counter result))
+            ((equal? (car string) wort) (entfernen-helper (cdr string) wort index (+ counter 1) (append result (list (car string)))))
+            (else (entfernen-helper (cdr string) wort index counter (append result (list (car string))))))))
+          
+
+; String - Polindrom?
+
+(define (polindrom? str)
+  (helper-palindrom? (string->list (string-downcase str))))
+
+(define (helper-palindrom? lst)
+  (if (equal? (car lst) (last lst)) #t #f))
    
 
 
