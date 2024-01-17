@@ -33,3 +33,7 @@
 (string-suffix? "abcdef" "ef") -> #t   ; Checks if the second string is a suffix of the first.
 
 (string-replace "Hello, world!" "world" "Scheme") -> "Hello, Scheme!" ; Returns a new string where all occurrences of a substring are replaced.
+
+(string-append* "a" "b" '("c" "d")) -> "abcd"
+
+(string-titlecase "aBC  twO") -> "Abc  Two"
