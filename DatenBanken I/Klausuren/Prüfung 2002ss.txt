@@ -1,0 +1,126 @@
+Prüfung 2002ss
+
+Aufgabe 1
+
+a)
+
+Nennen und beschreiben Sie kurz die vier Eigenschaften von Transaktionen, die durch
+die vier Buchstaben ACID abgekürzt werden: 
+
+Atomartität -> alle Operationen können entweder vollständig ausführen oder nicht.
+
+Konsistenz - Eine Transaktion muss die Datenbank von einem einheitlichen Zustand in einen anderen einheitlichen Zustand überführen.
+
+Isolation -> Transaktionen im Mehrbenutzerbetrieb laufen isoliert voneinander, d.h eine Transaktion ist unabhängig von anderen Transaktionen.
+
+Dauerhaftigkeit -> Das Ergebnis einer erfolgreichen Transaktion ist persistent.
+
+b) Isolation
+
+Aufgabe 2
+
+Bank(PLZ, Bankname, Filiale)
+
+Besitzt(PLZ, Kundennr,Guthaben)
+
+Kunde (Kundennr , Kdname)
+
+Aufgabe 3
+
+Bank (BLZ, Bname, Kunde (Kundennr, Kname, Konto (Kontennr, Kontostatus, Kundenstatus, Saldo))).
+
+Es gelten die funktionalen Abhängigkeiten
+- Saldo -> Kontostatus
+- BLZ, Kundennr -> Kundenstatus 
+
+1.NF
+
+Die Attributen müssen atomar sein. Es muss keine wiederholende Gruppen haben.
+
+Bank (BLZ, Bname)
+
+Kunde (Kundennr, Kname, BLZ) 
+
+Konto (Kontennr, Kontostatus, Kundenstatus, Saldo , BLZ , Kundennr)))
+
+FS: Kunde.BLZ ref Bank.BLZ
+FS: Konto.BLZ ref Bank.BLZ
+FS: Konto.Kundennr ref Kunde.Kundennr
+
+2.NF keine Vermischung von Sachverhalten in Relationen
+
+Balance(Saldo, Kontostatus)
+
+3.NF keine funktonalle Abhängigkeit innerhalb von Relationen
+
+Status (BLZ , Kundennr , Kundenstatus)
+
+
+Aufgabe 5
+
+a)
+ 
+SELECT Bank.BLZ, Kundenname, Kundenstatus, count (*)
+FROM Bank JOIN Konto ON Bank.BLZ = Konto.BLZ
+WHERE Kontostatus = ‘frei’
+GROUP BY Bank.BLZ, Kundenname 
+
+- Der Fehler ist bei GROUP BY, weil GROUP BY auch Kundenstatus braucht.
+
+b) 
+Welche Ergebnistabelle erhält man, wenn man folgende SQL-Abfrage ausführt?
+
+SELECT Bank.BLZ, Bankname, count (*)
+FROM Bank JOIN Konto ON Bank.BLZ = Konto.BLZ
+WHERE Kontostatus = ‘frei’
+GROUP BY Bank.BLZ, Bankname 
+
+  BLZ     Bankname  count(*)
+79050000 Stein Bank   2
+76030000  Haus Bank   2
+
+c) Formulieren Sie eine SQL-Abfrage, welche das „Privatguthaben“ aller Kunden darstellt?
+Ein Kontosaldo soll nur dann in die Guthabensumme aufgenommen werden, wenn der
+Kunde den Kundenstatus ‚privat’ besitzt (Spalten der Ergebnisrelation: Kundenname,
+Privatguthaben). 
+
+SELECT Kunde.Kundenname as Kundenname , Sum(Konto.Saldo) as Privatguthaben
+FROM Kunde
+JOIN Konto ON Kunde.Kundennr = Konto.Kundennr
+WHERE Kunde.KundenStatuts = 'privat'
+GROUP BY Kunde.Kundenname
+
+d) Wie lautet die SQL-Abfrage, um eine Liste der Banken zu erhalten, die mehr als 5
+gesperrte Konten führen? (Spalten der Ergebnistabelle: BLZ, Bankname,
+Anzahl_Gesperrte_Konten)
+
+SELECT Bank.BLZ AS BLZ , Bank.Bankname AS Bankname, count(Konto.BLZ) AS  Anzahl_Giro_Konten
+FROM Bank
+JOIN Konto ON Bank.BLZ = Konto.BLZ
+WHERE Konto.Kontostatus = 'gesperrt'
+GROUP BY Bank.BLZ , Bank.Bankname
+HAVING COUNT(Konto.BLZ) > 5
+
+e) Wie lautet die SQL-Abfrage, um die Anzahl aller Giro-Konten von Herrn Schmitt
+festzustellen? (Spalten der Ergebnisrelation: Anzahl_Giro_Konten) 
+
+SELECT COUNT(*) AS Anzahl_Giro_Konten
+FROM Kunde
+JOIN Konto ON Kunde.Kundennr = Konto.Kundennr
+WHERE Kunde.Kundenname = 'Schmitt' AND Konto.Kontotyp = 'Girokonto';
+
+f) Formulieren Sie eine SQL-Abfrage, um herauszufinden, welcher Kunde bei welcher Bank
+im Durchschnitt mehr als 2 % Jahreszins bekommt. (Spalten der Ergebnisrelation:
+Kundenname, Bankname, Durchschnittszins). 
+
+SELECT Kunde.Kundenname AS Kundenname, Bank.Bankname AS Bankname, AVG(Konto.Jahreszins) AS Durchschnittszins
+FROM Kunde
+JOIN Konto ON Kunde.Kundennr = Konto.Kundennr
+JOIN Bank ON Konto.BLZ = Bank.BLZ
+GROUP BY Kunde.Kundenname, Bank.Bankname
+HAVING AVG(Konto.Jahreszins) > 2;
+
+
+
+
+
