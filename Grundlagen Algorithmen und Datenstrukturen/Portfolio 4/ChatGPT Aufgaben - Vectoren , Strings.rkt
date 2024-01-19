@@ -119,3 +119,53 @@
 
 (define (helper-palindrom2? lst)
   (if (char-ci=? (car lst) (last lst)) #t #f))
+
+(define (funktion vec)
+  (lambda (x) (vector-map (lambda (y) (+ x y)) vec)))
+
+; Schreiben Sie eine Procedure, welche eine lambda funktion übergeben bekommen und diese auf alle element
+
+(define plus (funktion #(1 2 3 4)))
+(define result (plus 5))
+
+;Koordinaten des Mittelpunkts des Dreiecks
+
+
+(define (mittelpunkt vec1 vec2 vec3)
+  (helper-mittelpunkt vec1 vec2 vec3 #() 0))
+
+(define (helper-mittelpunkt vec1 vec2 vec3 result pos)
+  (if (= pos (vector-length vec1))
+      result
+  (helper-mittelpunkt vec1 vec2 vec3 (vector-append result
+                                      (vector (/ (+ (vector-ref vec1 pos) (vector-ref vec2 pos) (vector-ref vec3 pos)) 3)))
+                      (+ pos 1))))
+
+
+; Filter Durchschnittlich
+
+(define (durchschnittlich vec)
+  (helper-filter (/ (vector-sum vec 0 0) (vector-length vec)) vec 0 #()))
+
+(define (vector-sum vec pos sum)
+  (if (= pos (vector-length vec))
+      sum
+      (vector-sum vec (+ pos 1) (+ sum (vector-ref vec pos)))))
+
+(define (helper-filter durchschnitt vec pos result)
+  (if (= pos (vector-length vec))
+      result
+      (helper-filter durchschnitt vec (+ pos 1) (if (> (vector-ref vec pos) durchschnitt)
+                                                    (vector-append result (vector (vector-ref vec pos)))
+                                                    result))))
+
+; Schreiben Sie eine Prozedure, welche einen string durch einen anderen ersetzt
+
+; Replace
+(define (ersetze-str str newString newWort)
+  (helper-ersetze (string-split str newString) newString newWort '() ))
+
+  (define (helper-ersetze string wort new result)
+    (append result (list (string-append (car string) new))))
+
+
