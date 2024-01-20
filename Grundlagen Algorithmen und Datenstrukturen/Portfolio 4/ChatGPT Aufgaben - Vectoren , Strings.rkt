@@ -162,11 +162,67 @@
 ; Schreiben Sie eine Prozedure, welche einen string durch einen anderen ersetzt
 
 ; Replace
-(define (minFarbe code guess farbe)
-  (minFarbe-helper code guess farbe 0))
+(define (ersetze-str str newString newWort)
+  (helper-ersetze (string-split str newString) newString newWort '() ))
 
-(define (minFarbe-helper lst1 lst2 farbe result)
-  (if (null? lst1)
-      result
-      (minFarbe-helper (cdr lst1) (cdr lst2) farbe (if (and (= (car lst1) farbe) (= (car lst2) farbe)) (+ result 1) result))))
+  (define (helper-ersetze string wort new result)
+    (if (null? string)
+        (string-join result "")
+    (helper-ersetze (cdr string) wort new (append result (list (string-append (car string) new))))))
+
+; Klammer Prüfen
+
+(define (balanced-parentheses? str)
+  (define (helper lst stack)
+    (cond
+      ((null? lst) (null? stack)) ; if the list is empty, check if the stack is empty
+      ((char=? (car lst) #\() (helper (cdr lst) (cons #\( stack))) ; if the char is '(', push it to the stack
+      ((char=? (car lst) #\[) (helper (cdr lst) (cons #\[ stack))) ; if the char is '[', push it to the stack
+      ((char=? (car lst) #\{) (helper (cdr lst) (cons #\{ stack))) ; if the char is '{', push it to the stack
+      ((char=? (car lst) #\)) ; if the char is ')'
+       (and (not (null? stack)) ; check if the stack is not empty
+            (char=? (car stack) #\() ; and the top of the stack is '('
+            (helper (cdr lst) (cdr stack)))) ; then pop the stack and continue
+      ((char=? (car lst) #\]) ; if the char is ']'
+       (and (not (null? stack)) ; check if the stack is not empty
+            (char=? (car stack) #\[) ; and the top of the stack is '['
+            (helper (cdr lst) (cdr stack)))) ; then pop the stack and continue
+      ((char=? (car lst) #\}) ; if the char is '}'
+       (and (not (null? stack)) ; check if the stack is not empty
+            (char=? (car stack) #\{) ; and the top of the stack is '{'
+            (helper (cdr lst) (cdr stack)))) ; then pop the stack and continue
+      (else #f))) ; otherwise, the char is invalid or the stack is empty, return #f
+  (helper (string->list str) '())) ; convert the string to a list and call the helper function with an empty stack
+
+(balanced-parentheses? "{[()]}") ; #t
+(balanced-parentheses? "{[(])}") ; #f
+(balanced-parentheses? "([{}])") ; #t
+(balanced-parentheses? "([)]") ; #f
+(balanced-parentheses? "([]{})") ; #t
+(balanced-parentheses? "([)") ; #f
+
+(newline)
+
+(define (balanced-parentheses?2 str)
+   (helper (string->list str) '()))
+
+  (define (match? open close)
+    (or (and (char=? open #\() (char=? close #\)))
+        (and (char=? open #\[) (char=? close #\]))
+        (and (char=? open #\{) (char=? close #\}))))
+
+  (define (helper lst stack)
+    (cond
+      ((null? lst) (null? stack))
+      ((member (car lst) '(#\{ #\[ #\()) (helper (cdr lst) (cons (car lst) stack)))
+      ((member (car lst) '(#\} #\] #\))) (and (not (null? stack)) (match? (car stack) (car lst)) (helper (cdr lst) (cdr stack))))
+      (else #f)))
+ 
+
+(balanced-parentheses?2 "{[()]}") ; #t
+(balanced-parentheses?2 "{[(])}") ; #f
+(balanced-parentheses?2 "([{}])") ; #t
+(balanced-parentheses?2 "([)]") ; #f
+(balanced-parentheses?2 "([]{})") ; #t
+(balanced-parentheses?2 "([)") ; #f
 
