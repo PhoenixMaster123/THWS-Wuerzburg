@@ -162,10 +162,11 @@
 ; Schreiben Sie eine Prozedure, welche einen string durch einen anderen ersetzt
 
 ; Replace
-(define (ersetze-str str newString newWort)
-  (helper-ersetze (string-split str newString) newString newWort '() ))
+(define (minFarbe code guess farbe)
+  (minFarbe-helper code guess farbe 0))
 
-  (define (helper-ersetze string wort new result)
-    (append result (list (string-append (car string) new))))
-
+(define (minFarbe-helper lst1 lst2 farbe result)
+  (if (null? lst1)
+      result
+      (minFarbe-helper (cdr lst1) (cdr lst2) farbe (if (and (= (car lst1) farbe) (= (car lst2) farbe)) (+ result 1) result))))
 
