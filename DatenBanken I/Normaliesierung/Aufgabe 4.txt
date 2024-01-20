@@ -1,0 +1,45 @@
+Aufgabe 4
+
+Beispiel:
+
+Prüfungsgeschehen (PNr, Fach, Prüfer, Student (Matnr, Name, Geb, Adr, FBNr,
+FBName, Dekan, Note))
+
+
+1NF: 1 - atomar
+     2 - keine wiederholende Gruppen
+
+Prüfungsgeschehen(PNr (PK) , Fach, Prüfer)
+
+Student (Matnr (PK) , Name, Geb, Adr, FBNr, FBName, Dekan, Note, PNr (FK)))
+
+
+
+
+2NF: Alle Nichtschlüsselattribute voll funktional abhängig von jedem Schlüsselkandidaten sind.
+
+Prüfungsgeschehen(PNr (PK) , Fach, Prüfer)
+
+Student (Matnr (PK), ID_Student (FK), FBNr, FBName, Dekan, ID_Note , PNr (FK)))
+
+Student1 (ID_Student, Name, Geb, Adr)
+
+ExamResult (ID_Note , Matnr, Note)
+
+FS: Student.ID_Student ref. Student1.ID_Student
+FS: Student.ID_Note ref. ExamResult.ID_Student
+
+
+3NF: 
+
+Prüfungsgeschehen(PNr (PK) , Fach, Prüfer)
+
+Student (Matnr (PK), ID_Student (FK), FB_ID (FK), Note, PNr (FK)))
+
+Student1 (ID_Student, Name, Geb, Adr)
+
+FB (FB_ID , FBNr, FBName, Dekan)
+
+FS: Student.FB_ID ref FB.FB_ID
+
+
