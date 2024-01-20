@@ -1,0 +1,96 @@
+Prüfung 2002ws
+
+Aufgabe 1
+
+a)
+
+Atomarität -> alle Operation werden entweder vollständig ausgeführt werden oder nicht
+
+b)
+
+
+d)
+
+Interne Ebene - Daten , SQL
+Logische Ebene (konzeptionell) - Beziehungen, Struktur, ERM 
+Externe Ebene -> Anwendungsschicht (Client)
+
+Aufgabe 3
+
+Verlag (VNr , Name)
+
+Buch (ISBN , Titel , Datum , Vnr)
+
+Schreibt (VNr , ISBN , Anteil)
+
+Autor (ANr , name)
+
+Aufgabe 4
+
+Buch (ISBN, titel, land, preisklasse, preis, Kapitel (Kapitelnr, titel, seiten, Autor (Autornr,
+ name, vorname)). 
+
+Es gelten die funktionalen Abhängigkeiten
+- Autornr -> name, vorname
+- preisklasse -> land 
+
+1.NF - Die Attributen müssen atomar sein. Kein wiederholende Gruppen.
+
+Buch (ISBN, titel, land, preisklasse, preis)
+
+Kapitel (Kapitelnr, titel, seiten, ISBN)
+
+Autor (Autornr, name, vorname , Kapitelnr, ISBN)
+
+2.NF - Keine Vermischung von Sachverhalten in Relationen
+
+Autor (Autornr, Kapitelnr, ISBN)
+
+Autor_Name (Autornr , name, vorname)
+
+FS: Autor_Name.Autornr ref Autor.Autornr
+
+3.NF Keine funktionale Abhängigkeit innerhalb von Relationen
+
+Buch (ISBN, titel, preisklasse preis)
+
+Land (preisklasse, land)
+
+FS: Land.preisklasse ref Buch.preisklasse
+
+
+Aufgabe 6
+
+a)
+
+Welche Ergebnistabelle erhält man, wenn man folgende SQL-Abfrage ausführt?
+
+SELECT SUM (anzahl) AS Anzahl
+FROM Buch JOIN Bestand ON Buch.ISBN = Bestand.ISBN
+WHERE titel = 'Datenbanken' 
+
+Anzahl
+  9
+
+b)
+
+Welche SQL-Abfrage muss man absetzen, um eine Liste der Stellplätze des Buches mit
+dem Titel „Datenbanken“ in allen Bibliotheken zu bekommen (Ergebnisspalten: Bibliotheksname, Regal, Platz). 
+
+SELECT Bibliothek.Name AS Bibliothekname , Bestand.Regal AS Regal, Bestand.Platz AS Platz
+FROM Bibliothek
+JOIN Bestand ON Bibliothek.BNR = Bestand.BNR
+JOIN Buch ON Bestand.ISBN = Buch.ISBN
+WHERE Buch.titel = 'Datenbanken'
+
+c) Formulieren Sie eine SQL-Abfrage, welche Auskunft darüber gibt, welche Bibliothek über
+wie viele verschiedene Bücher eines Verlags verfügt. Außerdem soll auch die Gesamtanzahl der Bücher eines Verlages mit ausgegeben werden (Ergebnisspalten: Bibliotheksname, Verlagsname, Buchanzahlverschieden, Buchanzahlinsgesamt). 
+
+SELECT Bibliothe.name AS  Bibliotheksname , Verlag.name AS Verlagsname, Count(Buch.Verlag) AS Buchanzahlverschieden, SUM(Bestand.anzahl) AS Buchanzahlinsgesamt
+FROM Bibliothek
+JOIN Bestand ON Bibliothek.BNR = Bestand.BNR
+JOIN BUCH ON Bestand.ISBN = Buch.ISBN
+JOIN Verlag ON Buch.Verlag = Verlag.VNR
+GROUP BY Bibliothe.name, Verlag.name
+
+
