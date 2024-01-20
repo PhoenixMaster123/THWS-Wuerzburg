@@ -27,6 +27,8 @@ Kunde (Kundennr , Kdname)
 
 Aufgabe 3
 
+Aufgabe 3
+
 Bank (BLZ, Bname, Kunde (Kundennr, Kname, Konto (Kontennr, Kontostatus, Kundenstatus, Saldo))).
 
 Es gelten die funktionalen Abhängigkeiten
@@ -49,12 +51,16 @@ FS: Konto.Kundennr ref Kunde.Kundennr
 
 2.NF keine Vermischung von Sachverhalten in Relationen
 
-Balance(Saldo, Kontostatus)
+Status (BLZ , Kundennr , Kundenstatus)
+
+FS: Status.BLZ ref Buch.BLZ
+FS: Status.Kundennr ref Kunde.Kundennr
 
 3.NF keine funktonalle Abhängigkeit innerhalb von Relationen
 
-Status (BLZ , Kundennr , Kundenstatus)
+Balance(Saldo, Kontostatus)
 
+FS: Balance.Saldo ref Konto.Saldo
 
 Aufgabe 5
 
