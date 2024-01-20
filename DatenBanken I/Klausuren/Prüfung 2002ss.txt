@@ -27,8 +27,6 @@ Kunde (Kundennr , Kdname)
 
 Aufgabe 3
 
-Aufgabe 3
-
 Bank (BLZ, Bname, Kunde (Kundennr, Kname, Konto (Kontennr, Kontostatus, Kundenstatus, Saldo))).
 
 Es gelten die funktionalen Abhängigkeiten
