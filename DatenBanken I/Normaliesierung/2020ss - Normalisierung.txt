@@ -1,0 +1,29 @@
+2020ss
+
+1.NF - Alle Attributen müssen atomar sein. Kein wiederholende Gruppen
+
+Customer(cu_no, lastname, firstname, address)
+
+Invoiceheader (inv_no, inv_customer_language, inv_posting_date, cu_no)
+
+Invoiceline (invl_pos, product, description_1, description_2, retail_price, cu_no, inv_no)
+
+2.NF
+
+Alle Nichtschlüsselatribute müssen voll funktional abhängig von Schlüsselkandidat sein
+
+Invoiceheader (inv_no, inv_posting_date, cu_no)
+
+Customer_Language (cu_no, inv_customer_language)
+
+FS: Customer_Language.cu_no ref Invoiceheader.cu_no
+
+3.NF
+
+keine funktionale Abhängigkeit innerhalb Relationen
+
+Invoiceline (invl_pos, product, retail_price, cu_no, inv_no)
+
+Product_Desc (product, description_1, description_2)
+
+FS: Product_Desc.product ref Invoiceline.product
