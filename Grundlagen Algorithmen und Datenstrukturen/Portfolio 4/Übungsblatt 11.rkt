@@ -19,17 +19,6 @@
 ;(werte-aus2 '(* x y) '((x 3) (y 5))) 
 ;(werte-aus2 '(/ a b) '((a 6) (b 3))) 
 
-; //////////////////////////////////////////////////////////////////////// Variant 3 /////////////////////////////////////////
-(define (werte-aus3 term zuweisung)
-  (helper-wert (flatten (append term zuweisung)) (eval (car term)) 0))
-
-(define (helper-wert lst operator result)
-  (if (null? lst)
-      result
-      (helper-wert (cdr lst) operator (cond ((and (number? (car lst)) (= result 0)) (+ result (car lst)))
-                                            ((and (number? (car lst)) (> result 0)) (operator result (car lst)))
-                                            (else result)))))
-
 ; //////////////////////////////////////////////////////////////////////// Variant 2 /////////////////////////////////////////
 
 (define (werte-aus term zuweisung)
@@ -47,8 +36,21 @@
 ;(werte-aus '(/ a b) '((a 6) (b 3))) ; Output: 2
 
 
+; //////////////////////////////////////////////////////////////////////// Variant 3 - besser /////////////////////////////////////////
+(define (werte-aus3 term zuweisung)
+  (helper-wert (flatten (append term zuweisung)) (eval (car term)) 0))
+
+(define (helper-wert lst operator result)
+  (if (null? lst)
+      result
+      (helper-wert (cdr lst) operator (cond ((and (number? (car lst)) (= result 0)) (+ result (car lst)))
+                                            ((and (number? (car lst)) (> result 0)) (operator result (car lst)))
+                                            (else result)))))
+
+
 
 ; Aufgabe 2
+
 ; //////////////////////////////////////////////////////////////////////// Variant 1 /////////////////////////////////////////
 (define (deep-memq element liste)
   (checker element (append-List liste '())))
@@ -112,15 +114,9 @@
 (define (helper-grenze2 grenze lst result)
   (if (null? lst)
       result
-      (helper-grenze2 grenze (cdr lst) (if (< (car lst) grenze)
-                                          (append result (list (car lst)))
-                                          result))))
+      (helper-grenze2 grenze (cdr lst) (if (< (car lst) grenze) (append result (list (car lst)))  result))))
 
-
- 
-
-;(define (helper-alle-kleineren grenze lst result)
-  
+;(define (helper-alle-kleineren grenze lst result) 
 ;(alle-kleineren2 4 '((7 2 (3 40)) (3 4 (2 3 (9)))))
 ;(alle-kleineren2 3 '((3 4 (6 3 (9)) 8)))
 ;(alle-kleineren2 22 '((19 20) (21 22) (23 24)))
@@ -151,4 +147,27 @@
   )
   (zahl-rek n 10)
 )
-
+;//////////////////////////////////////////////////////////////////////// Variant 2 /////////////////////////////////////////
+(define (suche-schrittzahl2 n)
+  (define a 0) ; lokale Variable
+  (define r 0) ; lokale Variable
+  (define b 0) ; lokale Variable
+  (define d 0) ; lokale Variable
+  (define (is-eins-schrittzahl zahl vorherigeZahl)
+    (set! a (modulo zahl 10)) ; Variable zuweisen
+    (set! r (quotient zahl 10)) ; Variable zuweisen
+    (set! b (modulo r 10)) ; Variable zuweisen
+    (set! d (abs (- a b))) ; Variable zuweisen
+    (cond
+      ((= r 0) #t)
+      ((= d 1) (is-eins-schrittzahl r '()))
+      (else #f)))
+  
+  (define (zahl-rek n zahl)
+    (if(is-eins-schrittzahl zahl '())
+       (if (= n 1)
+           zahl
+           (zahl-rek (- n 1) (+ zahl 1))
+       )
+       (zahl-rek n (+ zahl 1))))
+  (zahl-rek n 10))
