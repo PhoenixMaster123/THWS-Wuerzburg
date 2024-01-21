@@ -19,6 +19,17 @@
 ;(werte-aus2 '(* x y) '((x 3) (y 5))) 
 ;(werte-aus2 '(/ a b) '((a 6) (b 3))) 
 
+; //////////////////////////////////////////////////////////////////////// Variant 3 /////////////////////////////////////////
+(define (werte-aus3 term zuweisung)
+  (helper-wert (flatten (append term zuweisung)) (eval (car term)) 0))
+
+(define (helper-wert lst operator result)
+  (if (null? lst)
+      result
+      (helper-wert (cdr lst) operator (cond ((and (number? (car lst)) (= result 0)) (+ result (car lst)))
+                                            ((and (number? (car lst)) (> result 0)) (operator result (car lst)))
+                                            (else result)))))
+
 ; //////////////////////////////////////////////////////////////////////// Variant 2 /////////////////////////////////////////
 
 (define (werte-aus term zuweisung)
