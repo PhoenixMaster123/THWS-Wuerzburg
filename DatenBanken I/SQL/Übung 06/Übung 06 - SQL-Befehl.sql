@@ -76,16 +76,22 @@ GROUP BY lieferung.datum, lieferant.lsitz;
 
 -- Aufgabe 7
 
-SELECT lsitz as Stadt, AVG(lieferung.anzahl) AS DURCHSCHINLICH
-FROM lieferant
-JOIN lieferung ON lieferung.lnum = lieferant.lnum
-GROUP BY Stadt;
+CREATE VIEW D (datum, stadt, lieferung) AS
+
+SELECT lieferung.datum AS Datum, lieferant.lsitz AS Stadt, COUNT(*) AS ANZAHL
+FROM lieferung
+JOIN lieferant ON lieferung.lnum = lieferant.lnum
+GROUP BY lieferung.datum, lieferant.lsitz;
+
+SELECT stadt, AVG (lieferung) AS Durchschnitt
+FROM D
+GROUP BY stadt;
 
 -- Aufgabe 8
 
-SELECT artikel.farbe , lieferant.lsitz , COUNT(lieferung.anum) AS Anzahl
+SELECT artikel.farbe , lieferant.lsitz , SUM(lieferung.anzahl) AS Anzahl
 FROM lieferant
 JOIN lieferung ON lieferant.lnum = lieferung.lnum
 JOIN artikel ON lieferung.anum = artikel.anum
 GROUP BY artikel.farbe , lieferant.lsitz
-
+ORDER BY Anzahl DESC;
