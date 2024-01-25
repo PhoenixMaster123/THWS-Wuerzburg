@@ -1,0 +1,91 @@
+2010ss
+
+Aufgabe 1
+
+a)
+
+Beschreiben Sie stichwortartig, was man unter dem Begriff „referentielle Integrität“ versteht!
+
+Referentielle Integrität bedeutet, dass die Datensätze dürfen nicht löschen, solange sie referentiert werden.
+
+b) Was bedeutet „sequentielle Datei“
+
+Eine "sequentielle Datei" ist eine Art von Dateiorganisation, bei der die Daten in einer festen Reihenfolge nacheinander gespeichert sind. In sequentiellen Dateien erfolgt der Zugriff auf die Daten in der Regel von Anfang bis Ende, ohne dass es möglich ist, direkt zu einer bestimmten Position innerhalb der Datei zu springen.
+
+Aufgabe 2
+
+a (b, c, d, e
+f (g, h, i, j, k, l, m
+n (o, p, q, r, s))) 
+
+1.NF
+- alle Attribute müssen atomar sein
+- keine wiederholende Gruppen
+
+a (b, c, d, e)
+f (g, h, i, j, k, l, m, b)
+n (o, p, q, r, s, b, g)
+
+2.NF 
+- alle Nichtschlüsselattribute müssen voll funktional abhängig von jedem Schlüsselkandidat sein.
+
+n (o, p, q, s, b, g)
+
+n2 (q, r)
+
+FS: n.q ref n2.q
+
+3.NF 
+- Keine funktionale Abhängigkeiten innerhalb der Relationen
+(oder) - kein Nichtschlüsselattribut von einem Schlüsselkandidat transitiv abhängt.
+
+f (g, h, i, j, b)
+
+f2 (j, k, l, m)
+
+FS: f.j ref f2.j
+
+Aufgabe 3
+
+Bank (BLZ, Bankname, Filiale)
+
+Besitzt (BLZ, Kundennr, Guthaben)
+
+Kunde (Kundennr, Kdname)
+
+Aufgabe 5
+
+Externe Ebene - in diesem Ebene ist Clientsicht. Da steht auch ERD Diagramm. Das Begriff "Projektion" spielt große Rolle, weil man die Kunden zeigt, wie die Project strukturiert ist.
+In Form einer Projektion werden Teilsichten auf die Relationen gebildet 
+
+
+Aufgabe 7
+
+a)
+
+  BLZ       Bankname   anzahl_freier_konten
+76030000   Haus Bank         2
+79050000   Stein Bank        2
+
+b) Erstellen Sie eine Abfrage, welche das „Privatguthaben“ aller Kunden nach Guthaben
+absteigend darstellt? Ein Kontosaldo soll nur dann in das Guthaben aufgenommen werden, wenn der Kunde den Kundenstatus ‚privat’ besitzt. (Spalten der Ergebnisrelation:
+Kundenname, Privatguthaben). 
+
+SELECT Kunde.KUNDENNAME AS Kundenname, SUM(Konto.Saldo) AS Privatguthaben
+FROM Kunde
+JOIN Konto ON Kunde.KUNDENNR = Konto.KUNDENNR AND Kunde.BLZ = Konto.BLZ
+WHERE Kunde.KUNDENSTATUS = 'privat'
+GROUP BY Kunde.KUNDENNAME
+ORDER BY Konto.Saldo DESC
+
+c) Erstellen Sie eine SQL- Abfrage unter Verwendung des kartesischen Produktes, die zu
+jedem Konto der Tabelle „Konto“ den entsprechenden Bankennamen anzeigt. (Spalten
+der Ergebnisrelation: Bankname, Kontonr) 
+
+SELECT Konto.KONTONR AS Kontonr, Bank.BANKNAME AS Bankname
+FROM Konto
+JOIN Bank ON Konto.BLZ = Bank.BLZ;
+
+d)
+
+Wir machen ein DELETE - Statement, wo kundennr > 90 und kundenstatus = privat oder kundenname = Schmitt. D.h alle Kundennr > 90 und kundenstatus = privat werden löschen und auch alle Kunden, die Schmitt heißen
