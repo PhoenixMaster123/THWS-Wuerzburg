@@ -2,9 +2,7 @@
 
 Aufgabe 1
 
-a)
-
-Beschreiben Sie stichwortartig, was man unter dem Begriff „referentielle Integrität“ versteht!
+a) Beschreiben Sie stichwortartig, was man unter dem Begriff „referentielle Integrität“ versteht!
 
 Referentielle Integrität bedeutet, dass die Datensätze dürfen nicht löschen, solange sie referentiert werden.
 
