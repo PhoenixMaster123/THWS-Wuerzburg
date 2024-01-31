@@ -1,0 +1,167 @@
+Programierung I - Prüfung 2015/16ws
+
+Aufgabe 1
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        int zahl1 = scanner.nextInt();
+        int zahl2 = scanner.nextInt();
+        System.out.println(berechneProzent(zahl1,zahl2));
+    }
+    public static double berechneProzent(int zahl1, int zahl2)
+    {
+        double firstZahl = (double) zahl1;
+        double secondZahl = (double) zahl2;
+        if (zahl1 >= 0 && zahl2 >= 0)
+        {
+            return (firstZahl * secondZahl) / 100;
+        }
+        return -1.0;
+    }
+}
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        String number = scanner.nextLine();
+            ISBN isbn = new ISBN();
+            boolean isValidISBN = isbn.validateISBN(number);
+
+        if (isValidISBN) {
+            System.out.println("Die eingegebene ISBN ist gültig.");
+        } else {
+            System.out.println("Die eingegebene ISBN ist ungültig.");
+        }
+
+        }
+    }
+
+public class ISBN
+{
+    public boolean validateISBN(String isbn) {
+        char[] arr = isbn.toCharArray();
+        double result = 0;
+        int counter = 1;
+        if (arr.length == 13) {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] >= '0' && arr[i] <= '9') {
+                    result += counter * ((int) (arr[i] - 48));
+                    counter++;
+                }
+            }
+        }
+            if (result % 11 == 0) {
+                return true;
+            }
+            return false;
+
+    }
+}
+
+Aufgabe 3
+
+public class Main {
+    public static void main(String[] args) {
+        Door door1 = new Door(1, true);  // Tür mit Nummer 1, offen
+        Door door2 = new Door(2, false); // Tür mit Nummer 2, geschlossen
+
+        System.out.println("Door 1: " + door1.toString()); // Erwartete Ausgabe: "Door 1: o"
+        System.out.println("Door 2: " + door2.toString()); // Erwartete Ausgabe: "Door 2: z"
+    }
+    }
+
+public class Door {
+    private int number;
+    private boolean isOpen;
+    public Door(int number, boolean isOpen) {
+        this.number = number;
+        this.isOpen = isOpen;
+    }
+    public int getNumber() {
+        return number;
+    }
+    public void setNumber(int number) {
+        this.number = number;
+    }
+    public boolean isOpen() {
+        return isOpen;
+    }
+    public void setOpen(boolean isOpen) {
+        this.isOpen = isOpen;
+    }
+    @Override
+    public String toString() {
+        return isOpen ? "o" : "z";
+    }
+}
+
+Aufgabe 4
+
+public class Main {
+    public static void main(String[] args)
+    {
+        // a) Erzeugen Sie Türen mit ihrer Nummer, initial geschlossen
+        Door[] doors = new Door[100];
+        for (int i = 0; i < doors.length; i++) {
+            doors[i] = new Door(i + 1, false);
+        }
+
+        // b) Durchführung der einhundert Durchgänge
+        for (int pass = 1; pass <= 100; pass++) {
+            for (int door = pass - 1; door < doors.length; door += pass) {
+                // Ändern Sie den Zustand der Tür
+                doors[door].setOpen(!doors[door].isOpen());
+            }
+
+            // Ausgabe des Zustands aller Türen nach jedem Gang des Hausmeisters
+            System.out.print("Nach Gang " + pass + ": ");
+            for (int i = 0; i < doors.length; i++) {
+                System.out.print(doors[i].toString());
+            }
+            System.out.println(); // Neue Zeile für den nächsten Durchgang
+        }
+
+        // c) Zählen Sie die geöffneten Türen am Ende
+        int openDoorsCount = 0;
+        for (int i = 0; i < doors.length; i++) {
+            if (doors[i].isOpen()) {
+                openDoorsCount++;
+            }
+        }
+
+        // Ausgabe der Anzahl der geöffneten Türen am Ende
+        System.out.println("Anzahl der geöffneten Türen am Ende: " + openDoorsCount);
+    }
+}
+
+Aufgabe 5
+
+a) System.out.println(b.getName()): Hier wird der Name des Knotens b ausgegeben. Nach der Schleife ist b auf das zweite Element (Homer) der Liste positioniert. Daher ist die Ausgabe "Homer".
+
+b) System.out.println(c.getName()): Hier wird der Name des Knotens c ausgegeben. Nach der zweiten Schleife ist c auf das letzte Element (Marge) der Liste positioniert. Daher ist die Ausgabe "Marge".
+
+c) Die veränderte Liste nach dem Methodenaufruf:
+Vor dem Methodenaufruf: Bart -> Homer -> Lisa -> Maggie -> Marge -> null
+Nach dem Methodenaufruf (basierend auf den Anweisungen in der Methode):
+
+Bart -> Homer -> Lisa -> Maggie -> Marge
+Das letzte Element (Marge) wird vom Ende abgeschnitten.
+Das dritte Element (Lisa) wird zum neuen Ende.
+Die resultierende Liste: Bart -> Homer -> Maggie -> Lisa -> null
+
+
+
+
+
+
+
+
+
+
