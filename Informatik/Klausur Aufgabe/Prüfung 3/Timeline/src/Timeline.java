@@ -10,8 +10,7 @@ public class Timeline
             while (current.vorgaenger != null) { // Durchlaufe die Liste, bis du den letzten Knoten erreichst
                 current = current.vorgaenger;
             }
-            current.vorgaenger = post; // Füge die neue Post nach dem letzten Knoten ein
-            post.vorgaenger = null; // Setze den Vorgänger der neuen Post auf null, um das Ende der Liste zu zeigen
+            current.vorgaenger = post; // Füge die neue Post nach dem letzten Knoten ein   
         }
     }
 
