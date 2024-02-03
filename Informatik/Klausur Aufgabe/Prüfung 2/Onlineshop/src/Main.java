@@ -27,3 +27,45 @@ public class Main {
     }
 
 }
+/////////////////////////////////////////////////////// Variant 2 - ohne replace //////////////////////////////////
+/*
+
+public class Main {
+    public static void main(String[] args) {
+        String eingabe = "1,99";
+        char[] ch = wandleUmInCents(eingabe);
+        System.out.println(String.valueOf(ch));
+    }
+
+    public static char[] wandleUmInCents(String eingabe)
+    {
+        char[] ch = eingabe.toCharArray();
+        int counter = 0;
+
+        for (int i = 0; i < ch.length; i++) {
+            if (ch[i] == ',' || (ch[i] == '0'))
+            {
+                counter++;
+                ch[i] = ' ';
+            }
+        }
+        char[] result = new char[ch.length-counter];
+
+        int count = 0;
+        for (int i = 0; i < ch.length; i++)
+        {
+
+            if (ch[i] == ' ')
+            {
+                continue;
+            }
+            else
+            {
+                result[count] = ch[i];
+                count++;
+            }
+        }
+
+        return result;
+    }
+    /*
