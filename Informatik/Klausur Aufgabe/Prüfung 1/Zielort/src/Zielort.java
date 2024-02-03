@@ -1,13 +1,14 @@
 public class Zielort
 {
-    String nameZielort;
-    int distanz;
+    private String nameZielort;
+    private double distanz;
     Zielort next;
 
-    public Zielort (String nameZielort, int distanz)
+    public Zielort (String nameZielort, double distanz)
     {
         this.nameZielort = nameZielort;
         this.distanz = distanz;
+        this.next = null;
     }
 
     public String getNameZielort()
@@ -20,18 +21,19 @@ public class Zielort
         this.nameZielort = nameZielort;
     }
 
-    public int getDistanz()
+    public double getDistanz()
     {
         return distanz;
     }
 
-    public void setDistanz(int distanz)
+    public void setDistanz(double distanz)
     {
         this.distanz = distanz;
     }
 
+    @Override
     public String toString()
     {
-        return "Ortsname: " + nameZielort + "Distanz: " + distanz + " km";
+        return "Ortsname: " + nameZielort + " Distanz: " + distanz + " km";
     }
 }
