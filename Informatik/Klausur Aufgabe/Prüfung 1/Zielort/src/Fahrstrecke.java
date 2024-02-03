@@ -1,5 +1,5 @@
 public class Fahrstrecke {
-    public Zielort firstZielort;
+    private Zielort firstZielort;
 
     public Fahrstrecke()
     {
@@ -26,7 +26,7 @@ public class Fahrstrecke {
         Zielort currentZielort = firstZielort;
 
         while (currentZielort != null) {
-            gesamtEntfernung += currentZielort.distanz;
+            gesamtEntfernung += currentZielort.getDistanz();
             currentZielort = currentZielort.next;
         }
         return gesamtEntfernung;
@@ -38,8 +38,8 @@ public class Fahrstrecke {
         Zielort currentZielort = firstZielort;
 
         while (currentZielort != null) {
-            str += currentZielort.nameZielort;
-            str += "(" + currentZielort.distanz + ")";
+            str += currentZielort.getNameZielort();
+            str += "(" + currentZielort.getDistanz() + ")";
             if (currentZielort.next != null)
             {
                 str += " -> ";
@@ -50,3 +50,5 @@ public class Fahrstrecke {
         return str;
     }
 }
+
+
