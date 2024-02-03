@@ -1,12 +1,14 @@
 public class Fahrstrecke {
-    Zielort firstZielort;
+    public Zielort firstZielort;
 
-    public Fahrstrecke() {
+    public Fahrstrecke()
+    {
         this.firstZielort = null;
     }
 
-    public void einfuegen(String name, int distanz) {
+    public void einfuegen(String name, double distanz) {
         Zielort newZielort = new Zielort(name, distanz);
+        System.out.println(newZielort);
         if (firstZielort == null) {
             firstZielort = newZielort;
         }
@@ -19,8 +21,8 @@ public class Fahrstrecke {
         }
     }
 
-    public int gesamtStrecke() {
-        int gesamtEntfernung = 0;
+    public double gesamtStrecke() {
+        double gesamtEntfernung = 0;
         Zielort currentZielort = firstZielort;
 
         while (currentZielort != null) {
@@ -29,6 +31,22 @@ public class Fahrstrecke {
         }
         return gesamtEntfernung;
     }
+    @Override
+    public String toString()
+    {
+        String str = "";
+        Zielort currentZielort = firstZielort;
+
+        while (currentZielort != null) {
+            str += currentZielort.nameZielort;
+            str += "(" + currentZielort.distanz + ")";
+            if (currentZielort.next != null)
+            {
+                str += " -> ";
+            }
+            currentZielort = currentZielort.next;
+        }
+
+        return str;
+    }
 }
-
-
