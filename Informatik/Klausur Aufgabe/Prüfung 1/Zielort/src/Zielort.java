@@ -2,7 +2,7 @@ public class Zielort
 {
     private String nameZielort;
     private double distanz;
-    Zielort next;
+    private Zielort next;
 
     public Zielort (String nameZielort, double distanz)
     {
@@ -29,6 +29,15 @@ public class Zielort
     public void setDistanz(double distanz)
     {
         this.distanz = distanz;
+    }
+
+    public Zielort getNext()
+    {
+        return next;
+    }
+    public void setNext(Zielort next)
+    {
+        this.next = next;
     }
 
     @Override
