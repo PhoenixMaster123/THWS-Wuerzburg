@@ -14,10 +14,10 @@ public class Fahrstrecke {
         }
         else {
             Zielort currentZielort = firstZielort;
-            while (currentZielort.next != null) {
-                currentZielort = currentZielort.next;
+            while (currentZielort.getNext() != null) {
+                currentZielort = currentZielort.getNext();
             }
-            currentZielort.next = newZielort;
+            currentZielort.setNext(newZielort);
         }
     }
 
@@ -27,7 +27,7 @@ public class Fahrstrecke {
 
         while (currentZielort != null) {
             gesamtEntfernung += currentZielort.getDistanz();
-            currentZielort = currentZielort.next;
+            currentZielort = currentZielort.getNext();
         }
         return gesamtEntfernung;
     }
@@ -40,15 +40,13 @@ public class Fahrstrecke {
         while (currentZielort != null) {
             str += currentZielort.getNameZielort();
             str += "(" + currentZielort.getDistanz() + ")";
-            if (currentZielort.next != null)
+            if (currentZielort.getNext() != null)
             {
                 str += " -> ";
             }
-            currentZielort = currentZielort.next;
+            currentZielort = currentZielort.getNext();
         }
 
         return str;
     }
 }
-
-
