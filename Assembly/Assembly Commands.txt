@@ -1,0 +1,10 @@
+Assembly Commands:
+
+mov x, y ; x <- y       : after execution, x will hold the result
+and x, y ; x <- x and y : after execution, x will hold the result
+or x, y  ; x <- x or y  : after execution, x will hold the result
+xor x, y ; x <- x xor y : after execution, x will hold the result
+add x, y ; x <- x + y   : after execution, x will hold the result
+sub x, y ; x <- x - y   : after execution, x will hold the result
+inc x    ; x <- x + 1   : after execution, x will hold the result
+dec x    ; x <- x - 1   : after execution, x will hold the result

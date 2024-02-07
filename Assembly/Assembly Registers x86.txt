@@ -1,0 +1,97 @@
+Assembly Registers x86:
+
+Registers:
+
+General Purpose   : RAX, EBX, RCX, RDX
+Index Registers   : RSI, RDI, RBP, RSP
+Integer Registers : R8 - R15
+
+Memory:
+
+Effective Address : 2 or more operations
+
+mov [my_variable] , [my_variable] ; memory to memory - Not Allowed
+mov [my_variable] , ecx           ; register to memory - Allowed
+mov ecx , [my_variable]           ; memory to register - Allowed
+mov eax, my_variable              ; sets eax to the address of my_variable
+lea eax, my_variable              ; sets eax to the address of my_variable
+
+Immediate Values:
+Numberic       Constant
+Character      Constant
+String         Constant
+Floating Point Constant
+
+Numeric Constants:
+
+mov ax,200 ; decimal
+mov ax,0200 ; still decimal
+mov ax,0200d ; explicitly decimal
+mov ax,0d200 ; also decimal
+mov ax,0c8h  ; hex
+mov ax,$0c8  ; hex again: the 0 is required
+mov ax,0xc8  ; hex yet again
+mov ax,0hc8  ; still hex
+mov ax,310q  ; octal
+
+Character Contancts:
+
+mov eax, 'abcd' ; used in express context
+
+String Contants:
+
+db 'hello'             ; string constant
+db 'h','e','l','l','o' ; equivalent character constants
+
+.ss -> stack               - High Memory Address 
+.heap                      - Low Memory  Address 
+.data, .bss (data section) - Low Memory  Address ^
+.text -> (code section)    - Low Memory  Address |
+
+Parameters:
+
+RDI - First  Parameter
+RSI - Second Parameter
+RDX - Third  Parameter
+RCX - Fourth Parameter
+R8  - Fifth  Parameter 
+R9  - Sixth  Parameter
+
+Preserved Registers:
+
+RSP - Stack Pointer
+RBP - Base  Pointer
+RBX
+R12 - R15
+
+eax -> Extended accumulator, automatically used by multiplication and division instruction.
+
+ebx -> General purpose
+
+ecx -> Used as a loop counter by the CPU
+
+edx -> General purpose
+
+esi -> High speed memory transfer
+
+edi -> High speed memory transfer
+
+ebd -> Used to reference funktion parameters and local variables on the stack
+
+esp -> A pointer to the current stack address
+
+eip -> The instruction pointer, points to the address of the next instruction
+
+eflags: Flags to denote the status of an opeation:
+
+CF (carry flag)
+
+OF (overflow flag)
+
+SF (sign flag)
+
+ZF (zero flag)
+
+AC (auxiliary carry)
+
+PF (parity flag)
