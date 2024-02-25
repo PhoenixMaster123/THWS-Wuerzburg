@@ -1,0 +1,504 @@
+JAVA - OOP
+
+////////////////////////////////////////////////////////////////////////////////
+
+vererbung = inheritance = наследяване
+
+-> Beispiel: public class Pflanze extends Lebewesen
+
+-> Wenn alle Klassen die gleichen Attribute haben, ist eine Klasse eine Oberklasse und die andere eine Unterklasse.
+
+Beispiel:
+
+public class Lebewesen
+{
+    int alter;
+    double grosse;
+}
+public class Pflanze extends Lebewesen
+{
+  boolean hatNadeln;
+}
+
+-> keine wiederholende Elemente, deswegen benutzen wir vererbung
+
+////////////////////////////////////////////////////////////////////////////////
+
+super !!!
+
+-> In der Oberklasse des Konstruktors haben wir Attribute und um diese Attribute nicht erneut zu schreiben, verwenden wir das Schlüsselwort super.
+
+Beispiel:
+
+public class Lebewesen
+{
+    int alter;
+    double grosse;
+
+ public Lebewesen(int alter, double grosse) // Konstruktor
+    {
+        this.alter = alter;
+        this.grosse = grosse;
+     
+    }
+}
+public class Pflanze extends Lebewesen
+{
+  boolean hatNadeln;
+
+public Pflanze(int alter, double grosse, boolean hatNadeln) // Konstruktor
+    {
+        super(alter,grosse);
+        this.hatNadeln = hatNadeln;
+        System.out.println("Pflanze Konstruktor");
+    }
+}
+
+Tipp:
+
+public class Fahrzeug // Oberklasse(Superklasse)
+{
+    int geschwiendigkeit = 80;
+
+    public void fahren()
+    {
+        System.out.println("Motor gestartet");
+    }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+Überschreiben = Override
+
+Beispiel:
+public class Auto extends Fahrzeug // Unterklasse
+{
+    int geschwiendigkeit = 120;
+
+    public void fahren()
+    {
+        System.out.println("Brum Brum");
+    }
+}
+
+ Fahrzeug auto = new Auto();
+ auto.fahren(); // -> method Auto -> Brum Brum
+
+-> Unterklasse überschreibt die Methode von der Superklasse, wenn:
+
+1 - die Methode von der Unterklasse muss genauso heißen, wie die Methode von der Superklasse
+2 - gleiche Rückgabewert z.b void
+3 - die Methode muss die gleiche Argumente wie die Superklasse haben.
+
+
+Wenn wir beide Ergebnisse wollen, benutzen wir das Schlüsselwort super:
+
+public class Auto extends Fahrzeug // Unterklasse
+{
+    int geschwiendigkeit = 120;
+
+    public void fahren()
+    {
+        super.fahren();
+        System.out.println("Brum Brum");
+    }
+}
+
+Ergebniss: Motor gestartet
+           Brum Brum
+
+Mit variablen ist genauso:
+
+public class Fahrzeug
+{
+    int geschwiendigkeit = 80;
+
+    public void fahren()
+    {
+        System.out.println("Motor gestartet");
+    }
+
+    public int getGeschwiendigkeit() {
+        return geschwiendigkeit;
+    }
+}
+
+public class Auto extends Fahrzeug
+{
+    int geschwiendigkeit = 120;
+
+    public void fahren()
+    {
+        super.fahren();
+        System.out.println("Brum Brum");
+    }
+
+    @Override
+    public int getGeschwiendigkeit() {
+        return super.getGeschwiendigkeit(); -> 80 ohne das Wort super - 120
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+Polymorphie = Polymorphism = Полиморфизъм
+
+-> Verfügt eine der Unterklassen beispielsweise nicht über diese Methode, kümmert sich der Polymorphismus darum und übernimmt sie von der Oberklasse
+
+Beispiel:
+
+class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee"); // wir können weglassen 
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();  // Create a Animal object
+    Animal myPig = new Pig();  // Create a Pig object
+    Animal myDog = new Dog();  // Create a Dog object
+    myAnimal.animalSound();
+    myPig.animalSound(); -> falls ist weggelassen -> The animal makes a sound als Ergebniss
+    myDog.animalSound();
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+Anonym Klassen: 
+
+Bedeutung:
+
+Namenlose Klasse, die gleichzeitig deklariert und initialiesiert wirt.
+- keine feste Name
+
+2 Wege:
+
+1 - Klasse erweitern
+
+Beispiel:
+
+public class Katze
+{
+    public void macheMial()
+    {
+        System.out.println("Mial");
+    }
+}
+
+public class Main {
+    public static void main(String[] args)
+    {
+
+        // Anonum Klasse - erweitern
+
+        Katze katze = new Katze()
+        {
+            public void macheMial()
+            {
+                System.out.println("Meow");
+            }
+        };
+        katze.macheMial();
+     }
+}
+
+
+
+
+2- Interface implementieren
+
+public interface Lebewesen
+{
+    public void macheEtwas();
+}
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Lebewesen monkey = new Lebewesen() {
+
+            @Override
+            public void macheEtwas() {
+                System.out.println("Uhh Ahh");
+            }
+        };
+        monkey.macheEtwas();
+    }
+}
+
+
+Wie verwenden wir:
+
+
+////////////////////////////////// Variant 1 /////////////////////////////////
+public class Main {
+    public static void main(String[] args)
+    {
+        Lebewesen monkey = new Lebewesen() {
+
+            @Override
+            public void macheEtwas() {
+                System.out.println("Uhh Ahh");
+            }
+        };
+        monkey.macheEtwas();
+    
+     rufeMethodeAuf(monkey);
+    }
+
+    public static void rufeMethodeAuf(Lebewesen lebewesen)
+    {
+        lebewesen.macheEtwas();
+    }
+}
+
+////////////////////////////////// Variant 2 /////////////////////////////////
+public class Main {
+    public static void main(String[] args)
+    {
+        
+     rufeMethodeAuf(Lebewesen monkey = new Lebewesen() {
+
+            @Override
+            public void macheEtwas() {
+                System.out.println("Uhh Ahh");
+            }
+        });
+    }
+
+    public static void rufeMethodeAuf(Lebewesen lebewesen)
+    {
+        lebewesen.macheEtwas();
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+@FunctionalInterface -> Ein Interface hat genau eine Methode.
+
+Lambda -> Abkürzung, um eine Implementierung eines Funktional Interfaces zu definieren
+
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Lebewesen monkey = () -> System.out.println("Uhh Ahh); // das ist eine Abkürzung
+        monkey.macheEtwas();
+    }
+
+Lambda + Parametern:
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Lebewesen monkey = (String text) -> System.out.println(text + "Uhh Ahh); 
+        monkey.macheEtwas("Das Lebewesen sagt: ");
+    }
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Lebewesen monkey = text -> System.out.println(text + "Uhh Ahh"); // Ein parameter kann man Klammer weglassen.
+        monkey.macheEtwas("Das Lebewesen sagt: ");
+    }
+
+Lambda + Rückgabewert:
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Lebewesen monkey = (text1, text2) -> { return text + "Uhh Ahh" + text2; }  
+        monkey.macheEtwas("Das Lebewesen sagt: ", " !!!");
+    }
+
+public class Main {
+    public static void main(String[] args)
+    {
+        Lebewesen monkey = (text1, text2) -> text + "Uhh Ahh" + text2; // können wir return weglassen
+        monkey.macheEtwas("Das Lebewesen sagt: ", " !!!");
+    }
+
+Lambda + Listen
+
+List<Integer> intList = new ArrayList<>();
+intList.add(5);
+intList.add(50);
+intList.add(25);
+
+intList.forEach(i -> System.out.println(i);
+
+////////////////////////////////////////////////////////////////////////////////
+
+Interfaces:
+
+1 - Function Interface
+2 - Consumer Interface
+3 - Predicat Interface
+4 - Supplier Interface
+
+-> Unterscheidung - Rückagabetyp und welche Parameter ihre Methode hat.
+
+public interface Lebewesen
+{
+     void    macheEtwas(String s); -> void    +  Parameter -> Consumer  Interface
+     boolean macheEtwas(String s); -> boolean +  Parameter -> Predicate Interface
+     Integer macheEtwas(String s); -> Integer +  Parameter -> Function  Interface
+     Integer macheEtwas(String s, Double d); -> Integer + 2 Parameter -> Bei Function Interface 
+}
+
+Function Interface:
+
+1 - Wert als Parameter + 1 Wert als Rückgabewert !!!!
+
+Beispiel:
+
+public class Main {
+    public static void main(String[] args)
+    {
+        // Integer -> Parameter, Integer -> Rückgabewert
+        Function<Integer,Integer> addTwoMethod = number -> number + 2; // Kurz
+        System.out.println(addTwoMethod.apply(4));
+    }
+
+*/
+public static int addTwoMethode(int number) // Das brauchen wir nicht
+{
+     return number + 2;
+}
+/*
+
+Functions verketten: !!!!
+
+import java.util.function.Function;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Interfaces
+
+        // Integer -> Parameter, Integer -> Rückgabewert
+        Function<Integer,Integer> addTwoMethod = number -> number + 2;
+        Function<Integer,Integer> multThree = number -> number * 3;
+        int result = addTwoMethod.andThen(multThree).apply(4); // Zuerst die Furnction addTwoMethod danach multThree Function
+        System.out.println(result); -> Ergebniss: 18
+
+    }
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Interfaces
+
+        // Integer -> Parameter, Integer -> Rückgabewert
+        Function<Integer,Integer> addTwoMethod = number -> number + 2;
+        Function<Integer,Integer> multThree = number -> number * 3;
+        int result = addTwoMethod.compose(multThree).apply(4); // Zuerst die Furnction multThree danach addTwoMethod Function
+        System.out.println(result); Ergebniss: 14
+
+    }
+
+Consumer Interface:
+
+-> 1 Parameter + kein Rückgabewert, d.h -> void !!!
+
+Beispiel:
+
+import java.util.function.Consumer;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Consumer Interface
+
+        Consumer<String> swem = s -> System.out.println(s + "!");
+        swem.accept("Hallo"); // Ergebnis: Hallo!
+
+    }
+
+
+// Listen + Consumer Interface
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Consumer Interface
+
+        Consumer<String> swem = s -> System.out.println(s + "!");
+        List<String> students = List.of("Peter", "Marie", "Helmi");
+        students.forEach(swem); // Ergebniss: Peter!
+                                              Marie!
+                                              Helmi!
+
+     // Zweite Möglichkeit:
+     
+     List<String> students = List.of("Peter", "Marie", "Helmi");
+     students.forEach(s -> System.out.println(s + "!")); 
+
+    }
+
+
+Predicate Interface:
+
+1 Predikat + boolean Rückgabewert !!!
+
+Beispiel:
+
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<String> students = List.of("Peter", "Marie", "Paul");
+
+        Predicate<String> studentTest = student -> student.startsWith("M");
+        System.out.println(studentTest.test(students.get(1))); // Marie start with M -> Ergebniss: true
+
+    }
+
+
+Supplier Interface
+
+kein Parameter + 1 Rückgabewert:
+
+Beipiel:
+
+import java.util.function.Supplier;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Supplier<Double> random1000 = () -> Math.random() * 1000;
+        System.out.println(random1000.get());
+}
+
+Bi Interface
+
+// 2 Integers als Parameter und 1 String als Rückgabewert 
+
+BiFunktion(Integer,Integer,String)
+
+Primitive Interface
+
+Consumer<int> -> geht es nicht.
+
+IntConsumer<int>
