@@ -1,0 +1,137 @@
+Threads <-> Multithreading
+
+z.b -> mehrere Anfragen gleichzeitig ausführen
+
+Hauptprogramm - Main Thread
+
+////////////////////////////////////////////////// Variant 1 - Thread zu implementieren //////////////////////////
+
+1 - Machen wir eine Klasse z.b MyThreads + vererbung Thread
+
+public class MyThreads extends Thread
+{
+    @Override
+    public void run()
+    {
+        System.out.println("Das ist ein Thread");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        MyThreads thread = new MyThreads();
+        thread.start(); // wir benutzen thread.start nicht thread.run
+    }
+}
+
+Thread.sleep(Verzögerung) + InterruptedException
+
+public class MyThreads extends Thread
+{
+    @Override
+    public void run() {
+        System.out.println("3");
+        try {
+            Thread.sleep(1000); // milliseconds
+            System.out.println("2");
+            Thread.sleep(1000);
+            System.out.println("1");
+            Thread.sleep(1000);
+            System.out.println("Fertig");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+////////////////////////////////////////////////// Variant 2 - Thread zu implementieren //////////////////////////
+
+1 - erstellen eine Klasse z.b MyRunnable + interface Runnable
+
+public class MyRunnable implements Runnable{
+    @Override
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(i + " from Runnable");
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        MyThreads thread = new MyThreads();
+        MyRunnable runnable = new MyRunnable();
+        Thread thread2 = new Thread(runnable);
+        
+     // Paralell laufen
+
+        thread.start();
+        thread2.start();
+    }
+}
+
+/////////////////////////////////////////////// Automatisch Thread erstellen /////////////////////
+
+
+public class ThreadMaker
+{
+    public static void lassImHintergrundLaufen(Runnable runnable)
+    {
+        Thread thread = new Thread(runnable);
+        thread.start();
+        try {
+            thread.join(); // ist wie thread.sleep();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+
+        List<Hund> hundeList = new ArrayList<>();
+        System.out.println("Unser Tierheim hat viele Hunde");
+
+        ThreadMaker.lassImHintergrundLaufen(() -> {
+            for (int i = 0; i < 1000; i++) {
+                Hund hund = new Hund("Tom" + i);
+                hundeList.add(hund);
+            }
+        });
+
+
+        System.out.println("Das sind unsere Hunde:");
+        for (Hund hund : hundeList) {
+            System.out.println(hund.getName());
+        }
+
+
+        /*
+        MyThreads thread = new MyThreads();
+        MyRunnable runnable = new MyRunnable();
+        Thread thread2 = new Thread(runnable);
+        thread.start();
+        thread2.start();
+
+         */
+    }
+}
+
+
+
+
+
+
+
