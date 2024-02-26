@@ -1,0 +1,72 @@
+ENUMS
+
+Enum = Enumeration/Aufzählung - Изброяване
+
+man kann sich nicht ändern
+
+Syntax:
+
+enum Jahreszeiten
+{
+    FRÜHLING,
+    SOMMER,
+    HERBST,
+    WINTER;
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        // MIT ENUMS - viel Elegant
+
+        //String[] jahreszeiten = {"Frühling","Sommer","Herbst","Winter"};
+
+        Jahreszeiten dieCoolsteJahreszeit = Jahreszeiten.SOMMER;
+    }
+}
+
+Beispiel:
+
+public enum Schwierigkeit
+{
+    LEICHT, MITTEL,SCHWER,EXTREM
+}
+
+public class Gamer
+{
+    private int score;
+    private Schwierigkeit difficulty;
+
+    public Gamer()
+    {
+        this.score = 0;
+        this.difficulty = Schwierigkeit.LEICHT;
+    }
+
+    public Schwierigkeit getDifficulty() {
+        return difficulty;
+    }
+
+    public int getScore() {
+        return score;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Gamer gamer = new Gamer();
+
+        switch (gamer.getDifficulty())
+        {
+            case LEICHT:
+                //Code...
+            case MITTEL:
+                //Code...
+            case SCHWER:
+                //Code...
+            case EXTREM:
+                //Code...
+        }
+    }
+}
