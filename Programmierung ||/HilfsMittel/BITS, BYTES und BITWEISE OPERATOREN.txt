@@ -1,0 +1,29 @@
+BITS, BYTES und BITWEISE OPERATOREN
+
+Byte - Wertebereich -> -128 bis 127
+
+AND Operator -> & -> true & true -> true , false & true -> false
+
+int number1 = 10;
+int number2 = 25
+
+System.out.println(number1 & number2) -> 8
+
+Grund:
+
+byte 10 -> 00001010
+byte 25 -> 00011001
+
+-> 00001000
+
+OR Operator -> | -> false | true -> true
+
+XOR Operator -> ^ -> false ^ true -> true
+
+Kompliment Operator -> ~ -> ~10 -> -11 | alle 0 sind 1 und alle 1 sind 0
+
+Left-shift Operator -> << -> 11 << 2 -> 44
+
+-> 11(001011) << 2 -> 101100 = 32 + 8 + 4 = 44
+
+Right-Shift Operator >> -> 49 >> 3 -> 6
