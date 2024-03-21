@@ -20,21 +20,9 @@
       (if (= positive negative) #t #f)
       (helper-gleich (cdr lst) (if (>= (car lst) 0) (+ positive 1) positive) (if (<= (car lst) 0) (+ negative 1) negative))))
 
-; Aufgabe 3 - falsch
+; Aufgabe 3
 
-(define (sortieren liste praedikat)
-  (define (filter-predicate element)
-    (if (praedikat element) #t #f))
-  
-  (define (partition lst pred)
-    (if (null? lst)
-        (cons '() '())
-        (if (pred (car lst))
-            (cons (cons (car lst) (car (partition (cdr lst) pred))) (cadr (partition (cdr lst) pred)))
-            (cons (car (partition (cdr lst) pred)) (cons (car lst) (cadr (partition (cdr lst) pred)))))))
-  
-  (append (partition (filter filter-predicate liste) praedikat)))
-
-
+(define (sortieren liste preadikat)
+  (append (filter preadikat liste) (filter (lambda (x) (not (odd? x))) liste)))
 
 (sortieren '(1 2 3 4 5 6 7 8 9) odd?)
