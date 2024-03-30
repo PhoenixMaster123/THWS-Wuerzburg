@@ -14,6 +14,20 @@
       x
       (* x (count-perm (- x 1)))))
 
+
+;///////////////////////////////////////////////// Variant 3 - My //////////////////////////////////
+;(define (isbn-test isbn)
+ ; (isbn-helper isbn))
+
+;(define (isbn-helper isbn)
+ ; (if (= (remainder (sum isbn 9 0) 11) 10) "X"
+      ;  (remainder (sum isbn 9 0) 11)))
+
+;(define (sum isbn counter result)
+ ; (if (= isbn 0)
+    ;  result
+    ;  (sum (quotient isbn 10) (- counter 1) (+ result (* (remainder isbn 10) counter)))))
+
 ; Aufgabe 3 (einfacher)
 (define (zerteilen position rest)
   (if (= position 1)
@@ -50,4 +64,19 @@
   (define zylinder-volumen (* pi (sqr radius-zylinder) hoehe-zylinder))
     (define volumen-kegel (* 1/3 pi (sqr radius-kegel) hoehe-kegel))
   (round (/ zylinder-volumen volumen-kegel))) ; quontient -> /
-  
+
+;///////////////////////////////////////////////// Variant 2 - einfacher //////////////////////////////////
+
+;(define (zylinder-kegel radius-zylinder hoehe-zylinder radius-kegel hoehe-kegel)
+  ;(zylinder-kegel-helper radius-zylinder hoehe-zylinder radius-kegel hoehe-kegel))
+
+;(define (zylinder-kegel-helper radius-zylinder hoehe-zylinder radius-kegel hoehe-kegel)
+ ; (quotient (round (zylinder-volumen  radius-zylinder hoehe-zylinder))  (round (kegel-volumen radius-kegel hoehe-kegel))))
+
+;(define (zylinder-volumen radius-zylinder hoehe-zylinder)
+ ; (* pi (expt radius-zylinder 2) hoehe-zylinder))
+
+;(define (kegel-volumen radius-kegel hoehe-kegel)
+ ; (* 1/3 pi (expt radius-kegel 2) hoehe-kegel))
+
+;(zylinder-kegel 3 5 3 5)
