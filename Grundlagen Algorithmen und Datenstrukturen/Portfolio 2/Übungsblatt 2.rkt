@@ -9,6 +9,16 @@
         (sum (+ result 2) (+ zahl result))))
   (sum 1 0))
 
+;////////////////////////////////////////// Variant 2 - einfacher ////////////////////////////////
+
+;(define (nat-wurzel x)
+;(helper-wurzel x 1 0))
+
+;(define (helper-wurzel x counter result)
+ ; (if (> counter x)
+    ;  (sqrt result)
+     ; (helper-wurzel x (+ counter 2) (+ result counter))))
+
 
 ; Aufgabe 2
 
@@ -19,6 +29,10 @@
         (umkehren-helfer (quotient zahl 10) (+ (* result 10) (remainder zahl 10)))))
   
   (umkehren-helfer x 0))
+
+;////////////////////////////////////////// Variant 2 - einfacher ////////////////////////////////
+;(define (zahl-umdrehen x)
+  ;(string->number (list->string (reverse (string->list (number->string x))))))
 
 
 ; Aufgabe 3
