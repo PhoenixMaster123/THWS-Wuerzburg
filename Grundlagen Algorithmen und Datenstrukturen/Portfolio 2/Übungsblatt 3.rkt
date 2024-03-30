@@ -15,7 +15,7 @@
       (* x (count-perm (- x 1)))))
 
 
-;///////////////////////////////////////////////// Variant 3 - My //////////////////////////////////
+;///////////////////////////////////////////////// Variant 3 - My(einfacher) //////////////////////////////////
 ;(define (isbn-test isbn)
  ; (isbn-helper isbn))
 
@@ -28,7 +28,7 @@
     ;  result
     ;  (sum (quotient isbn 10) (- counter 1) (+ result (* (remainder isbn 10) counter)))))
 
-; Aufgabe 3 (einfacher)
+; Aufgabe 3 (einfach)
 (define (zerteilen position rest)
   (if (= position 1)
       rest
@@ -48,7 +48,7 @@
 
 
 
-; Aufgabe 3 (schwieriger)
+; Aufgabe 3 (schwierig)
 #;(define (isbn-test isbn)
   (define (isbn-test-iter summe zifferVonIsbn restlicheIsbn counter)
     (if (= counter 0)
