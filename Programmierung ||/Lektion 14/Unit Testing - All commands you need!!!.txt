@@ -1,0 +1,83 @@
+Unit Testing - All commands you need!!!
+
+@Test -> You need to put it before every test method
+
+assertTrue  -> boolean condition
+assertFause -> boolean condition
+
+assertEquals -> Assert that expected and actual are equal.
+
+assertThrows -> Assert that execution of the supplied executable throws an exception of the expectedType and return the exception.
+
+Example: 
+
+  @Test
+    public void NumberFormatExceptionTest()
+    {
+        String eingabe = "2a";
+        assertThrows(NumberFormatException.class, () -> {
+            Integer.parseInt(eingabe);
+        });
+    }
+
+assertDoesNotThrow
+
+Example:
+
+public class Punkt
+{
+    int x;
+    int y;
+    public void verschiebePunkt(int zielX, int zielY) {
+
+        if(zielX < 0 || zielY < 0 || zielX > 1980 || zielY > 1080)
+        {
+            throw new RuntimeException();
+        }
+        x = zielX;
+        y = zielY;
+    }
+}
+
+ @Test
+    public void testValidCoordinates() {
+        assertDoesNotThrow(() -> punkt.verschiebePunkt(1980, 1080));
+    }
+
+assertArrayEquals -> Assert that expected and actual boolean arrays are equal.
+If both are null, they are considered equal.
+
+
+@BeforeEach -> is used to signal that the annotated method should be executed before each @Test
+
+Example:
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ExampleTest {
+
+    private Calculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        // This method will be executed before each test method
+        calculator = new Calculator();
+    }
+
+    @Test
+    void testAddition() {
+        assertEquals(5, calculator.add(2, 3));
+    }
+
+    @Test
+    void testSubtraction() {
+        assertEquals(2, calculator.subtract(5, 3));
+    }
+}
+
+
+
+
+
