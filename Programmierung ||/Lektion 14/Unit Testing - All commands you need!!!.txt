@@ -9,6 +9,8 @@ assertEquals -> Assert that expected and actual are equal.
 
 assertThrows -> Assert that execution of the supplied executable throws an exception of the expectedType and return the exception.
 
+assertThrows & assertDoesNotThrow + Lambda
+
 Example: 
 
   @Test
