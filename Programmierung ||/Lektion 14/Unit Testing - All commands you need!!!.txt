@@ -7,7 +7,7 @@ assertFause -> boolean condition
 
 assertEquals -> Assert that expected and actual are equal.
 
-assertThrows -> Assert that execution of the supplied executable throws an exception of the expectedType and return the exception.
+assertThrows -> Assert that execution of the supplied executable throws an exception of the expected Type and return the exception.
 
 assertThrows & assertDoesNotThrow + Lambda
 
@@ -22,7 +22,7 @@ Example:
         });
     }
 
-assertDoesNotThrow
+assertDoesNotThrow -> Assert that execution of the supplied executable does not throw any kind of exception.
 
 Example:
 
