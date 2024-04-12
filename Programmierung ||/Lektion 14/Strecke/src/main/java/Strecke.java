@@ -16,9 +16,9 @@ public class Strecke
             this.endpunktB = anfangspunktA;
         }
     }
-    public static boolean überschneiden(int startPunktA, int endpunktB)
+     public static boolean überschneiden(Strecke eins, Strecke zwei)
     {
-        return startPunktA != endpunktB;
+        return (zwei.anfangspunktA <= eins.anfangspunktA || zwei.endpunktB >= eins.anfangspunktA);
     }
     public String toString()
     {
