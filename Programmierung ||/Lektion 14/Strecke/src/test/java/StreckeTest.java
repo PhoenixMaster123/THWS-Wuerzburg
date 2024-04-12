@@ -19,11 +19,22 @@ class StreckeTest
         assertEquals(4, strecke.endpunktB);
     }
     @Test
-    public void überschneidenTest()
-    {
+    public void überschneidenTest() {
+        Strecke s1 = new Strecke(1, 3);
+        Strecke s2 = new Strecke(2, 4);
+        Strecke s3 = new Strecke(4, 6);
+        Strecke s4 = new Strecke(7, 9);
+        Strecke s5 = new Strecke(4, 8);
 
-        assertTrue(Strecke.überschneiden(3,5));
-        assertFalse(Strecke.überschneiden(4,4));
+        assertTrue(Strecke.überschneiden(s1,s2));
+        assertTrue(Strecke.überschneiden(s1,s3));
+        assertTrue(Strecke.überschneiden(s1,s4));
+        assertTrue(Strecke.überschneiden(s1,s5));
+
+        assertTrue(Strecke.überschneiden(s2,s1));
+        assertTrue(Strecke.überschneiden(s3,s1));
+        assertTrue(Strecke.überschneiden(s4,s1));
+        assertTrue(Strecke.überschneiden(s5,s1));
     }
     @Test
     public void toStringTestRichtigeWerte()
