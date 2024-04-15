@@ -2,5 +2,10 @@ package org.example;
 
 public abstract class Person
 {
-    public abstract String gibTaetigkeitAus(String fach);
+    String fach;
+    Person(String fach)
+    {
+        this.fach = fach;
+    }
+    public abstract String gibTaetigkeitAus();
 }
