@@ -13,13 +13,13 @@ public class Main {
         {
            if(random.nextBoolean())
            {
-               people[i] = new Student();
-               System.out.println(people[i].gibTaetigkeitAus("Programmieren"));
+               people[i] = new Student("Programmieren");
+               System.out.println(people[i].gibTaetigkeitAus());
            }
            else
            {
-               people[i] = new Professor();
-               System.out.println(people[i].gibTaetigkeitAus("Programmieren"));
+               people[i] = new Professor("Programmieren");
+               System.out.println(people[i].gibTaetigkeitAus());
            }
         }
     }
