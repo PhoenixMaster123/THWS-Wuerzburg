@@ -1,21 +1,23 @@
 package org.example;
 
+import java.util.Date;
+
 public class Angestellter
 {
-    protected String vorname;
-    protected String nachname;
-    protected int identifikator;
-    protected double grundGehalt;
-    protected double gehaltFaktor;
-    protected String geburtsdatum;
+     String vorname;
+     String nachname;
+    String  identifikator;
+     double grundGehalt;
+     double gehaltFaktor;
+     Date geburtsdatum;
 
-    public Angestellter(String vorname, String nachname, int identifikator, double grundGehalt, double gehaltFaktor, String geburtsdatum)
+    public Angestellter(String vorname, String nachname, String identifikator, double grundGehalt, Date geburtsdatum)
     {
         this.vorname = vorname;
         this.nachname = nachname;
         this.identifikator = identifikator;
         this.grundGehalt = grundGehalt;
-        this.gehaltFaktor = gehaltFaktor;
+        this.gehaltFaktor = 1.0;
         this.geburtsdatum = geburtsdatum;
     }
     public double calculateGehalt()
