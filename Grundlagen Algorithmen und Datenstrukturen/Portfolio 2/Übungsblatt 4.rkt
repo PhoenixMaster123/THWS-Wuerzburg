@@ -42,7 +42,7 @@
   (cond (( not (integer? n)) #f)
         ((<= n 1) #f)
         ( (or  (= (fakt2 n) 1.0) (= n 2)) #t)
-        (else (#f))))
+        (else #f)))
 
 
 ; Aufgabe 4
