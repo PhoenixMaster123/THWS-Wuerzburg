@@ -27,6 +27,15 @@
 
 (display (left-index 1 531869))
 
+; ///////////////////////////////////////////////// Varian 2 ///////////////////////////////////
 
+(define (linker-index ziffer zahl)
+ (helper-pos ziffer zahl (string-length (number->string zahl)) 1))
+
+(define (helper-pos ziffer zahl length pos)
+  (cond
+    ((= length 0) #f)
+    ((= (quotient zahl (expt 10 (- length 1))) ziffer) pos)
+    (else (helper-pos ziffer (remainder zahl (expt 10 (- length 1))) (- length 1) (+ pos 1)))))
 
 
