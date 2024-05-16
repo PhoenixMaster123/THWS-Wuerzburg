@@ -2,15 +2,15 @@
 
 ; Aufgabe 1
 
-; Entfernen Zweiter Element
+; Entfernen jedes zweite Element in einem List
 
-(define (entfernen list)
-  (helper-entfernen list 0 '()))
+(define (entfernen lst)
+  (helper-entfernen lst 1 '()))
 
 (define (helper-entfernen lst counter result)
   (if (null? lst)
       result
-      (helper-entfernen (cdr lst) (+ counter 1) (if (and (even? counter) (> counter 0)) result (append result (list (car lst)))))))
+     (helper-entfernen (cdr lst) (+ counter 1) (if (= (remainder counter 2) 0) result (append result (list (car lst)))))))
 
 ; Aufgabe 2
 
