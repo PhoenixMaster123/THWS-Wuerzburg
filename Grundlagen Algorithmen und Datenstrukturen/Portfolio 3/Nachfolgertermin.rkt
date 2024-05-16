@@ -12,6 +12,8 @@
       result
      (helper-entfernen (cdr lst) (+ counter 1) (if (= (remainder counter 2) 0) result (append result (list (car lst)))))))
 
+(entfernen '(1 2 3 4 5 6)) ; -> (1 3 5) 
+
 ; Aufgabe 2
 
 (define (berechnen lst)
