@@ -37,5 +37,13 @@
       (else (hilfsfunktion zahl (+ faktor 1)))))
 
 
-(display (primfaktorzerlegung 36)) ; Ausgabe: (2 2 3)
+(display (primfaktorzerlegung 36)) ; Ausgabe: (2 2 3 3)
+//////////////////////////////////////// Variant 2 /////////////////////////////////////
+(define (primfaktorzerlegung2 zahl)
+  (helper-zerlegung zahl 2 '()))
+
+(define (helper-zerlegung zahl faktor result)
+  (cond ((= zahl 1) result)
+        ((= (remainder zahl faktor) 0) (helper-zerlegung (/ zahl faktor) faktor (append result (list faktor))))
+        (else (helper-zerlegung zahl (+ faktor 1) result))))
 
