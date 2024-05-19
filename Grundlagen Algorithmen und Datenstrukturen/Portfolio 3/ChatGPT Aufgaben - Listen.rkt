@@ -194,7 +194,7 @@
                                  (cons (car lst) lst2)
                                  lst2) (+ counter 1))))
 
-;(list-teilen '(1 2 3 4 5 6) 2)
+;(list-teilen '(1 2 3 4 5 6) 2) -> ( (1 2) (3 4 5 6) )
       
       
 ; Listen-Replikation:
