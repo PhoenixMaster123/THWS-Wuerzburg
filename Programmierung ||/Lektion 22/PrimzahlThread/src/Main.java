@@ -87,9 +87,9 @@ public class Main {
             e.printStackTrace();
         }
 
-        ///////////////////////////////////// Anonyme Klasse + Ergebnis einsammeln ///////////////////////////////////////////
+        ///////////////////////////////////// Locale Klasse ///////////////////////////////////////////
        System.out.println();
-       System.out.println("Anonyme Klasse + Ergebnis einsammeln:");
+       System.out.println("Locale Klasse:");
         class LocalClassThread extends Thread { // Wir machen das, wenn wir das Ergebnis einsammeln
             boolean istPrimzahl;
             String ergebnis;
