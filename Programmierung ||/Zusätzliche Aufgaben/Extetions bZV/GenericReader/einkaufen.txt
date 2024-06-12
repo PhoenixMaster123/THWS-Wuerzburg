@@ -1,3 +1,0 @@
-Montag; 1.99, 2.00, 3.01
-Dienstag; 2.50, 1.20
-Mittwoch; 5.99
