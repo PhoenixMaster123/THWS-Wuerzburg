@@ -1,4 +1,4 @@
-section	.text
+section .text
    global _start     ;must be declared for linker (ld)
 _start:             ;tell linker entry point
 	
