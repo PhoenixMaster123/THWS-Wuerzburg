@@ -3,23 +3,25 @@ section	.text
 _start:             ;tell linker entry point
 	
    ;writing the name 'Zara Ali'
-   mov	edx,9       ;message length
+   mov	edx, len    ;message length or I can put 9
    mov	ecx, name   ;message to write
-   mov	ebx,1       ;file descriptor (stdout)
-   mov	eax,4       ;system call number (sys_write)
-   int	0x80        ;call kernel
+   mov	ebx, 1      ;file descriptor (stdout)
+   mov	eax, 4      ;system call number (sys_write)
+   int	80h         ;call kernel
    
-   mov	[name],  dword "Nuha"    ; Changed the name to Nuha Ali
+   mov dword[name],  dword "Nuha"    ; Changed the name to Nuha Ali dword = 4 bytes | If we make mov dword[name + 7], dword Nuha, the result will be Zara AlNuh
 	
    ;writing the name 'Nuha Ali'
-   mov	edx,8       ;message length
-   mov	ecx,name    ;message to write
-   mov	ebx,1       ;file descriptor (stdout)
-   mov	eax,4       ;system call number (sys_write)
-   int	0x80        ;call kernel
+   mov	edx, len     ;message length
+   mov	ecx, name    ;message to write
+   mov	ebx, 1       ;file descriptor (stdout)
+   mov	eax, 4       ;system call number (sys_write)
+   int	80h          ;call kernel
 	
    mov	eax,1       ;system call number (sys_exit)
-   int	0x80        ;call kernel
+   mov  ebx,0
+   int	80h         ;call kernel
 
 section	.data
-name db "Zara Ali "
+name db "Zara Ali ", 0xa ; define name + newLine (length = 10)
+len equ $ - name ; length of name
