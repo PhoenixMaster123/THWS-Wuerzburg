@@ -22,6 +22,6 @@ _start:             ;tell linker entry point
    mov  ebx,0
    int	80h         ;call kernel
 
-section	.data
+section .data
 name db "Zara Ali ", 0xa ; define name + newLine (length = 10)
 len equ $ - name ; length of name
