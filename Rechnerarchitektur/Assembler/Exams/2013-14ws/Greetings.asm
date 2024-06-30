@@ -27,11 +27,18 @@ main:
 loop:
     ; Write the user input to stdout
     ;push ebx            ; Push the address of the buffer (input) to the stack
-    push buffer
-    push format         ; Push the format string to the stack
-    call printf         ; Call printf
-    add esp, 8          ; Clean up the stack (2*4 bytes pushed)
-    
+    ;/////////////////////////////////// Variant 1 - using c Funktion /////////////////
+    ; push buffer
+    ;push format         ; Push the format string to the stack
+    ;call printf         ; Call printf
+    ;add esp, 8          ; Clean up the stack (2*4 bytes pushed)
+    ;/////////////////////////////////// Variant 2 - without c Funktion/////////////////
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, buffer
+    mov edx, buffer_size
+    int 0x80
+
     dec esi             ; Decrement the loop counter
     jnz loop            ; Jump to loop if esi is not zero
 
