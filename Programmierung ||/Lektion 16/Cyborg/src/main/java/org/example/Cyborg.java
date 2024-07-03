@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Random;
 
-public class Cyborg implements Taetigkeiten, MenschInterface, RoboterInterface
+public class Cyborg implements MenschInterface, RoboterInterface
 {
     Mensch menschTeil;
     Roboter roboterTeil;
