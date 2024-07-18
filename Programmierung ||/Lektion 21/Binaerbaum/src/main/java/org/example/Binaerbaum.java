@@ -1,31 +1,25 @@
 package org.example;
 
-public class Binaerbaum
+public class Binaerbaum<T extends Comparable<T>>
 {
-    String name;
-    Knoten root;
+    Knoten<T> root;
 
-    static class Knoten
+    public static class Knoten<T>
     {
-        String nachname;
-        Knoten left;
-        Knoten right;
+        T value;
+        Knoten<T> left;
+        Knoten<T> right;
 
-        public Knoten(String name)
+        public Knoten(T value)
         {
-            this.nachname = name;
+            this.value = value;
         }
-        public String getNachname()
+        public T getValue()
         {
-            return nachname;
+            return value;
         }
-        public void setNachname(String nachname)
-        {
-            this.nachname = nachname;
-        }
-
     }
-    public void insert(Knoten neu)
+    public void insert(Knoten<T> neu)
     {
         if (root == null)
         {
@@ -36,9 +30,9 @@ public class Binaerbaum
             insertElement(root, neu);
         }
     }
-    private static void insertElement(Knoten temp, Knoten neu)
+    private void insertElement(Knoten<T> temp, Knoten<T> neu)
     {
-        if (neu.getNachname().compareTo(temp.getNachname()) < 0)
+        if (neu.getValue().compareTo(temp.getValue()) < 0)
         {
             if(temp.left == null)
             {
@@ -65,10 +59,10 @@ public class Binaerbaum
         printInOrder(root);
     }
 
-    private void printInOrder(Knoten node) {
+    private void printInOrder(Knoten<T> node) {
         if (node != null) {
             printInOrder(node.left);
-            System.out.println(node.getNachname());
+            System.out.println(node.getValue());
             printInOrder(node.right);
         }
     }
