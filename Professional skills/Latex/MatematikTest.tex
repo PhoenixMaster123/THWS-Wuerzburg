@@ -1,0 +1,69 @@
+\documentclass{scrartcl}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\title{Beispiele für mathematische Symbole und Formeln}
+
+\begin{document}
+\maketitle	
+\section{Symbole}
+
+\begin{itemize}
+\item Griechisches Alphabet: $\alpha, \beta, \gamma, \dots$
+\item Binäre Relationen: $\neq, \geq, \leq, \approx, \in, \notin, \dots$
+\item Binäre Operatoren: $\vee, \wedge, \neg, \times, \cdot, \dots$
+\item Pfeile: $\rightarrow, \rightarrowtail, \Rightarrow, \hookrightarrow, \dots$
+\end{itemize}
+
+\section{Abgesetzte Formeln}
+
+\begin{equation}\label{eqn:einstein}
+ E = mc^2
+\end{equation}
+
+\section{Einfache Formatierungen}
+
+\begin{itemize}
+\item Exponenten: Mit dem Zirkumflex: \texttt{a\^{}2} ergibt \( a^2 \)
+\vspace{5mm}
+\item Indizes: Mit dem Unterstrich: \texttt{a\_i} ergibt \( a_i \)
+\vspace{5mm}
+\item Brüche: \texttt{\textbackslash frac\{a\}\{b\}} ergibt \(\frac{a}{b}\)
+\vspace{5mm}
+\item Wurzeln: \texttt{\textbackslash sqrt\{a\}} ergibt \(\sqrt{a}\)
+\vspace{5mm}
+\item Summen: \texttt{\textbackslash sum\_\{i=1\}\^{}n} ergibt \(\sum_{i=1}^{n}\)
+\vspace{5mm}
+\item LaTeX optimiert automatisch die Darstellung% von Brüchen und Wurzeln.
+\end{itemize}
+
+\section{Größenanpassung bei Klammern}
+
+\[
+\left( \frac{a}{b} \right) 
+\]
+
+\section{Matrizen}
+
+\begin{equation*}	
+\begin{pmatrix}
+1 & 2 \\
+3 & 4
+\end{pmatrix}
+\end{equation*}
+
+\section{Landau Notation}
+
+\begin{itemize}
+\item Landau-Notation mit dem "großen O": $\mathcal{O}$
+\item Schreibeweise in LaTex: \texttt{\textbackslash mathcal\{O\}}
+\vspace{5mm}
+\item \textbf{Definition}: $f \in \mathcal{O}(g(n)):$
+\item  $\exists\  c > 0, n_0 \in \mathbb{N}: \forall\ n > n_0: f(n) \leq c \cdot g(n)$
+\vspace{5mm}
+\end{itemize}
+	
+\end{document}
