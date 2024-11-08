@@ -4,7 +4,7 @@ int fib(int);
 
 int main()
 {
-  int n;
+  int n; // unsigned int n is better, because we want the number to be positive (non-negative) range: 0 to 2^32
   scanf("%d", &n);
 
   int result = fib(n);
