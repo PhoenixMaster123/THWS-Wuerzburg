@@ -1,0 +1,9 @@
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/swap.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/arrays.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/arithmetic.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/copy.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/extended.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/twoAsterisk.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/structPointer.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/krisi/CLionProjects/Pointers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
