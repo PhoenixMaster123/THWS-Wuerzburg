@@ -1,0 +1,5 @@
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/ChatGPTExercises/cmake-build-debug/CMakeFiles/largest.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/ChatGPTExercises/cmake-build-debug/CMakeFiles/reverseANumber.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/ChatGPTExercises/cmake-build-debug/CMakeFiles/prime.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/ChatGPTExercises/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/ChatGPTExercises/cmake-build-debug/CMakeFiles/rebuild_cache.dir
