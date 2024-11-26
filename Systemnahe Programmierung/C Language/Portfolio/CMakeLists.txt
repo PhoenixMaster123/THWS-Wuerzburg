@@ -37,5 +37,14 @@ add_executable(mergeTwoArrays task1/mergeTwoSortedArrays/main.c)
 
 add_executable(insertBetween exams/InsertCharachterBetween/main.c)
 
+# String Manipulation:
 
+add_executable(reverse strings/ReverseAString/main.c)
+add_executable(removeOccurrences strings/RemoveAllOccurrencesOfACharacter/main.c)
+add_executable(compress strings/CompressAString/main.c)
+add_executable(expand strings/ExpandACompressedString/main.c)
+add_executable(rotateString strings/RotateCharactersInAString/main.c)
+add_executable(shift strings/ShiftCharactersByPosition/main.c)
+add_executable(permutation strings/Permutations/main.c)
+add_executable(anagram strings/Anagram/main.c)
 
