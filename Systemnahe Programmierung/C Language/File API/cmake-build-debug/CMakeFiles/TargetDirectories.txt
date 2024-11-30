@@ -1,0 +1,14 @@
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/reading.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/writingByChar.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/readingByChar.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/writingByLines.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/readingByLines.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/printInDir.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/exercise01V1.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/exercise01V2.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/readPeopleFromFile.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/exercise02.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/exercise03.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/exercise03V2.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/File API/cmake-build-debug/CMakeFiles/rebuild_cache.dir
