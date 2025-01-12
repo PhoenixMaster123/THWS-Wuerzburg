@@ -1,0 +1,15 @@
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/helpCommand.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/simpleCalculator.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/lineCounter.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/inputReverser.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/fileCopy.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/wordCount.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/directoryExplorer.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/contentSearch.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/sumArrayWithThreads.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/sumArrayWithThreads2.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/searchInAnArray.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/searchInAnArray2.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/producerConsumer.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Commands-File API-Threads-Semaphore/cmake-build-debug/CMakeFiles/rebuild_cache.dir
