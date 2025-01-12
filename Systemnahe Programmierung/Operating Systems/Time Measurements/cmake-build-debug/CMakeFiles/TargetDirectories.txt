@@ -1,0 +1,3 @@
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Time Measurements/cmake-build-debug/CMakeFiles/Time_Measurements.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Time Measurements/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/krisi/OneDrive/Desktop/Informatik/Semester 3/Systemnahe/CLionProjects/Time Measurements/cmake-build-debug/CMakeFiles/rebuild_cache.dir
