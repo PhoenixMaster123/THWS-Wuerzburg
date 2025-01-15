@@ -1,0 +1,667 @@
+\documentclass[11pt,parskip]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel} 
+\usepackage{titling} 
+%\usepackage[backend=biber, style=authoryear]{biblatex}
+%\usepackage{csquotes}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=\Alph*)}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{lmodern}
+
+\title{Bash and C Questions)}
+\author{}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Bash (Shell Script)}
+
+\subsection*{UNIT 5}
+
+\subsection*{Question 1}
+\textbf{Which command is used to find if a program with the same name as a script exists?} \\
+    Outputs the full path of the command specified as an argument. \\
+   \textbf{Example:} which ls $\rightarrow$ /bin/ls
+   
+\subsection*{Question 2}
+\textbf{Which command is used to make a script executable?} \\
+chmod u+x scriptname.sh
+
+\subsection*{Question 3}
+\textbf{How can you execute a script named "example.sh" from the current directory?} \\
+./example.sh
+
+\subsection*{Question 4}
+\textbf{What is the purpose of the She-Bang line in a shell script?} \\
+It defines the program to execute the script.
+
+\subsection*{Question 5}
+\textbf{What is Bash?} \\
+Turing-complete programming language
+
+\subsection*{Question 6}
+\textbf{Which syntax is correct fro defining a variable in a Bash script?} \\
+VARIABLE=5 \\
+\textbf{How to access the value of a variable?} \\
+\$VARIABLE
+
+\subsection*{Question 7} 
+\textbf{What does the command read -s do in Bash scripting?} \\
+Reads input without showing displaying it. \\
+\textbf{What does the command read -t do in Bash scripting?} \\
+Set a timeout on read to limit the time taken to input text: \\
+\textbf{What does the command read -n do in Bash scripting?} \\
+N only read given number of characters
+
+\subsection*{Question 8}
+\textbf{\$\#} contains the number of arguments \\
+\textbf{\$}$*$ contains all arguments as one string \\
+\textbf{\$}$@$ contains all arguments as string array
+
+\section*{UNIT 6}
+\subsection*{INFO:}
+$egrep [options] [search\_term] [location]$ \\
+
+Regular Expressions: \\
+Matching every character $\rightarrow$ . \\
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Regex Class} & \textbf{Description} \\ \midrule
+\texttt{\textbackslash d}   & Matches any digit (0-9) \\
+\texttt{\textbackslash w}   & Matches any digit, letter, or underscore \\
+\texttt{\textbackslash s}   & Matches any whitespace character (space, tab, newline) \\
+\texttt{\textbackslash D}   & Matches any character that is \textbf{not} a digit \\
+\texttt{\textbackslash W}   & Matches any character that is \textbf{not} a digit, letter, or underscore \\
+\texttt{\textbackslash S}   & Matches any character that is \textbf{not} whitespace \\ \bottomrule
+\end{tabular}
+\caption{Regex Character Classes and Their Descriptions}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Regex Quantifier} & \textbf{Description} \\ \midrule
+\texttt{?}   & Matches \textbf{zero or one} occurrence of the preceding element \\
+\texttt{*}   & Matches \textbf{zero or many} occurrences of the preceding element \\
+\texttt{+}   & Matches \textbf{one or many} occurrences of the preceding element \\ \bottomrule
+\end{tabular}
+\caption{Regex Quantifiers and Their Descriptions}
+\end{table}
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Regex Anchor} & \textbf{Description} \\ \midrule
+\texttt{\^}   & Matches the beginning of a line \\
+\texttt{\$}   & Matches the end of a line \\
+\texttt{\textbackslash n} & Matches a new line character \\ \bottomrule
+\end{tabular}
+\caption{Regex Line Anchors and Their Descriptions}
+\end{table}
+
+
+\textbf{REMOVE STRING:} \\
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Operation} & \textbf{Syntax and Description} \\
+\hline
+\textbf{Cut at the beginning} & \texttt{\$\{VAR1\#Hello\}} \quad $\rightarrow$ \text{Cut at the beginning} \\
+\hline
+\textbf{Cut at the end} & \texttt{\$\{VAR1\%Hello\}} \quad $\rightarrow$ \text{Cut at the end} \\
+\hline
+\end{tabular}
+\caption{String Removal Operations}
+\end{table}
+\textbf{Remove Substrings by Index and Length} \\
+
+VAR1="Helloworld" \\
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Operation} & \textbf{Result} \\
+\hline
+\texttt{\${VAR1:2}} & \text{lloworld} \\
+\hline
+\texttt{\${VAR1:0:1}} & \text{H} \\
+\hline
+\texttt{\${VAR1:1:3}} & \text{ell} \\
+\hline
+\end{tabular}
+\caption{Array Manipulation Examples}
+\end{table}
+
+\textbf{If the substring is not part of the given string, the original value is returned.}
+
+\textbf{Arrays:} \\
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Operation} & \textbf{Syntax} \\
+\hline
+Length of an array & \texttt{\${\#VAR1[*]}} \\
+\hline
+Access all elements & \texttt{\${VAR1[*]}} \\
+\hline
+Copy an array & \texttt{VAR2=(\${VAR1[*]})} \\
+\hline
+\end{tabular}
+\caption{Array Operations in Shell}
+\end{table}
+
+\subsection*{Question 1}
+\textbf{Which of the following represents the use of the ? quantifier in regular expression?} \\
+Matching zero or once occurrence.
+
+\subsection*{Question 2}
+\textbf{How do you find the string length stored in a Bash variable?} \\
+\$\{\#Var\}
+
+\subsection*{Question 3}
+\textbf{How can you define an array in Bash?}
+%VAR1=(\textquote{one} \textquote{two} \textquote{three})
+VAR1=("'one"' "'two"' "'three"')
+
+\section*{UNIT 7}
+
+\subsection*{INFO:}
+
+\begin{lstlisting}[language=bash, basicstyle=\ttfamily, frame=single]
+#!/bin/bash
+
+# Define a variable
+echo "Enter a number (1-3):"
+read number
+
+# Switch-case to evaluate the input
+case $number in
+    1)
+        echo "You entered One."
+        ;;
+    2)
+        echo "You entered Two."
+        ;;
+    3)
+        echo "You entered Three."
+        ;;
+    *)
+        echo "Invalid input."
+        ;;
+esac
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=bash]
+for ((i=0; i<=9; i++))
+do
+  echo "Hello World " $i
+done
+
+for i in 0..9
+do
+  echo "Hello World " $i
+done
+
+for file in *.txt
+do
+  echo "Filename: " $file
+done
+
+for name in $(find . -name *.jpg)
+do
+  echo "JPG Bilddatei: " $name
+done
+\end{lstlisting}
+
+
+\subsection*{Question 1}
+\textbf{How do you define constant in Bash?} \\
+readonly VARIABLE=value
+
+\subsection*{Question 2}
+\textbf{Which command makes a variable visible to subscript?} \\
+export VAR
+
+\subsection*{Question 3}
+\textbf{How can you perform arithmetic operations in Bash?} \\
+Using expr
+
+\subsection*{Question 4}
+\textbf{What is the behaviour of the command test \$VAR=value in Bash} \\
+It checks if VAR is equal to value
+
+\subsection*{Question 5}
+\textbf{What is the correct syntax for a Bash for-loop over a range of numbers?} \\
+
+\begin{lstlisting}[language=bash]
+for ((i=0; i<=9; i++))
+do
+  echo "Hello World " $i
+done
+\end{lstlisting}
+
+\subsection*{Question 6}
+\textbf{How can you define and use a function in Bash?} \\
+\begin{lstlisting}[language=bash]
+foo() { echo "Hello"; }
+\end{lstlisting}
+
+\section*{UNIT 8}
+
+\subsection*{Question 1}
+\textbf{Which command is primarily used to retrieve data from a specified URL?} \\
+\textbf{Answer:} curl
+
+\subsection*{Question 2}
+\textbf{If you need to replace all occurrences of a character in a file with another character, which command would you use?} \\
+\textbf{Answer:} tr
+
+\subsection*{Question 3}
+\textbf{Which command is used to extract specific columns or fields from a file?} \\
+\textbf{Answer:} cut
+
+\subsection*{Question 4} 
+\textbf{To arrange lines of text in a file alphabetically or numerically, you would use the ...... command.} \\
+\textbf{Answer:} sort
+
+\subsection*{Question 5}
+\textbf{If you have two files with a common key field, and you want to merge them based on that key, which command would you use?} \\
+\textbf{Answer:} join
+
+\subsection*{Question 6} 
+\textbf{Which command is specifically designed to format data into neat columns for better readability?} \\
+\textbf{Answer:} column
+
+\subsection*{Question 7}
+\textbf{Which of the following is the syntax for a GET request using curl?} \\
+\textbf{Answer:} curl [options] URL
+
+\subsection*{Question 8} 
+\textbf{Which of the following options is used to delete specified characters in the 'tr' command?} \\
+\textbf{Answer:} -d
+
+\subsection*{Question 9} 
+\textbf{What does the 'cut -d ',' -f1,2' command do?} \\
+\textbf{Answer:} Extracts the first and second field based on comma delimiter
+
+\subsection*{Question 10} 
+\textbf{How can you sort lines of a file numerically in reverse order using the 'sort' command?} \\
+\textbf{Answer:} sort -r -n
+
+\subsection*{Question 11}
+\textbf{What is the primary function of the sed command?} \\
+\textbf{Answer:} Editing text files in a non-interactive way.
+
+\subsection*{Question 12}
+\textbf{What does the s command in sed typically represent?} \\
+\textbf{Answer:} Substitute
+
+\subsection*{Question 13}
+\textbf{Which of the following sed commands would substitute all occurrences of "foo" with "bar" in a file}
+\begin{lstlisting}[language=bash]
+sed 's/foo/bar/g' file
+\end{lstlisting}
+
+\subsection*{Question 14} 
+\textbf{How can you print the lines of a file that match a specific pattern using sed?}
+\textbf{Answer:} Use the -n option with the p flag to print only matching lines.
+
+\subsection*{Question 15} 
+\textbf{What is the primary purpose of the AWK command?} \\
+\textbf{Answer:} Scanning and processing text data
+
+\subsection*{Question 16}
+\textbf{How does AWK typically process input data?} \\
+\textbf{Answer:} By lines
+
+\subsection*{Question 17}
+\textbf{What is the default field separator in AWK?} \\
+\textbf{Answer:} Space
+
+\subsection*{Question 18}
+\textbf{Which of the following is used to access the first field in a record in AWK?} \\
+\textbf{Answer:} \$1
+
+\subsection*{Question 19}
+\textbf{How do you print the entire record in AWK?} \\
+\textbf{Answer:} \$0
+
+\subsection*{Question 20}
+\textbf{Which of the following is used to define a variable in AWK?} \\
+\textbf{Answer:} name = value
+
+\subsection*{Question 21}
+\textbf{What is the purpose of the BEGIN block in an AWK script?} \\
+\textbf{Answer:} To execute code after processing all input lines
+
+\subsection*{Question 22} 
+\textbf{Which of the following is used to define a function in AWK?} \\
+\begin{lstlisting}[language=bash]
+function name(arguments) {
+  ...
+}
+\end{lstlisting}
+
+\subsection*{Question 23}
+\textbf{Which operator is used for string concatenation in AWK?} \\
+\textbf{Answer:} \&
+
+\subsection*{Question 24}
+\textbf{How can you compare two strings for equality in AWK?} \\
+\textbf{Answer} ==
+
+\subsection*{Question 25}
+\textbf{What is the primary purpose of the jq command?}\\
+\textbf{Answer:} Manipulating and filtering JSON data
+
+\subsection*{Question 26}
+\textbf{How does jq typically process JSON data?} \\
+\textbf{Answer:} As a stream of tokens
+
+\subsection*{Question 27}
+\textbf{Which of the following is used to access a specific key within a JSON object in jq?} \\
+Answer: .key
+
+\subsection*{Question 28}
+How do you access an array element at index 0 in jq? \\
+Answer: a) .[0]
+
+\subsection*{Question 29}
+Which operator is used to filter elements from an array in jq? \\
+Answer: ?
+
+\subsection*{Question 30}
+What does the following jq expression do: . \\
+Answer: a) Accesses the current input value
+
+\subsection*{Question 31}
+How do you add a new key-value pair to a JSON object in jq? \\
+Answer: a) .key = value
+
+\subsection*{Question 31}
+Which of the following is used to create a new JSON object in jq? \\
+Answer: a) {}
+
+\subsection*{Question 32}
+
+What does the following jq expression do: | .[] \\
+Answer: b) Iterates over each element of an array
+
+\subsection*{Question 33}
+How do you convert a JSON object to a string in jq? \\
+\begin{lstlisting}[language=bash]
+.to_string()
+\end{lstlisting}
+
+\section*{UNIT 11}
+
+\subsection*{Question 1}
+\textbf{Who is considered the main developer of the C programming language?} \\
+\textbf{Answer: } Dennis Ritchie
+
+\subsection*{Question 2}
+\textbf{How C Language is compiled?} \\
+\textbf{Answer:} In binary code
+
+\subsection*{Question 3}
+\textbf{How many bytes is the data type char?} \\
+\textbf{Answer:} 1 Byte
+
+\subsection*{Question 4} 
+\textbf{What is the correct way to read input from the user using the scanf() function for an integer value?} \\
+\begin{lstlisting}[language=bash]
+scanf(\& age, "%d");
+\end{lstlisting}
+\textbf{Note:} scanf can only read data, it can not write data
+
+
+\subsection*{Question 5} 
+\textbf{What the data type void represents?} \\
+\textbf{Answer:} empty or null
+
+\subsection*{Question 6}
+\textbf{Which operator is used to determine the memory address of a variable in C?} \\
+\textbf{Answer:} \&
+
+\section*{UNIT 12}
+
+\subsection*{Question 1}
+\textbf{Which storage class retains its value between function calls?} \\
+\textbf{Answer:} static
+
+\subsection*{Question 2}
+\textbf{What is the default storage class for variables in C?} \\
+\textbf{Answer:} auto
+
+\subsection*{Question 3}
+\textbf{Variables declared with which storage class are intended to be stored in CPU registers for faster access?} \\
+\textbf{Answer:} register
+
+\subsection*{Question 4}
+\textbf{Which storage class is used for variables that can change unexpectedly due to external factors or hardware interrupts?} \\
+\textbf{Answer:} volatile
+
+\subsection*{Question 5} 
+\textbf{Which of the following is NOT a primitive data type in C?} \\
+\textbf{Answer:} string
+
+\subsection*{Question 6}
+\textbf{What is the main function of the C preprocessor?} \\
+\textbf{A symbolic constant that is replaced by its value during preprocessing}
+
+\subsection*{Question 7}
+\textbf{What is a macro in the context of C preprocessor?} \\
+\textbf{Answer:} A symbolic constant that is replaced by its value during preprocessing
+
+\subsection*{Question 8}
+\textbf{How does the preprocessor handle macro replacements?} \\
+\textbf{Answer:} Replaces the macro name with its value in all occurrences
+
+\subsection*{Question 9}
+\textbf{What happens when a static variable is declared inside a function?} \\
+\textbf{Answer:} Its value is preserved across multiple calls to the function.
+
+
+\subsection*{Question 10} 
+\textbf{What happens if you write beyond the bounds of an array when reading from a file?} \\
+\textbf{It can lead to a segmentation fault.}
+
+\subsection*{Question 11}
+\textbf{What is the purpose of the null-terminator (\texttt{\textbackslash0}) in a character array?} \\
+\textbf{Answer:} To indicate the end of the string
+
+\subsection*{Question 12} 
+\textbf{How do you determine the length of a character array in C?} \\
+\textbf{Answer} By counting the number of characters until the null-terminator (\texttt{\textbackslash0})
+
+\subsection*{Question 13}
+\textbf{Which function is generally preferred for reading an entire line of input from the user in C?} \\
+\textbf{fgets}
+
+\subsection*{Question 14} 
+\textbf{What is the purpose of the typedef keyword when used with a struct?} \\
+\textbf{Answer:} To create a new data type with a custom name
+
+\subsection*{Question 15} 
+\textbf{How can you access the members of a struct in C?} \\
+\textbf{Answer:} Using the . (dot) operator
+
+\subsection*{Question 16} 
+\textbf{Which of the following statements about structs in C is TRUE?} \\
+
+a) Structs have significant runtime overhead compared to classes in Java. \\
+b) Structs provide encapsulation and data hiding like classes in Java. \\
+c) Structs are simple data structures with no methods/overhead. \\
+d) Structs cannot be used to group variables of different data types. \\
+
+\textbf{Answer:} c) Structs are simple data structures with no methods.
+
+\subsection*{Question 17}
+\textbf{When you assign one struct variable to another in C, what happens to the data?} \\
+
+a) A reference to the original struct is created. \\
+b) A pointer to the original struct is assigned. \\
+c) The data from the original struct is copied to the new struct. \\
+d) The two structs share the same memory location. \\
+
+\textbf{Answer:} c) The data from the original struct is copied to the new struct.
+
+\section*{UNIT 13}
+
+\subsection*{Question 1}
+\textbf{What does a pointer variable in C store?} \\
+\textbf{Answer:} The memory address of a variable
+
+\subsection*{Question 2}
+\textbf{What does adding 1 to a pointer in C do?} \\
+\textbf{Answer:} It moves the pointer to the next memory location based on the data type.
+
+\subsection*{Question 3}
+\textbf{How are arrays and pointers related in C?} \\
+\textbf{Answer:} The name of an array is a pointer to its first element
+
+\subsection*{Question 4}
+\textbf{What is the operator used to get the value stored at the address pointed to by a pointer?} \\
+\textbf{Answer:} star
+
+\subsection*{Question 5}
+\textbf{What is the operator used to get the address of a variable?} \\
+\textbf{Answer:} \&
+
+\subsection*{Question 6}
+\textbf{What is a function pointer in C?} \\
+\textbf{Answer:} A pointer that stores the address of a function
+
+\subsection*{Question 7}
+\textbf{What is a common risk of using pointers in C?} \\
+\textbf{Answer:} Accessing or modifying unintended memory areas
+
+\section*{UNIT 15}
+
+\subsection*{Question 1} 
+\textbf{What is a thread in the context of a computer program?} \\
+\textbf{Answer:} A sequential flow of execution within a process
+
+\subsection*{Question 2} 
+\textbf{Which function in C is used to create a new thread?} \\
+\textbf{Answer:} pthread\_create
+
+\subsection*{Question 3}
+\textbf{Which function in C is used to wait until a thread is finished?} \\
+\textbf{Answer:} pthread\_join
+
+\subsection*{Question 4}
+\textbf{Which function in C is used to kill a thread?} \\
+\textbf{Answer:} pthread\_exit
+
+\subsection*{Question 5} 
+\textbf{What is the "Lost Update" problem in concurrent programming?} \\
+\textbf{Answer:} When a thread's changes are overwritten by another thread \\
+\textbf{Answer2:} Concurrent access and modification of shared data without synchronization.
+
+\subsection*{Question 6}
+\textbf{What is a critical section in concurrent programming?} \\
+\textbf{Answer:} A piece of code that can only be executed by one thread at a time
+
+\subsection*{Question 7}
+\textbf{What is the purpose of using semaphores in concurrent programming?} \\
+\textbf{Answer:} To prevent race conditions and ensure thread safety
+
+\subsection*{Question 8}
+\textbf{What is the difference between a binary semaphore and a counting semaphore?} \\
+\textbf{Answer:} A binary semaphore can only have a value of 0 or 1, while a counting semaphore can have any non-negative integer value.
+
+\subsection*{Question 9}
+\textbf{What does the sem\_wait() function do in the provided code snippet?} \\
+\textbf{Answer:} Decrements the semaphore value
+
+\subsection*{Question 10} 
+\textbf{What does the sem\_post() function do in the provided code snippet?} \\
+\textbf{Answer:} increments the semaphore value
+
+\subsection*{Question 11}
+\textbf{What is a deadlock in the context of concurrent programming?} \\
+\textbf{A situation where two or more threads are blocked indefinitely, waiting for resources held by each other.}
+
+\subsection*{Question 12}
+\textbf{What is another common name for a binary semaphore?} \\
+\textbf{Answer:} Mutex
+
+\subsection*{Question 13}
+\textbf{What does the second parameter in the \texttt{sem\_init} function specify?} \\
+\textbf{Whether the semaphore is shared between threads or processes}
+
+\subsection*{Question 14}
+\textbf{What is a major difference between processes and threads in C programming?} \\
+\textbf{Answer:} Threads share the same memory space, while processes do not.
+
+\subsection*{Question 15}
+\textbf{How can deadlocks be avoided when using multiple semaphores?} \\
+\textbf{Answer:} By ensuring all threads acquire semaphores in the same order
+
+\section*{UNIT 17}
+
+\subsection*{Question 1}
+\textbf{Which function is commonly used to open a file in C?} \\
+\textbf{Answer:} fopen()
+
+\subsection*{Question 2}
+\textbf{Which function is used to close a file that was previously opened using fopen()?} \\
+\textbf{Answer:} fclose()
+
+\subsection*{Question 3}
+\textbf{Which function is used to read data from a file in C?} \\
+\textbf{Answer:} fread()
+
+\subsection*{Question 4}
+\textbf{Which function is used to write data to a file in C?} \\
+\textbf{Answer:} fwrite()
+
+\subsection*{Question 5}
+\textbf{Which file opening mode is used for writing to a file, creating it if it doesn't exist, and truncating it if it does?} \\
+\textbf{Answer:} w
+
+\subsection*{Question 6}
+\textbf{What does the SEEK\_SET parameter in the fseek() function represent?} \\
+\textbf{The beginning of the file}
+
+\subsection*{Question 7}
+\textbf{Which function is used to write a single character to a file in C?} \\
+\textbf{Answer:} fputc
+
+\subsection*{Question 8}
+\textbf{What does the fgets() function do?} \\
+\textbf{Answer:} Reads a line of text from a file
+
+\subsection*{Question 9}
+\textbf{Why is it important to call fclose() on a file that has been opened?} \\
+\textbf{Answer:} \\
+a) To prevent memory leaks
+b) To ensure that all data is written to the disk
+c) To free up system resources
+
+\subsection*{Question 10}
+\textbf{Answer:} a+
+
+\end{document}
