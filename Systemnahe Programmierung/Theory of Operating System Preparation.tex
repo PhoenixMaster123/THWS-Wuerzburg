@@ -1,0 +1,976 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Theory of OS}
+\fancyhead[R]{Kristian Popov}
+
+\begin{document}
+\title{Theory of Operating System Preparation}
+\author{Kristian Popov}
+\date{}
+\maketitle
+
+\section*{UNIT 26}
+
+\subsubsection*{Question 1} 
+\textbf{What is a process?} \\
+\textbf{Answer:} A program currently being executed.
+
+\subsubsection*{Question 2}
+\textbf{What happens when the same program is started twice?} \\
+\textbf{Answer:} Two processes are created, but the code is not duplicated in memory.
+
+\subsubsection*{Question 3}
+\textbf{What does the process model contain?} \\
+\textbf{Answer:} The main memory content, program counter, and all CPU registers. \\
+\textbf{NOTE:} Each process has its \textbf{virtual CPU}
+
+\subsubsection*{Question 4}
+\textbf{What is the primary reason for inefficiency in strict sequential processing?} \\
+\textbf{Answer:} Waiting times for I/O devices
+
+\subsubsection*{Question 5}
+\textbf{What is spooling?} \\
+\textbf{Answer:} It allowed for overlapped execution of CPU and I/O operations.
+
+\subsubsection*{Question 6}
+\textbf{What is the key characteristic of multi-programming or multi-tasking?} \\
+\textbf{Answer:} Multiple programs sharing a single CPU.
+
+\subsubsection*{Question 7}
+\textbf{In which mode do core operating system functions execute?} \\
+\textbf{Answer:} Kernel Mode
+
+\subsubsection*{Question 8}
+\textbf{What kind of access does the kernel mode have?} \\
+\textbf{Answer:} Full access to hardware and system resources.  \\
+\textbf{NOTE:} All CPU processes can be executed including direct access to the memory
+
+\subsubsection*{Question 9}
+\textbf{Which of the following statements is true about user mode?} \\
+\textbf{a)} All processes are strictly separated from each other. \\
+\textbf{b)} One process can't access the memory of another process \\
+\textbf{c)} Processes in user mode cannot modify interrupt handling \\
+\textbf{Answer:} All of them
+
+\subsubsection*{Question 10}
+\textbf{How is called the time between interrupts?} \\
+\textbf{Answer:} Quantum
+
+\subsubsection*{Question 11}
+\textbf{What is the primary consequence of a small quantum size?} \\
+\textbf{Answer:} More frequent context switches
+
+\subsubsection*{Question 12}
+\textbf{Which component of the operating system is responsible for selecting the next process to execute?} \\
+\textbf{Answer:} The scheduler
+
+\subsubsection*{Question 13}
+\textbf{In the context of user input, why is a small quantum beneficial?} \\
+\textbf{Answer:} It ensures that all processes waiting for input can handle new data quickly.
+
+\subsubsection*{Question 14}
+\textbf{What is the primary effect of a large quantum size on process execution?} \\
+\textbf{Answer:} Decreased frequency of context switches
+
+\subsubsection*{Question 15}
+\textbf{What is a potential consequence of a large quantum size for user interaction?} \\
+\textbf{Answer:} Slower response times to user input.
+
+\subsubsection*{Question 16}
+\textbf{What is a Process Control Block (PCB)?} \\
+\textbf{Answer:} A data structure that contains information about a running process.
+
+\subsubsection*{Question 17}
+\textbf{Where is the PCB for a process typically stored?} \\
+\textbf{Answer:} Kernel space \\
+\textbf{NOTE:} \textbf{Kernel space} is separated from the user processes. \\
+\textbf{NOTE:} All data of the process and etc. are located int the \textbf{user space} \\
+\textbf{NOTE:} The \textbf{metadata} about processes is stored in \textbf{kernel space}
+
+\subsubsection*{Question 18}
+\textbf{In which state does a process begin its lifecycle?} \\
+\textbf{Answer:} Creating \\
+\textbf{NOTE:} The system allocates the necessary resources.
+
+\subsubsection*{Question 19}
+\textbf{What happens to a process in the Ready state?} \\
+\textbf{Answer:} It is ready to execute but waiting for CPU time.
+
+\subsubsection*{Question 20}
+\textbf{When does a process transition to the Blocked state?} \\
+\textbf{Answer:} When it is waiting for I/O or an external event.
+
+\subsubsection*{Question 21}
+\textbf{What is the significance of the Terminated state?} \\
+\textbf{Answer:} It marks the end of a process's lifecycle and resource reclamation.
+ 
+\subsubsection*{Question 22}
+\textbf{What is the primary function of the "fork" system call in Linux?} \\
+\textbf{Answer:} To create a new child process that is a near-exact copy of the parent process. 
+(parent-child relation)
+
+\subsubsection*{Question 23}
+\textbf{Why is the parent-child relationship between processes important?} \\
+\textbf{Answer:} It allows the child process to inherit certain crucial attributes from the parent
+
+\subsubsection*{Question 24}
+\textbf{What is the purpose of the "execve" system call?} \\
+\textbf{Answer:} Is used to start an entirely newprogram
+
+\subsubsection*{Question 25}
+\textbf{When a running process encounters a Timer interrupt, what state does it typically transition to?} \\
+\textbf{Answer:} Ready state
+
+\subsubsection*{Question 26}
+\textbf{What is the primary role of Timer interrupts in Linux process management?} \\
+\textbf{Answer:} To enforce time-sharing among processes by interrupting running processes.
+
+\subsubsection*{Question 27}
+\textbf{What happens to a running process when it initiates an I/O system call?} \\
+\textbf{Answer:} It transitions to the Blocked state.
+
+\subsubsection*{Question 28}
+\textbf{What is the primary function of the scheduler in Linux?} \\
+\textbf{Answer:} To select the next process to run from the pool of Ready processes.
+
+\subsubsection*{Question 29}
+\textbf{Who is responsible for handling interrupts in the operating system?} \\
+\textbf{Answer:} The operating system kernel.
+
+\subsubsection*{Question 30}
+\textbf{After an interrupt signals the arrival of necessary data, what does the operating system do?} \\
+\textbf{Answer:} It checks if all required data has been received and then transitions the process to the Ready state.
+
+\subsubsection*{Question 31}
+\textbf{What are the three primary reasons for a process to terminate?} \\
+\textbf{Answer:} Regular termination, errors, and termination by the operating system.
+
+\subsubsection*{Question 32}
+\textbf{What is a "segmentation fault" and how does it affect a process?} \\
+\textbf{Answer:} A segmentation fault is an error that occurs when a process attempts to access memory that it is not authorized to use.
+
+\subsubsection*{Question 33}
+\textbf{What is the role of the Dispatcher in process management?} \\
+\textbf{Answer:} Gives control to the next process \\
+\textbf{NOTE:} The dispatcher saves the state of the current process and loads the last state of the next process
+
+\subsubsection*{Question 34}
+\textbf{What are the key steps involved in a process switch?} \\
+\textbf{Answer:} \\
+1) Halted the current process and storing the state \\
+2) Selecting the next process using some strategy \\
+3) Loading the state of the next process (Current CPU cache gets invalid) \\
+4) Executing the next process
+
+\subsubsection*{Question 35}
+\textbf{What is the trade-off involved in process scheduling?} \\
+\textbf{Answer:} Balancing high system responsiveness with efficient CPU utilization and minimizing overhead.
+
+\subsubsection*{Question 36}
+\textbf{What distinguishes a CPU-bound process from an I/O-bound process?} \\
+\textbf{Answer:} \\ 
+CPU-bound $\rightarrow$ needs CPU much and needs less IO \\
+IO-bound $\rightarrow$ do a lot of IO and don't need the CPU much \\
+\textbf{NOTE:} IO-bound process is more \textbf{important}.
+
+\subsubsection*{Question 37}
+\textbf{What is a characteristic of non-preemptive scheduling strategies?} \\
+\textbf{Answer:} The process releases the CPU voluntarily \\
+\textbf{NOTE:} The process changes into the state Blocked.
+
+\subsubsection*{Question 38}
+\textbf{What is the key mechanism that triggers preemptive scheduling in an operating system?} \\
+\textbf{Answer:} Timer interrupt (starts the scheduler) \\
+\textbf{NOTE:} the process is interrupted by the operating system
+
+\subsubsection*{Question 39}
+\textbf{What is the primary goal of Batch Processing scheduling?} \\
+\textbf{Answer:} patient users, long quantum periods \\
+
+\subsubsection*{Question 40}
+\textbf{What is the primary goal of Desktop scheduling?} \\
+\textbf{Answer:} high responsiveness, short quantum periods \\
+
+\subsubsection*{Question 41}
+\textbf{What are Throughput and Turnaround-time?} \\
+\textbf{Answer:}\\ 
+\textbf{Throughput} $\rightarrow$ Number of jobs done per time interval (More is better) \\
+\textbf{Turnaround-time} $\rightarrow$ Difference between end and start time (Less is better)
+
+\section*{UNIT 27}
+
+\subsubsection*{Question 1}
+\textbf{What is the key characteristic of threads within the same process regarding memory sharing?} \\
+\textbf{Answer:} Threads of a process run in the same \textbf{address space.} \\
+\textbf{NOTE:} Each thread has own stack, which stores local variables and manages functions calls. \\
+\textbf{NOTE:} All threads have their own \textbf{virtual CPU} \\
+\textbf{NOTE:} All threads are accessing the \textbf{same heap}. \\
+\textbf{NOTE:} Process and thread(lower overhead) life-cycle are similar.
+
+\subsubsection*{Question 2}
+\textbf{When does parallel programming pay off?} \\
+\textbf{Answer:} When the computer has more than one CPU core.
+
+\subsubsection*{Question 3}
+\textbf{What is Amdahl's Law in the context of parallel computing?} \\
+\textbf{Answer:} A principle that defines the theoretical limit on the speedup that can be achieved by parallelizing a program \\
+\textbf{NOTE:} N $\rightarrow$ number of processors or cores \\
+\textbf{NOTE:} P $\rightarrow$ the portion of the program that can be parallelized \\
+\textbf{NOTE:} 1-P $\rightarrow$ the part of the code that cannot be
+parallelized.
+
+\subsubsection*{Question 4}
+\textbf{What is data decomposition?} \\
+\textbf{Answer:} Breaking down large datasets into smaller parts that threads can process independently by different threads or processors. \\
+\textbf{NOTE:} FORMS: cells, rows, columns, blocks
+
+\subsubsection*{Question 5}
+\textbf{What is Wall-Clock Time} \\
+\textbf{Answer:} The actual elapsed time it takes for a program to run from start to finish, including all overhead. \\
+\textbf{NOTE:} includes waiting time for IO operations. \\
+\textbf{NOTE:} includes CPU executions. \\
+\textbf{NOTE:} Wall-clock time tells us the overall efficiency
+
+\subsubsection*{Question 6}
+\textbf{What is CPU Time} \\
+\textbf{Answer:} The time used by the CPU \\
+\textbf{NOTE:} The CPU time does not include waiting time for IO \\
+\textbf{NOTE:} \textbf{User Time} represents the time spent executing your code \\
+\textbf{NOTE:} \textbf{System Time} represents the time the operating system spends handling tasks for your program. \\
+\textbf{NOTE:} CPU Time helps identify bottlenecks in the processing logic.
+
+\subsubsection*{Question 7}
+\textbf{What the command time do?} \\
+\textbf{Answer:} The command returns the overall execution time. \\
+\textbf{NOTE:} \\
+\textbf{User:} time spent in user mode \\
+\textbf{Sys:} time spent in kernel mode \\
+\textbf{Real:} the wall-clock time \\
+
+\subsubsection*{Question 8}
+\textbf{What is the purpose of using the clock\_gettime?} \\
+\textbf{Answer:} To measure the elapsed time of a specific part of the program.
+
+\subsubsection*{Question 9}
+\textbf{What does the CLOCK\_MONOTONIC parameter in clock\_gettime ensure?} \\
+\textbf{Answer:} That the measured time is independent of system clock changes.
+
+\subsubsection*{Question 10}
+\textbf{What are the advantages of using the median instead of the mean to analyze multiple measurements?} \\
+\textbf{Answer:} The median is less sensitive to outliers compared to the mean. \\
+\textbf{NOTE:} mean $\rightarrow$ average time
+
+\section*{UNIT 30}
+
+\subsubsection*{Question 1}
+\textbf{How is working memory typically organized from a hardware perspective?} \\
+\textbf{Answer:} As linear address space \\
+\textbf{NOTE:} Memory with \textbf{2hochn} cells requires \textbf{n-Bit} address width.
+
+\subsubsection*{Question 2}
+\textbf{What is the primary goal of memory management in an operating system?} \\
+\textbf{Answer:} To efficiently manage the allocation and deallocation of memory to running processes.
+
+\subsubsection*{Question 3}
+\textbf{What are the key characteristics of ideal working memory?} \\
+\textbf{Answer:} \\
+$\rightarrow$ Limitless size \\
+$\rightarrow$ Infinity fast \\
+$\rightarrow$ Free of cost \\
+$\rightarrow$ Persistent \\
+$\rightarrow$ Protected
+
+\subsubsection*{Question 4}
+\textbf{Which level of the memory hierarchy offers the fastest access speed?} \\
+\textbf{Answer:} Registers \\
+\textbf{NOTE:} Magnetic tapes (Largest storage capacity)
+
+\subsubsection*{Question 5}
+\textbf{Which component of the memory hierarchy is directly managed by the operating system?} \\
+\textbf{Answer:} Main Memory and lower layers
+
+\subsubsection*{Question 6}
+\textbf{How does the absence of memory abstraction impact program execution?} \\
+\textbf{Answer:} \\ 
+Only one program can be executed at a time. \\
+Programs will have direct access to the main memory.
+
+\subsubsection*{Question 7}
+\textbf{How does static relocation address solve the relocation problem?} \\
+\textbf{Answer:} By adding a constant value to all memory addresses within a program at load time.
+
+\subsubsection*{Question 8}
+\textbf{What is the purpose of memory abstraction in operating systems?} \\
+\textbf{Answer:} To provide each process with its own logical address space.
+
+\subsubsection*{Question 9}
+\textbf{What is the role of the Memory Management Unit (MMU)?} \\
+\textbf{Answer:} \\
+To translate logical addresses generated by a program into physical addresses. \\
+Uses page tables for address mapping.
+
+\subsubsection*{Question 10}
+\textbf{What are "base" and "limit" registers used for in memory management?} \\
+\textbf{Answer:} To define the starting address and size of a process's relative memory space.
+
+\subsubsection*{Question 11}
+\textbf{What is the purpose of the malloc function in C?} \\
+\textbf{Answer:} To dynamically allocate a block of memory from the heap. \\
+\textbf{NOTE:} Returns a pointer \\
+\textbf{NOTE:} IF it fails returns zero \\
+\textbf{NOTE:} Release memory $\rightarrow$ free()
+
+\section*{UNIT 32}
+
+\subsubsection*{Question 1}
+\textbf{What is the fundamental concept of static partitioning in memory management?} \\
+\textbf{Answer:} Once divided, the partitions cannot be changed, making them static \\
+\textbf{NOTE:} Every partitions could hold one program \\
+\textbf{NOTE:} Partions could be divided equally or unequally
+
+\subsubsection*{Question 2}
+\textbf{A process may be loaded into a partition of equal or greater size in?} \\
+\textbf{Answer:} Static partition
+
+\subsubsection*{Question 3}
+\textbf{Having small amount of internal fragmentations is the weakness of} \\
+\textbf{Answer:} Static partition
+
+\subsubsection*{Question 4}
+\textbf{What is the concept of dynamic partition?} \\
+\textbf{Answer:} Size and number/amount of partitions are variable. \\
+\textbf{NOTE:} Processes will get the amount of memory needed \\
+\textbf{NOTE:} Fragmentation occurs when the process releases memory
+
+\subsubsection*{Question 5}
+\textbf{What is "fragmentation" in the context of dynamic memory allocation?} \\
+\textbf{Answer:} The creation of small, unusable memory blocks between allocated partitions.
+
+\subsubsection*{Question 6}
+\textbf{What is internal fragmentation in the context of memory management?} \\
+\textbf{Answer:} The wasted memory within a partition that is allocated to a process but not used by that process. \\
+\textbf{NOTE:} Internal fragmentation occurs with static partitioning
+
+\subsubsection*{Question 7}
+\textbf{What is external fragmentation in memory management?} \\
+\textbf{Answer:} Dynamic partitioning and refers to gaps that arise between two occupied partitions.
+
+\subsubsection*{Question 8}
+\textbf{How does a bitmap help in managing memory allocation in this approach?} \\
+\textbf{Answer:} It efficiently tracks the availability of free partitions, with each bit representing the status (free(1) or occupied(0)) of a partition.
+
+\subsubsection*{Question 9}
+\textbf{How does a linked list represent memory allocation in dynamic partitioning?} \\
+\textbf{Answer:} Each element of the list represents a block in working memory. \\
+\textbf{NOTE:} Each list element must include a start address and the number of partitions \\
+\textbf{NOTE:} The list is usually sorted according to the start addresses
+
+\subsubsection*{Question 10}
+\textbf{Double Linked lists are better that single list in case of?} \\
+\textbf{Answer:} Deleting partitions
+
+\subsubsection*{Questions 11} 
+\textbf{What difficulties occurs when using bitmaps to manage partitions?} \\
+\textbf{Answer:} Finding sequence of n zeros
+
+\subsubsection*{Segmentation Strategies}
+\textbf{Best Fit} $\rightarrow$ Take the smallest gap. (needs to looks all gaps) \\
+\textbf{First Fit} $\rightarrow$ Take the first fitting gap. \\
+\textbf{Last Fit} $\rightarrow$ Take the last fitting gap. (needs to looks all gaps) \\
+\textbf{Rotating First Fit} $\rightarrow$ Take the next free gap.
+
+\subsubsection*{Question 12}
+\textbf{What is the best segmentation strategy?} \\
+\textbf{Answer:} They are no the best segmentation strategy.
+
+\subsubsection*{Question 13}
+\textbf{Which statement about memory allocation is true?} \\
+\textbf{Answer:} Only if all allocation request are known the ideal segmentation strategy can be chosen.
+
+\section*{UNIT 34}
+
+\subsubsection*{Question 1}
+\textbf{What are the four main segments typically found in a process's memory space?} \\
+\textbf{Answer:} Text Segment(source code), Data Segment(constants or other variables), Heap, and Stack
+
+\subsubsection*{Question 2}
+\textbf{What is the key concept behind dividing a process into pages in virtual memory?} \\
+\textbf{Answer:} To allow a process to have a larger virtual address space than the available physical memory. \\
+\textbf{NOTE:} Every process is divided into pages (do not need to be located sequentially in working memory).
+
+\subsubsection*{Question 3}
+\textbf{How does virtual memory overcome the limitations of physical memory size?} \\
+\textbf{Answer:} By creating the illusion of a larger memory space than is physically available. \\
+\textbf{NOTE:} While waiting for pages, CPU can work on another process \\
+\textbf{NOTE:} The address space of a process or program is divided into pages \\
+\textbf{NOTE:} Each page has both a virtual address and a physical address \\
+\textbf{NOTE:} Pages represent complete virtual memory. \\
+\textbf{NOTE:} Each page has a starting address and an ending address \\
+\textbf{NOTE:} Not every page has to be in the main memory \\
+\textbf{NOTE:} If a page is not in the physical working memory but exists only in the virtual address space, it can be swapped to the hard disk \\
+\textbf{NOTE:} Accessing a swapped page on the hard drive directly is impossible. \\
+\textbf{NOTE:} OS loads missing pages from hard drive to memory
+
+\subsubsection*{Question 4}
+\textbf{What is the role of the MMU (Memory Management Unit)} \\
+\textbf{Answer:} \\
+Translates logical to physical addresses. \\
+Uses page tables for address mapping.
+
+\subsubsection*{Question 5}
+\textbf{What is a "page fault" in the context of virtual memory?} \\
+\textbf{Answer:} An event that occurs when a process attempts to access a page that is not currently loaded into physical memory.
+
+\subsubsection*{Question 6}
+\textbf{Because of virtual memory the memory can be shared among?} \\
+\textbf{Answer:} processes \\
+\textbf{NOTE:} virtual addresses $\rightarrow$ always incoming \\
+\textbf{NOTE:} physical addresses $\rightarrow$ always outgoing \\
+\textbf{NOTE:} virtual addresses are one bit longer
+
+\subsubsection*{Question 7}
+\textbf{The size of page is typically?} \\
+\textbf{Answer:} Power of 2
+
+\subsubsection*{Question 8}
+\textbf{What are the elements/ What is the process in Page Table Entry?} \\
+\textbf{Answer:} \\
+\textbf{Page frame number} (Identifies the page) \\
+\textbf{Present/Absent Bit} (Indicates if the page is currently loaded in the physical memory) \\
+\textbf{Protection Bit} (Defines the access permission for this page) \\
+\textbf{Referenced Bit (R-Bit)} (Indicates whether the page has been read/accessed recently. \\
+\textbf{Modified Bit (M-Bit)} (Shows whether the page has been modified) \\
+\textbf{Caching disabled} (indicated whether caching is allowed for this page)
+
+\subsubsection*{Question 9}
+\textbf{What the paging can create?} \\
+\textbf{Answer:} A bottleneck \\
+\textbf{NOTE:} Converting virtual and physical addresses should be as fast as possible.
+\textbf{NOTE:} All commands are located in the main memory \\
+\textbf{NOTE:} Many operands are located in the main memory \\
+\textbf{NOTE:} Always accessing page table is very expensive
+
+\subsubsection*{Question 10}
+\textbf{What is the primary function of the Translation Lookaside Buffer (TLB)?} \\
+\textbf{Answer:} To speed up virtual-to-physical address translation by caching recently accessed page table entries. \\
+\textbf{NOTE:} Part of the MMU with 64 entires of last used pages. \\
+\textbf{NOTE:} All entries are compared in parallel \\
+\textbf{NOTE:} Accessing page table is not required if it is found in TLB, otherwise it will be replaced \\
+\textbf{NOTE:} When deleting an entry in TLB, M-BIT of the page is set.
+
+\section*{UNIT 37}
+
+\subsubsection*{NOTE}
+The kernel creates a new entry in the process table and immediately allocates part of the processor power to this new process. This \textbf{kernel task} is called \textbf{scheduling} and is already supported by the hardware on modern processors. \\
+\textbf{Operating System} is responsible for \textbf{scheduling}. 
+\textbf{Main Tasks of Operating System:} \\
+$\rightarrow$ \textbf{Abstraction} \\
+$\rightarrow$ \textbf{Virtualization} \\
+$\rightarrow$ \textbf{Source management} \\ \\
+\textbf{PID} $\rightarrow$ processID \\
+\textbf{TTY} $\rightarrow$ shows the console \\
+\textbf{PTS} $\rightarrow$ pseudo terminal \\
+\textbf{VSZ} $\rightarrow$ virtual memory (in kilobytes) \\
+\textbf{RSS} $\rightarrow$ real memory (in kilobytes) \\ \\
+\textbf{Stat = Status} \\
+\textbf{R} = Running or about to run \\
+\textbf{D/I} Uninterrupted sleep (wait for I/O) \\
+\textbf{S} = Interrupted sleep (wait for event) \\
+\textbf{T} = Stopped \\ \\
+\textbf{/number} $\rightarrow$ running on different core \\ \\
+\textbf{Process Priority and Niceness:} \\
+\textbf{Highest priority:} 0 \\
+\textbf{Lowest Priority:} 39 \\
+A process with a high priority is executed before a low priority. \\
+\textbf{Processes} with the \textbf{same priority} are executed in \textbf{sequence} \\
+\textbf{Kernel} can also \textbf{change the priority}, not the “nice” value \\
+\textbf{Priority = Niceness + 20} \\
+Command \textbf{renice} to modify the nice value \\ \\
+\textbf{SIGNALS:} \\
+\textbf{SIGINT(2)} $\rightarrow$ Interrupt from keyboard (CTRL-C) \\
+\textbf{SIGQUIT(3)} $\rightarrow$ Quit from keyboard (CTRL-slash) \\
+\textbf{SIGKILL(9)} $\rightarrow$ Kill, unblockable (terminates direct the process) \\
+\textbf{SIGTERM(15)} $\rightarrow$ Termination request \\
+\textbf{SIGTSTP(20)} $\rightarrow$ Stop from keyboard (CTRL-Z) (go to state T) \\ \\
+\textbf{SIGNALS IN C PROGRAMS} \\
+Parameter \textbf{sig} contains the \textbf{signal number} \\
+Parameter \textbf{func} contains a \textbf{pointer to function} \\
+Function \textbf{signal} returns a \textbf{pointer to the last handler} \\ \\
+\textbf{SIG\_DFL} $\rightarrow$ default action handler. \\
+\textbf{SIG\_IGN} $\rightarrow$ ignore the signal. \\ \\
+\textbf{FILES in proc Directory} \\
+\textbf{cpuinfo} $\rightarrow$ info about processor or cores \\
+\textbf{devices} $\rightarrow$ available devices (hard-disk) \\
+\textbf{cmdline} $\rightarrow$ parameters, which kernel was started \\
+\textbf{meminfo} $\rightarrow$ memory management \\
+\textbf{version} $\rightarrow$ version of Linux kernel \\ \\
+\textbf{Changing Kernel Configuration} \\
+Kenel configuration available in \textbf{/proc/sys} \\
+Many files contain switches \textbf{(0 = false, 1 = true)}
+
+
+\subsubsection*{Question 1}
+\textbf{What is the primary role of the kernel in process management?} \\
+\textbf{Answer:} To create and manage processes, allocate resources, and schedule processor time.
+
+\subsubsection*{Question 2}
+\textbf{What is the primary function of the ps command in Linux?} \\
+\textbf{Answer:} To display information about currently running processes.
+
+\subsubsection*{Question 3}
+\textbf{What does the "PID" column in the output of the ps command represent?} \\
+\textbf{Answer:} The unique process identifier (processID). 
+
+\subsubsection*{Question 4}
+\textbf{What does the command ps -u $<$username$>$ do?} \\
+\textbf{Answer:} Shows all processes that are own by this user.
+
+\subsubsection*{Question 5}
+\textbf{What does the command ps au do?} \\
+\textbf{Answer:} Shows all the processes, not only those that are connected to any kind of console, but all processes even if they are running in the background.
+
+\subsubsection*{Question 6}
+\textbf{What does the command ps aux do?} \\
+\textbf{Answer:} Shows all real processes (currently running on the system.
+
+\subsubsection*{Question 7}
+\textbf{What does the "R" state indicate in the process status column of the ps command output?} \\
+\textbf{Answer:} The process is currently running or is ready to run (runnable).
+
+\subsubsection*{Question 8}
+
+\textbf{What does the "D/I" state indicate in the process status column of the ps command output?} \\
+\textbf{Answer:} The process is in uninterruptible sleep, typically waiting for I/O operations to complete.
+
+\subsubsection*{Question 9}
+
+\textbf{What does the "S" state indicate in the process status column of the ps command output?} \\
+\textbf{Answer:} The process is in interruptible sleep, waiting for an event or signal.
+
+\subsubsection*{Question 10}
+\textbf{What does the "T" state indicate in the process status column of the ps command output?} \\
+\textbf{Answer:} The process has been stopped or suspended.
+
+\subsubsection*{Question 11}
+\textbf{What is the primary function of the top command in Linux?} \\
+\textbf{Answer:} To display real-time information about system performance and running processes.
+
+\subsubsection*{Question 12}
+\textbf{What does the "load average" displayed by top represent?} \\
+\textbf{Answer:} \\
+The first unit $\rightarrow$ load in the last minute \\
+The second unit $\rightarrow$ load in the last 5 minute \\
+The third unit $\rightarrow$ load in the last 15 minute \\
+\textbf{NOTE:} If one CPU is fully occupied by the processes, then the value would be 1.0
+
+\subsubsection*{Question 13}
+\textbf{What indicates Zombie processes?} \\
+\textbf{Answer} Zombie processes are those that are killed because of an error
+
+\subsubsection*{Question 14}
+\textbf{What does the command yes do?} \\
+\textbf{Answer:} Overload
+
+\subsubsection*{Question 15}
+\textbf{What command can be used to send a process to the background and foreground?} \\
+\textbf{Answer:} bg (background) fg (foreground)
+
+\subsubsection*{Question 16}
+\textbf{What is the relationship between "nice" value and process priority in Linux?} \\
+\textbf{Answer:} Priority = Nice Value + 20
+
+\subsubsection*{Question 17}
+\textbf{How can you change the "nice" value of a process in Linux?} \\
+\textbf{Answer:} Using the renice command.
+
+\subsubsection*{Question 18}
+\textbf{How does the "nice" value affect the scheduling of a process?} \\
+\textbf{Answer:} A higher "nice" value generally reduces the process's priority, leading to less CPU time allocation.
+
+\subsubsection*{Question 19}
+\textbf{What is a signal in the context of operating systems?} \\
+\textbf{Answer:} An asynchronous notification sent to a process to indicate a specific event or condition.
+
+\subsubsection*{Question 20}
+\textbf{What is the "proc" file system in Linux?} \\
+\textbf{Answer:} A virtual file system that provides access to kernel data structures and information about running processes. \\
+\textbf{NOTE:} Contains information about all processes. \\
+\textbf{NOTE:} Kernel publishes information about the system.
+
+\subsubsection*{Question 21}
+\textbf{How does the "proc" file system differ from a traditional file system?} \\
+\textbf{Answer:} It does not reside on physical storage; its contents are dynamically generated by the kernel.
+
+\subsubsection*{Question 22}
+\textbf{What information provides file /proc/PID/cmdline?} \\
+\textbf{Answer:} Program name and command line parameters.
+
+\subsubsection*{Question 23}
+\textbf{What contains file /proc/sys/kernel/panic} \\
+\textbf{Answer:} number of seconds before reboot.
+
+\subsubsection*{Question 24}
+\textbf{What is the purpose of the /proc/sys directory in the Linux file system?} \\
+\textbf{Answer:} To provide access to and modify kernel parameters.
+
+\subsubsection*{Question 25}
+\textbf{What is the significance of the /proc/sys/kernel/ctrl-alt-del file?} \\
+\textbf{Answer:} It defines the system's behavior when the CTRL+ALT+DEL key combination is pressed.
+
+\section*{QUIZ Questions}
+
+\subsubsection*{Question 1}
+\textbf{What are some advantages of parallel programming?} \\
+\textbf{Answer:} \\ 
+Better handling of large datasets. \\
+Improved performance with multiple cores.
+
+\subsubsection*{Question 2}
+\textbf{What is the role of base and limit registers?} \\
+\textbf{Answer:} Define the start and size of a process memory space.
+
+\subsubsection*{Question 3}
+\textbf{What is a key advantage of TLB?} \\
+\textbf{Answer:} Reduces the frequency of page table access.
+
+\subsubsection*{Question 4}
+\textbf{What is the purpose of Translation Look aside Buffer?} \\
+\textbf{Answer:} \\ 
+Caches recently used page table entries. \\
+Speeds up virtual-to-physical address translation.
+
+\subsubsection*{Question 5}
+\textbf{What is the concept of a process in an operating system?} \\
+\textbf{Answer:} A program that is currently being executed.
+
+\subsubsection*{Question 6}
+\textbf{Which statements about paging are true} \\
+\textbf{Answer:} \\
+Paging abstracts physical memory into virtual memory. \\
+It leads to potential challenges like page faults.
+
+\subsubsection*{Question 7}
+\textbf{What is the role of virtual memory?} \\
+\textbf{Answer:} \\
+Allows processes to use isolated address spaces. \\
+Extends the physical memory available to processes.
+
+\subsubsection*{Question 8}
+\textbf{Which file in the proc directory contains information about the CPU?} \\
+\textbf{Answer:} cpuinfo
+
+\subsubsection*{Question 9}
+\textbf{What are the components of CPU time?} \\
+\textbf{Answer:} \\
+User time \\
+System time
+
+\subsubsection*{Question 10}
+\textbf{What is the function of pages in virtual memory?} \\
+\textbf{Answer:} \\
+Represent a complete segment of virtual memory. \\
+Divide a process's space into blocks.
+
+\subsubsection*{Question 11}
+\textbf{What challenges arise with frequent scheduling?} \\
+\textbf{Answer:} \\
+Trade-off between responsiveness and efficiency. \\
+Increasing overhead in storing/restoring states. \\
+Current CPU cache becomes invalid.
+
+\subsubsection*{Question 12}
+\textbf{What happens when the quantum is too small?} \\
+\textbf{Answer:} \\
+Processes are switched often. \\
+Response times are shorter.
+
+\subsubsection*{Question 13}
+\textbf{What is the main advantage of Lottery Scheduling?} \\
+\textbf{Answer:} \\
+Provides probabilistic fairness among processes. \\
+Allowing dynamic adjustment of process priorities.
+
+\subsubsection*{Question 14}
+\textbf{What defines the state of a process?} \\
+\textbf{Answer:} Process Control Block (PCB)
+
+\subsubsection*{Question 15}
+\textbf{What is the relationship between priority and niceness in Linux?} \\
+\textbf{Answer:} \\
+Priority \\
+Niceness + 20 \\
+Niceness - 20 \\
+Niceness * 20
+
+\subsubsection*{Question 16}
+\textbf{How does a pre-emptive scheduling works?} \\
+\textbf{Answer:} \\
+A timer interrupts triggers scheduling. \\
+A process is interrupted by the OS.
+
+\subsubsection*{Question 17}
+\textbf{What does the proc directory represent in Linux?} \\
+\textbf{Answer:} A virtual file system for system information.
+
+\subsubsection*{Question 18}
+\textbf{What happens in systems without memory abstraction?} \\
+\textbf{Answer:} \\ 
+Only one program is executed at a time. \\
+Programs have direct access to main memory.
+
+\subsubsection*{Question 19}
+\textbf{How does Round-Robin scheduling handle CPU-bound and IO-bound processes?} \\
+\textbf{Answer:} \\
+IO-bound processes often finish their quantum early. \\
+CPU-bound may have higher response times. 
+
+\subsubsection*{Question 20}
+\textbf{Which statements are true about Lottery Scheduling?} \\
+\textbf{Answer:} \\
+Processes are assigned tickets representing their chance of execution. \\
+Process with more tickets has higher chance of being selected.
+
+\subsubsection*{Question 21}
+\textbf{Which of these statements about swapping are correct?} \\
+\textbf{Answer:} \\
+Swapping moves processes between memory and disk. \\
+Swapping allows multiple programs to run on limited memory.
+
+\subsubsection*{Question 22}
+\textbf{What happens if a process does not finish within its time quantum in Round-Robin scheduling?} \\
+\textbf{Answer:} It is moved to the end of the ready queue.
+
+\subsubsection*{Question 23}
+\textbf{What does Amdahl's low about speed-up?} \\
+\textbf{Answer:} \\ 
+Adding processes does not always scale linearly. \\
+It is limited by the non-parallel portion.
+
+\subsubsection*{Question 24} 
+\textbf{What should be done for reliable time measurements in noisy environment?} \\
+\textbf{Answer:} \\
+Repeat measurements 100 to 1000 times. \\
+Calculate median or mean values.
+
+\subsubsection*{Question 25}
+\textbf{What is the role of the Memory Management Unit(MMU)} \\
+\textbf{Answer:} \\ 
+Translates logical to physical addresses. \\
+Uses page tables for address mapping.
+
+\subsubsection*{Question 26}
+\textbf{What are transitions between process states cause by?} \\
+\textbf{Answer:} \\
+Timer interrupts. \\
+Incoming data. \\
+I/O system calls.
+
+\subsubsection*{Question 27}
+\textbf{Which command is used to visualize system load?} \\
+\textbf{Answer:} top/htop.
+
+\subsubsection*{Question 28}
+\textbf{What happens when User + Sys $<$ Real?} \\
+\textbf{Answer:} Program is waiting for resources.
+
+\subsubsection*{Question 29}
+\textbf{Which of the following are challenges in memory management?} \\
+\textbf{Answer:} \\
+Allocating and releasing memory. \\
+Avoiding memory leaks.
+
+\subsubsection*{Question 30}
+\textbf{Which of these are characteristics of ideal memory?} \\
+\textbf{Answer:} \\
+Infinity size. \\
+Infinity fast access. \\
+Persistence after power outages.
+
+\subsubsection*{Question 31}
+\textbf{Which statements best describes static relocations?} \\
+\textbf{Answer:} Adjust addresses during program loading.
+
+\subsubsection*{Question 32}
+\textbf{What is the key characteristics of Round-Robin scheduling?} \\
+\textbf{Answer:} \\
+Processes are assigned fixed time slices (quantum). \\
+Time slices fairness among processes.
+
+\subsubsection*{Question 33}
+\textbf{What is the purpose of the yes command?} \\
+\textbf{Answer:} to create system load for testing.
+
+\subsubsection*{Question 34}
+\textbf{Which of the following statements about memory is true?} \\
+\textbf{Answer:} Memory is logically organized as a linear address space.
+
+\subsubsection*{Question 35}
+\textbf{What is the potential drawback of Priority Scheduling?} \\
+\textbf{Answer:} Processes with lower priority may starve.
+
+\subsubsection*{Question 36}
+\textbf{Which components are part of the process model?} \\
+\textbf{Answer:} \\
+Program counter. \\
+Content of registers. \\
+Virtual CPU.
+
+\subsubsection*{Question 37}
+\textbf{What are examples of data decomposition?} \\
+\textbf{Answer:} \\ Rows, Columns, Blocks
+
+\subsubsection*{Question 38}
+\textbf{Which command displays detailed information about processes?} \\
+\textbf{Answer:} ps, top
+
+\subsubsection*{Question 39}
+\textbf{What happens when a page fault occurs?} \\
+\textbf{Answer:} \\
+The OS loads the required page from the disk. \\
+The CPU pauses execution of the process.
+
+\subsubsection*{Question 40}
+\textbf{How do Lottery Scheduling and Priority Scheduling differ in terms of fairness?} \\
+\textbf{Answer:} \\
+Lottery Scheduling provides probabilistic fairness. \\
+Priority Scheduling may cause starvation for low-priority processes.
+
+\subsubsection*{Question 41}
+\textbf{What does SIGKILL signal do?} \\
+\textbf{Answer:} Terminates a process unconditionally.
+
+\subsubsection*{Question 42}
+\textbf{Which of the following statements about page tables are true?} \\
+\textbf{Answer:} \\ 
+They map virtual addresses to physical addresses. \\
+They are stored in the main memory.
+
+\subsubsection*{Question 43}
+\textbf{Which signal is sent by CTRL-C} \\
+\textbf{Answer:} SIGINT
+
+\subsubsection*{Question 44}
+\textbf{Which scheduling strategies are used for batch processing?} \\
+\textbf{Answer:} \\
+First-Come, First-Served (FCFS) \\
+Shortest Processing Time (SPT) \\
+Shortest Job First (SJF)
+
+\subsubsection*{Question 45}
+\textbf{What must be done after using malloc?} \\
+\textbf{Answer:} Use free to release memory.
+
+\subsubsection*{Question 46}
+\textbf{What does the function malloc do in C?} \\
+\textbf{Answer:} \\
+Allocates memory dynamically. \\
+Returns a pointer to allocate memory.
+
+\subsubsection*{Question 47}
+\textbf{Which formula represents Amdahl's low?} \\
+\textbf{Answer:} S = 1 / ((1 - P) + (P / N))
+
+\subsubsection*{Question 48}
+\textbf{What is the effect of setting /proc/sys/kernel/ctrl-alt-del to 1?} \\
+\textbf{Answer:} Enables immediate system reboot via CTRL-ALT-DEL
+
+\subsubsection*{Question 49}
+\textbf{What is the impact of using CLOCK\_MONOTONIC in time measurements?} \\
+\textbf{Answer:} Avoids system time changes.
+
+\subsubsection*{Question 50}
+\textbf{What does the Modified Bit (M-Bit) in a page table indicates?} \\
+\textbf{Answer:} Whether the page has been written to.
+
+\subsubsection*{Question 51}
+\textbf{What is a relocation problem in memory managements?} \\
+\textbf{Answer:} Adjusting memory addresses when processes are moved.
+
+\subsubsection*{Question 52}
+\textbf{Which of the following scenarios might lead to starvation in Priority Scheduling?} \\
+\textbf{Answer:} Low-priority processes are always pre-emptive by higher-priority ones.
+
+\subsubsection*{Question 53}
+\textbf{Which process status indicates a process is waiting for IO?} \\
+\textbf{Answer:} S Interruptible sleep.
+
+\subsubsection*{Question 54}
+\textbf{Which statements can mitigate starvation in Priority Scheduling?} \\
+\textbf{Answer:} \\
+Use aging to increase priority of long-waiting processes. \\
+Remove all priorities and use Round-Robin instead.
+
+\subsubsection*{Question 55}
+\textbf{Why is a one-time measurement insufficient?} \\
+\textbf{Answer:} \\
+Variability in execution time. \\
+External noise can affect results.
+
+\subsubsection*{Question 56}
+\textbf{What is the purpose of a scheduler?} \\
+\textbf{Answer:} \\ 
+Selects the next process execution. \\
+Manages the process queue.
+
+\subsubsection*{Question 57}
+\textbf{What does the cwd file in a process's proc directory indicates?} \\
+\textbf{Answer:} The current working directory of the process.
+
+\subsubsection*{Question 58}
+\textbf{What are examples of CPU-bound processes?} \\
+\textbf{Answer:} \\
+Processes simulating physics. \\
+Processes performing intensive calculations.
+
+\subsubsection*{Question 59}
+\textbf{What does a Present/Absent Bit in a page table indicates?} \\
+\textbf{Answer:} Whether the page is in main memory.
+
+\subsubsection*{Question 60}
+\textbf{Which practices help prevent memory leaks in C?} \\
+\textbf{Answer:} \\
+Write free immediately after malloc. \\
+Use consistent memory allocation patterns.
+
+\subsubsection*{Question 61}
+\textbf{Which of the following describes kernel mode?} \\
+\textbf{Answer:} \\
+Manages scheduling and memory. \\
+Runs in privileges mode.
+
+\subsubsection*{Question 62}
+\textbf{What are the challenges of large page tables?} \\
+\textbf{Answer:} \\
+They consume significant memory space. \\
+Accessing them repeatedly slows performance.
+
+\subsubsection*{Question 63}
+\textbf{What is the role of the dispatcher in process scheduling?} \\
+\textbf{Answer:} \\ 
+Gives control to the next process. \\
+Saves the state of the current process. \\
+Loads the last state of the next process.
+
+\subsubsection*{Question 64}
+\textbf{What is the main advantage of threads sharing the same address space?} \\
+\textbf{Answer:} Easier data sharing between threads.
+
+\subsubsection*{Question 65}
+\textbf{Which files in the proc directory provide process-specific information?} \\
+\textbf{Answer:} status
+
+
+
+
+
+\end{document}
