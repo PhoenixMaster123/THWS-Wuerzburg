@@ -1,0 +1,271 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{fancyvrb} % For better code formatting
+\usepackage{array}    % For p{} column type
+\usepackage{longtable} % For tables that might span multiple pages
+\usepackage{booktabs} % For professional looking tables
+
+\title{Cisco Networking Cheat Sheet}
+\author{Based on Provided Topics}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{General Commands}
+
+Fundamental commands for navigating, configuring, and managing Cisco devices.
+
+\subsection{Entering and Exiting Modes}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{enable} & Enters privileged EXEC mode. & Prompt changes from \texttt{>} to \texttt{\#}. \\
+\hline
+\texttt{configure terminal} (\texttt{conf t}) & Enters global configuration mode. & Prompt changes from \texttt{\#} to \texttt{(config)\#}. \\
+\hline
+\texttt{end} or \texttt{exit} & Exits the current configuration mode or privileged EXEC mode. & Returns to a higher mode prompt or privileged EXEC \texttt{\#}. \\
+\end{longtable}
+
+\subsection{Configuration Management}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{show running-config} (\texttt{sh run}) & Displays the currently active configuration in RAM. & Prints the entire running configuration line by line. \\
+\hline
+\texttt{copy running-config startup-config} (\texttt{copy run start}) & Saves the active configuration from RAM to NVRAM. & Prompts for destination filename, then confirms the copy. \\
+\hline
+\texttt{erase startup-config} & Deletes the startup configuration from NVRAM. & Prompts for confirmation, then confirms deletion. \\
+\hline
+\texttt{reload} & Restarts the device. & Prompts for confirmation, warns about unsaved changes, then reloads. \\
+\end{longtable}
+
+\subsection{Verification and Troubleshooting}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{show ip interface brief} (\texttt{sh ip int br}) & Displays a summary of IP addresses and status for all interfaces. & Table with Interface, IP-Address, OK?, Method, Status, Protocol columns. \\
+\hline
+\texttt{show interface status} (\texttt{sh int status}) & Displays the status of switch interfaces (VLAN, duplex, speed, type). & Table with Port, Name, Status, Vlan, Duplex, Speed, Type columns. \\
+\hline
+\texttt{ping <destination-ip>} & Sends ICMP echo requests to test connectivity (I need to be in command prompt). & Output showing success rate (e.g., Reply from: <ip> for success, Request timeout for failure). \\
+\end{longtable}
+
+\section{Switching Commands}
+
+Commands related to VLANs, Trunking, VTP, STP, and EtherChannel.
+
+\subsection{VLAN Configuration}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{vlan <vlan-id>} & Creates a VLAN and enters VLAN configuration mode. & Usage: \texttt{(config)\#vlan 10} \\
+\hline
+\texttt{name <vlan-name>} & Assigns a name to the VLAN (in VLAN config mode). & Usage: \texttt{(config-vlan)\#name Sales} \\
+\hline
+\texttt{interface <interface-id>} & Enters interface configuration mode. & Usage: \texttt{(config)\#interface GigabitEthernet0/1} \\
+\hline
+\texttt{switchport mode access} & Configures the interface as an access port (in interface config mode). & Usage: \texttt{(config-if)\#switchport mode access} \\
+\hline
+\texttt{switchport access vlan <vlan-id>} & Assigns the access port to a specific VLAN (in interface config mode). & Usage: \texttt{(config-if)\#switchport access vlan 10} \\
+\hline
+\texttt{show vlan brief} & Displays a summary of VLANs and their assigned ports. & Table with VLAN, Name, Status, Ports columns. \\
+\end{longtable}
+
+\subsection{VLAN Trunking}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{switchport mode trunk} & Configures the interface as a trunk port (in interface config mode). Allows multiple VLANs. & Usage: \texttt{(config-if)\#switchport mode trunk} \\
+\hline
+\texttt{switchport trunk allowed vlan <vlan-list>} & Specifies which VLANs are allowed on the trunk (in interface config mode). & Usage: \texttt{(config-if)\#switchport trunk allowed vlan 1,10-20} \\
+\hline
+\texttt{switchport trunk native vlan <vlan-id>} & Sets the native VLAN for the trunk (untagged traffic) (in interface config mode). & Usage: \texttt{(config-if)\#switchport trunk native vlan 99} \\
+\hline
+\texttt{show interface <interface-id> switchport} & Shows detailed information about the switchport configuration, including trunking. & Detailed output about operational mode, administrative mode, trunking settings, etc. \\
+\hline
+\texttt{show interface trunk} & Displays information about current trunk links. & Table with Port, Mode, Encapsulation, Status, Native vlan, Allowed vlans, Active vlans columns. \\
+\end{longtable}
+
+\subsection{VLAN Trunking Protocol (VTP)}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{vtp mode <server | client | transparent>} & Sets the VTP mode for the switch (in global config mode). & Usage: \texttt{(config)\#vtp mode server} \\
+\hline
+\texttt{vtp domain <domain-name>} & Configures the VTP domain name (in global config mode). Switches must be in the same domain to share VTP information. & Usage: \texttt{(config)\#vtp domain MYNETWORK} \\
+\hline
+\texttt{show vtp status} & Displays the VTP configuration and status. & Output including VTP Version, Configuration Revision, Maximum VLANs supported, Number of existing VLANs, VTP Operating Mode, VTP Domain Name. \\
+\end{longtable}
+
+\subsection{Spanning Tree Protocol (STP)}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{spanning-tree vlan <vlan-id> priority <priority>} & Sets the bridge priority for a specific VLAN. Lower priority influences root bridge election (in global config mode). Priority is in increments of 4096. & Usage: \texttt{(config)\#spanning-tree vlan 10 priority 4096} \\
+\hline
+\texttt{show spanning-tree} & Displays detailed STP status per VLAN. & Detailed output showing root bridge, bridge ID, interface roles and states. \\
+\end{longtable}
+
+\subsection{EtherChannel (Link Aggregation)}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{interface range <interface-range>} & Enters configuration mode for a range of interfaces. & Usage: \texttt{(config)\#interface range GigabitEthernet0/1 - 3} \\
+\hline
+\texttt{channel-group <group-number> mode <mode>} & Creates an EtherChannel group and specifies the mode (in interface range config mode). Modes: \texttt{active} (LACP), \texttt{auto} (PAgP), \texttt{desirable} (PAgP), \texttt{on}. & Usage: \texttt{(config-if-range)\#channel-group 1 mode on} \\
+\end{longtable}
+
+\section{Routing Commands}
+
+Commands related to Inter-VLAN Routing, Static Routing, and Dynamic Routing (OSPF).
+
+\subsection{Interface IP Configuration}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{interface <interface-id>} & Enters interface configuration mode. & Usage: \texttt{(config)\#int gig0/1} \\
+\hline
+\texttt{ip address <ip-address> <subnet-mask>} & Assigns an IP address(the default gateway for the VLAN) and subnet mask to an interface. & Usage: \texttt{(config-if)\#ip address 10.0.0.100 255.0.0.0 (10.0.0.100/8} \\
+\hline
+\texttt{no shutdown} & Activates the interface. & Usage: \texttt{(config-if)\#no shutdown} \\
+\end{longtable}
+
+\subsection{Static Routing}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{ip route <destination-network> <subnet-mask> <next-hop-ip>} & Configures a static route to a destination network. Traffic is forwarded to the next-hop IP or exit interface. & Usage (Next-hop): \texttt{(config)\#ip route 192.168.2.0 255.255.255.0 192.168.1.2} \\
+\hline
+\texttt{show ip route} & Displays the routing table. Static routes are marked with 'S'. & Lists network destinations, next hop, metric, and protocol. \\
+\end{longtable}
+
+\subsection{Dynamic Routing (OSPF)}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{router ospf <process-id>} & Enables the OSPF routing protocol with a specific process ID (in global config mode). & Usage: \texttt{(config)\#router ospf 100} \\
+\hline
+\texttt{network <network-address> <wildcard-mask> area <area-id>} & Configures interfaces to participate in OSPF for a specific network and area (in router config mode). & Usage: \texttt{(config-router)\#network 10.0.0.100 0.0.0.0 area 0} \\
+\hline
+\texttt{show ip route (ospf)} & Displays only the OSPF routes in the routing table. & Lists OSPF learned routes (marked with 'O'). \\
+\end{longtable}
+
+\subsection{Hot Standby Router Protocol (HSRP)}
+\begin{longtable}{>{\raggedright\arraybackslash}p{4cm}|>{\raggedright\arraybackslash}p{7cm}|>{\raggedright\arraybackslash}p{5cm}}
+\toprule
+\textbf{Command} & \textbf{Description} & \textbf{How it shows} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r}{{Continued on next page}} \\
+\midrule
+\endfoot
+\bottomrule
+\endlastfoot
+\texttt{interface <interface-id>} & Enters interface configuration mode. & Usage: \texttt{(config)\#interface GigabitEthernet0/0} \\
+\hline
+\texttt{standby version <version>} & Configures the HSRP version (1 or 2) (in interface config mode). & Usage: \texttt{(config-if)\#standby version 2} \\
+\hline
+\texttt{standby <group-number> ip <virtual-ip-address>} & Configures the HSRP group number and the virtual IP address (default gateway for end devices) (in interface config mode). & Usage: \texttt{(config-if)\#standby 1 ip 192.168.1.254} \\
+\hline
+\texttt{standby <group-number> priority <priority>} & Sets the priority for the router within the HSRP group. Higher priority is preferred for the active router. Default is 100 (in interface config mode). & Usage: \texttt{(config-if)\#standby 1 priority 150} \\
+\hline
+\texttt{show standby brief} & Displays a concise summary of HSRP group status. & Table with Interface, Group, State, Active, Standby, Virtual IP columns. \\
+\end{longtable}
+
+\end{document}
