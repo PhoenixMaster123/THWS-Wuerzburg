@@ -1,0 +1,4 @@
+start(): Starts a thread by invoking its run() method.
+run(): Defines the code to execute in the thread.
+sleep(long millis): Puts the thread to sleep for the specified time.
+join(): Waits for a thread to finish before proceeding.
