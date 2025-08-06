@@ -1,0 +1,2927 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx} % For including images
+\usepackage{enumitem} % For better list control
+\usepackage{fancyhdr} % For page header
+\usepackage{hyperref} % For clickable references
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{tikz}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{pifont}
+\newcommand{\cmark}{\textcolor{green}{\ding{51}}} % ✔ in green
+\newcommand{\xmark}{\textcolor{red}{\ding{55}}}   % ✘ in red
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Quiz Preparation}
+\fancyhead[R]{Kristian Popov}
+
+\title{Frontend Quiz Preparation}
+\author{Kristian Popov}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{CSS}
+
+\subsection*{Question 1}
+\textbf{What does ``50vw'' mean in CSS?}
+
+\begin{itemize}
+  \item[a.] 50\% of the content box
+  \item[b.] 50\% of the viewport’s width
+  \item[c.] 50\% of the parent element’s width
+  \item[d.] 50 pixels
+\end{itemize}
+
+\subsection*{Question 2}
+\textbf{What does \texttt{p.center} select?}
+
+\begin{itemize}
+  \item[a.] All elements with both ID and class \texttt{"center"}
+  \item[b.] All elements with the tag name \texttt{"center"}
+  \item[c.] All \texttt{p} elements with class \texttt{"center"}
+  \item[d.] All \texttt{p} elements with ID \texttt{"center"}
+\end{itemize}
+
+\subsection*{Question 3}
+\textbf{What does the CSS selector \texttt{*} do?}
+
+\begin{itemize}
+  \item[a.] It resets all browser styles
+  \item[b.] It selects all elements with a class
+  \item[c.] It selects all elements in the document
+  \item[d.] It selects the first element
+\end{itemize}
+
+\subsection*{Question 4}
+\textbf{What effect does increasing \texttt{padding} have on a box if \texttt{box-sizing: content-box} is used?}
+
+\begin{itemize}
+  \item[a.] It has no visible effect
+  \item[b.] Only the text gets smaller
+  \item[c.] The total size of the element increases
+  \item[d.] The border becomes thicker
+\end{itemize}
+
+\subsection*{Question 5}
+\textbf{What happens if an element is set to \texttt{display: none;}?}
+
+\begin{itemize}
+  \item[a.] It is hidden only on small screens
+  \item[b.] It becomes invisible but still takes space
+  \item[c.] It becomes transparent
+  \item[d.] It is removed from the layout and not visible
+\end{itemize}
+
+\subsection*{Question 6}
+\textbf{What is a disadvantage of using inline styles?}
+
+\begin{itemize}
+  \item[a.] They don't support media queries
+  \item[b.] They reduce reusability and increase maintenance effort
+  \item[c.] They always override external styles
+  \item[d.] They are required for responsive design
+\end{itemize}
+
+\subsection*{Question 7}
+\textbf{What is the purpose of the \texttt{<link>} tag in the HTML \texttt{<head>}?}
+
+\begin{itemize}
+  \item[a.] It links JavaScript functionality
+  \item[b.] It applies internal styles
+  \item[c.] It defines navigation links
+  \item[d.] It connects an external CSS file to the HTML document
+\end{itemize}
+
+\subsection*{Question 8}
+\textbf{What makes \texttt{inline-block} different from \texttt{inline}?}
+
+\begin{itemize}
+  \item[a.] It allows setting width and height
+  \item[b.] It takes full width by default
+  \item[c.] It is not affected by margin
+  \item[d.] It always starts on a new line
+\end{itemize}
+
+\subsection*{Question 9}
+\textbf{Where are internal CSS rules placed in an HTML document?}
+
+\begin{itemize}
+  \item[a.] Within an external CSS file
+  \item[b.] In a \texttt{<script>} tag
+  \item[c.] Inside a \texttt{<style>} block in the \texttt{<head>}
+  \item[d.] Inside the \texttt{<body>} tag directly
+\end{itemize}
+
+\subsection*{Question 10}
+\textbf{Which attribute in the \texttt{<link>} tag specifies the CSS file?}
+
+\begin{itemize}
+  \item[a.] href
+  \item[b.] rel
+  \item[c.] type
+  \item[d.] src
+\end{itemize}
+
+\subsection*{Question 11}
+\textbf{Which of the following is a correct CSS ID selector?}
+
+\begin{itemize}
+  \item[a.] \texttt{\#main-header}
+  \item[b.] main-header
+  \item[c.] \texttt{.main-header}
+  \item[d.] id=main-header
+\end{itemize}
+
+\subsection*{Question 12}
+\textbf{Which rule would override all others (assuming all target the same element)?}
+
+\begin{itemize}
+  \item[a.] \texttt{\#highlight \{ color: red; \}}
+  \item[b.] \texttt{.info \{ color: blue; \}}
+  \item[c.] \texttt{p \{ color: green; \}}
+  \item[d.] \texttt{div p \{ color: black; \}}
+\end{itemize}
+
+\subsection*{Question 13}
+\textbf{Which selector has the highest specificity?}
+
+\begin{itemize}
+  \item[a.] \texttt{p}
+  \item[b.] \texttt{.menu}
+  \item[c.] \texttt{\#main}
+  \item[d.] \texttt{ul li a}
+\end{itemize}
+
+\subsection*{Question 14}
+\textbf{Which statement is true about margin and padding?}
+
+\begin{itemize}
+  \item[a.] Padding is inside the element's border, margin is outside
+  \item[b.] They are visually identical
+  \item[c.] Margin defines internal spacing, padding external
+  \item[d.] Padding only works with inline elements
+\end{itemize}
+
+\subsection*{Question 15}
+\textbf{Which style declaration will override all others, assuming equal specificity?}
+
+\begin{itemize}
+  \item[a.] External stylesheet
+  \item[b.] Inline style
+  \item[c.] User agent stylesheet
+  \item[d.] Embedded style
+\end{itemize}
+
+\subsection*{Question 16}
+\textbf{Which of the following is NOT a flex container property?}
+
+\begin{itemize}
+  \item[a.] flex-direction
+  \item[b.] align-items
+  \item[c.] justify-content
+  \item[d.] flex-grow
+\end{itemize}
+
+\subsection*{Question 17}
+\textbf{What happens to a floated element?}
+
+\begin{itemize}
+  \item[a.] It becomes inline-level and centered
+  \item[b.] It is taken out of normal document flow
+  \item[c.] It cannot contain any content
+\end{itemize}
+
+\subsection*{Question 18}
+\textbf{Which of the following CSS properties are inherited by default?}
+
+\begin{itemize}
+  \item[a.] font-family
+  \item[b.] border
+  \item[c.] color
+  \item[d.] margin
+\end{itemize}
+
+\subsection*{Question 19}
+\textbf{Which media query applies styles only on screens narrower than 800px?}
+
+\begin{itemize}
+  \item[a.] \texttt{@media (width: 800px)}
+  \item[b.] \texttt{@media (min-width: 800px)}
+  \item[c.] \texttt{@media (max-width: 800px)}
+  \item[d.] \texttt{@media screen and (min-width: 801px)}
+\end{itemize}
+
+\subsection*{Question 20}
+\textbf{Which value of \texttt{position} causes the element to scroll with the page?}
+
+\begin{itemize}
+  \item[a.] absolute
+  \item[b.] fixed
+  \item[c.] static
+  \item[d.] relative
+\end{itemize}
+
+\subsection*{Question 21}
+\textbf{What is the positioning context for an absolutely positioned element?}
+
+\begin{itemize}
+  \item[a.] The body element regardless of positioning
+  \item[b.] The nearest ancestor with a positioned value other than static
+  \item[c.] The first ancestor with a class or ID
+  \item[d.] The parent element if it has \texttt{display: block}
+\end{itemize}
+
+\subsection*{Question 22}
+\textbf{Which rule will be applied if both match the same element?}
+
+\begin{itemize}
+  \item[a.] \texttt{.important \{ color: red !important; \}}
+  \item[b.] \texttt{div p \{ color: green; \}}
+  \item[c.] \texttt{\#title \{ color: blue; \}}
+\end{itemize}
+
+\subsection*{Question 23}
+\textbf{What makes \texttt{position: sticky} different from \texttt{fixed}?}
+
+\begin{itemize}
+  \item[a.] Sticky elements scroll with the page until a threshold is reached
+  \item[b.] Sticky elements ignore their container boundaries
+  \item[c.] Sticky elements are always fixed to the viewport
+  \item[d.] Sticky positioning is inherited by child elements
+\end{itemize}
+
+\subsection*{Question 24}
+\textbf{How do you fix a collapsing container that contains floated elements?} \\ \\
+\framebox[10cm][l]{\rule{0pt}{1.5ex}}
+
+\subsection*{Question 25}
+\textbf{What is the specificity of the selector \texttt{\#main .highlight p}?} \\ \\
+\framebox[10cm][l]{\rule{0pt}{1.5ex}}
+
+
+\section{JavaScript}
+
+\subsection*{Question 1}
+\textbf{What is the difference between \texttt{async} and \texttt{defer} in loading external scripts?}
+
+\begin{itemize}
+  \item[a.] \texttt{defer} cannot be used with external scripts.
+  \item[b.] \texttt{async} scripts are guaranteed to execute in the order they appear in the document.
+  \item[c.] Both \texttt{async} and \texttt{defer} delay the script download until after HTML parsing is complete.
+  \item[d.] \texttt{async} scripts execute as soon as they are downloaded, potentially out of order.
+  \item[e.] \texttt{defer} scripts wait for HTML parsing to finish before executing.
+\end{itemize}
+
+\subsection*{Question 2}
+\textbf{Which statements about JavaScript execution are correct?}
+
+\begin{itemize}
+  \item[a.] It is Just-In-Time compiled
+  \item[b.] It is compiled ahead of time like C
+  \item[c.] It is heavily optimized by modern browsers
+  \item[d.] It is interpreted only with no compilation
+  \item[e.] It must be compiled manually by the user
+\end{itemize}
+
+\subsection*{Question 3}
+\textbf{Which ways can JavaScript be included in HTML?}
+
+\begin{itemize}
+  \item[a.] Inline with \texttt{<script>}
+  \item[b.] Inside \texttt{<style>} tags
+  \item[c.] As a link to \texttt{.js}
+  \item[d.] As an external file with \texttt{<script src="...">}
+  \item[e.] In XML comments
+\end{itemize}
+
+\subsection*{Question 4}
+\textbf{What was the original purpose of JavaScript?}
+
+\begin{itemize}
+  \item[a.] To build mobile apps
+  \item[b.] To style HTML pages
+  \item[c.] To manage databases
+  \item[d.] To replace Java
+  \item[e.] To add interactivity to web pages
+\end{itemize}
+
+\subsection*{Question 5}
+\textbf{Which statements about JavaScript functions are true?}
+
+\begin{itemize}
+  \item[a.] Functions are always synchronous
+  \item[b.] Functions are first-class objects
+  \item[c.] Functions can be passed as arguments
+  \item[d.] Functions must be declared before use
+  \item[e.] Functions cannot be assigned to variables
+\end{itemize}
+
+\subsection*{Question 6}
+\textbf{What is a commonly used name for modern JavaScript versions starting from ES6?}
+
+\begin{itemize}
+  \item[a.] DOMScript
+  \item[b.] NextScript
+  \item[c.] TypeScript
+  \item[d.] JSX
+  \item[e.] ES6+
+\end{itemize}
+
+\subsection*{Question 7}
+\textbf{Which model of object orientation does JavaScript use?}
+
+\begin{itemize}
+  \item[a.] Trait-based
+  \item[b.] Classical inheritance
+  \item[c.] Aspect-oriented
+  \item[d.] Functional-only
+  \item[e.] Prototype-based
+\end{itemize}
+
+\subsection*{Question 8}
+\textbf{Who created JavaScript?}
+
+\begin{itemize}
+  \item[a.] James Gosling
+  \item[b.] Douglas Crockford
+  \item[c.] Brendan Eich
+  \item[d.] Tim Berners-Lee
+  \item[e.] Bjarne Stroustrup
+\end{itemize}
+
+\subsection*{Question 9}
+\textbf{What was the original name of JavaScript?}
+
+\begin{itemize}
+  \item[a.] Mocha
+  \item[b.] LiveWire
+  \item[c.] JavaLite
+  \item[d.] ScriptEase
+  \item[e.] CoffeeScript
+\end{itemize}
+
+\subsection*{Question 10}
+\textbf{What are Promises in JavaScript used for?}
+
+\begin{itemize}
+  \item[a.] Defining variables
+  \item[b.] Debugging
+  \item[c.] Handling user input
+  \item[d.] Error logging
+  \item[e.] Asynchronous programming
+\end{itemize}
+
+\subsection*{Question 11}
+\textbf{Where can JavaScript code run?}
+
+\begin{itemize}
+  \item[a.] In the browser
+  \item[b.] In a Java Virtual Machine
+  \item[c.] In a database engine
+  \item[d.] Only in HTML files
+  \item[\cmark\ e.] On the server using Node.js
+\end{itemize}
+
+\subsection*{Question 12}
+\textbf{JavaScript is standardized under which specification?}
+
+\begin{itemize}
+  \item[a.] JavaSpec
+  \item[b.] ECMAScript
+  \item[c.] DOMSpec
+  \item[d.] ISO-JavaScript
+  \item[e.] WebScript
+\end{itemize}
+
+\subsection*{Question 13}
+\textbf{Which languages does JavaScript share syntactic similarities with?}
+
+\begin{itemize}
+  \item[a.] Ruby
+  \item[b.] Lisp
+  \item[c.] Java
+  \item[d.] Python
+  \item[e.] C
+\end{itemize}
+
+\subsection*{Question 14}
+\textbf{Which statements about JavaScript's concurrency model are true?}
+
+\begin{itemize}
+  \item[a.] JavaScript uses an event-driven model
+  \item[b.] JavaScript uses blocking I/O
+  \item[c.] JavaScript is single-threaded
+  \item[d.] JavaScript supports native threads
+  \item[e.] JavaScript uses multithreading
+\end{itemize}
+
+\subsection*{Question 15}
+\textbf{Which of the following best describe JavaScript's type system?}
+
+\begin{itemize}
+  \item[a.] Type-safe
+  \item[b.] Nominally typed
+  \item[c.] Dynamically typed
+  \item[d.] Strongly typed
+  \item[e.] Statically typed
+\end{itemize}
+
+\subsection*{Question 16}
+\textbf{Which feature is unique to JavaScript compared to many other languages?}
+
+\begin{itemize}
+  \item[a.] It allows prototype-based inheritance
+  \item[b.] It compiles to machine code
+  \item[c.] It requires semicolons
+  \item[d.] It has static typing
+  \item[e.] It uses manual memory management
+\end{itemize}
+
+\subsection*{Question 17}
+\textbf{Which of the following statements are true about the \texttt{defer} attribute in a \texttt{<script>} tag?}
+
+\begin{itemize}
+  \item[a.] Scripts with \texttt{defer} maintain execution order.
+  \item[b.] The script is executed after the HTML is parsed.
+  \item[c.] The script blocks HTML parsing until it finishes loading.
+  \item[d.] \texttt{defer} scripts are executed before \texttt{DOMContentLoaded} is fired.
+  \item[e.] \texttt{defer} only works for inline scripts.
+\end{itemize}
+
+\subsection*{Question 18}
+\textbf{Which statements about async/await are true?}
+
+\begin{itemize}
+  \item[a.] \texttt{await} works outside async functions
+  \item[b.] async code is executed synchronously
+  \item[c.] \texttt{await} can only be used globally
+  \item[d.] \texttt{await} pauses execution inside async functions
+  \item[e.] async functions return Promises
+\end{itemize}
+
+\subsection*{Question 19}
+\textbf{Why is 'callback hell' considered a problem?}
+
+\begin{itemize}
+  \item[a.] It makes code harder to read
+  \item[b.] It leads to deeply nested functions
+  \item[c.] It causes memory leaks
+  \item[d.] It improves performance
+  \item[e.] It is required for asynchronous programming
+\end{itemize}
+
+\subsection*{Question 20}
+\textbf{What is true about the 'class' syntax in JavaScript?}
+
+\begin{itemize}
+  \item[a.] Classes use prototypes under the hood
+  \item[b.] Classes are compiled like in Java
+  \item[c.] Classes cannot have private fields
+  \item[d.] It is syntactic sugar for function constructors
+  \item[e.] Only one class per file is allowed
+\end{itemize}
+
+\subsection*{Question 21}
+\textbf{What happens when you forget \texttt{new} with a constructor function?}
+
+\begin{itemize}
+  \item[a.] It creates a global object
+  \item[b.] It binds \texttt{this} correctly
+  \item[c.] It may return undefined or cause an error
+  \item[d.] The prototype chain is still applied
+  \item[e.] It automatically uses \texttt{new}
+\end{itemize}
+
+\subsection*{Question 22}
+\textbf{Which statements about the JavaScript event loop are correct?}
+
+\begin{itemize}
+  \item[a.] It moves tasks from the queue when the call stack is empty
+  \item[b.] Microtasks are executed after all macrotasks
+  \item[c.] It uses multithreading
+  \item[d.] Microtasks are executed before macrotasks
+  \item[e.] Tasks are executed in parallel
+\end{itemize}
+
+\subsection*{Question 23}
+\textbf{Which statements about the fetch API are true?}
+
+\begin{itemize}
+  \item[a.] It returns data directly
+  \item[b.] It replaces XMLHttpRequest
+  \item[c.] It cannot be used with async/await
+  \item[d.] It blocks the event loop
+  \item[e.] It returns a Promise
+\end{itemize}
+
+\subsection*{Question 24}
+\textbf{How does inheritance work in JavaScript?}
+
+\begin{itemize}
+  \item[a.] Subclasses can override inherited methods
+  \item[b.] Only static methods are inherited
+  \item[c.] It uses the prototype chain
+  \item[d.] Objects must use mixins for inheritance
+  \item[e.] It uses classical class-based inheritance
+\end{itemize}
+
+\subsection*{Question 25}
+\textbf{Which ways to parse JSON are valid?}
+
+\begin{itemize}
+  \item[a.] \texttt{response.json()}
+  \item[b.] \texttt{string.toJSON()}
+  \item[c.] \texttt{JSON.parse(string)}
+  \item[d.] \texttt{eval(string)}
+  \item[e.] \texttt{fetch.parse()}
+\end{itemize}
+
+\subsection*{Question 26}
+\textbf{Which statements about JavaScript modules are correct?}
+
+\begin{itemize}
+  \item[a.] import must always use *
+  \item[b.] Modules use export/import
+  \item[c.] Modules can only be used with Node.js
+  \item[d.] Default exports must be unique
+  \item[e.] All exports must be default
+\end{itemize}
+
+\subsection*{Question 27}
+\textbf{Which of the following statements about objects in JavaScript are true?}
+
+\begin{itemize}
+  \item[a.] Keys must be numbers
+  \item[b.] Keys can be strings or Symbols
+  \item[c.] Objects must be declared with class
+  \item[d.] Methods are not allowed in objects
+  \item[e.] Objects are collections of key-value pairs
+\end{itemize}
+
+\subsection*{Question 28}
+\textbf{How can private fields be defined in modern JavaScript classes?}
+
+\begin{itemize}
+  \item[a.] By using 'private' keyword
+  \item[b.] They are public by default and cannot be private
+  \item[c.] With underscore '\_'
+  \item[d.] Through constructor scoping
+  \item[e.] By using the '\#' syntax
+\end{itemize}
+
+\subsection*{Question 29}
+\textbf{What happens when a Promise is fulfilled?}
+
+\begin{itemize}
+  \item[a.] It calls the \texttt{.then()} handler
+  \item[b.] It immediately returns the value
+  \item[c.] It creates a new thread
+  \item[d.] It queues the handler as a microtask
+  \item[e.] It blocks the call stack
+\end{itemize}
+
+\subsection*{Question 30}
+\textbf{Which are valid states of a JavaScript Promise?}
+
+\begin{itemize}
+  \item[a.] Resolved and Failed
+  \item[b.] Rejected
+  \item[c.] Pending
+  \item[d.] Executing
+  \item[e.] Fulfilled
+\end{itemize}
+
+\subsection*{Question 31}
+\textbf{Which of the following are true about prototypes in JavaScript?}
+
+\begin{itemize}
+  \item[a.] Prototype methods are shared between instances
+  \item[b.] Prototypes cannot be used with classes
+  \item[c.] All objects have a prototype
+  \item[d.] Prototypes are used only in modules
+  \item[e.] Prototypes must be defined manually
+\end{itemize}
+
+\subsection*{Question 32}
+\textbf{What is true about Web Workers?}
+
+\begin{itemize}
+  \item[a.] They are executed in the same thread
+  \item[b.] They handle UI rendering
+  \item[c.] They cannot access the DOM
+  \item[d.] They replace Promises
+  \item[e.] They run in background threads
+\end{itemize}
+
+\section{Web Architecture}
+
+\subsection*{Question 1}
+\textbf{What is true about Client-Side Rendering (CSR)?}
+
+\begin{itemize}
+  \item[a.] The DOM is updated dynamically in the browser
+  \item[b.] CSR means rendering happens on the server
+  \item[c.] The browser never interacts with APIs
+  \item[d.] The HTML is fully generated on the server
+  \item[e.] JavaScript generates the content based on data
+\end{itemize}
+
+\subsection*{Question 2}
+\textbf{Which frameworks typically use client-side rendering?}
+
+\begin{itemize}
+  \item[a.] React
+  \item[b.] Django
+  \item[c.] Vue
+  \item[d.] Laravel
+  \item[e.] Angular
+\end{itemize}
+
+\subsection*{Question 3}
+\textbf{Which comparison between CSR and SSR is accurate?}
+
+\begin{itemize}
+  \item[a.] CSR puts more load on the client, SSR on the server
+  \item[b.] SSR cannot support interactive web apps
+  \item[c.] SSR can show content faster for slow devices
+  \item[d.] CSR does not require a build step
+  \item[e.] CSR is generally better for SEO without extra effort
+\end{itemize}
+
+\subsection*{Question 4}
+\textbf{Which of the following statements are true for client-side rendering (CSR)?}
+
+\begin{itemize}
+  \item[a.] The browser uses JavaScript to dynamically generate content
+  \item[b.] The server generates complete HTML pages for each request
+  \item[c.] The browser updates the DOM after loading a minimal HTML file
+  \item[d.] No JavaScript is needed at all for CSR
+  \item[e.] The browser is only used for layouting, not logic
+\end{itemize}
+
+\subsection*{Question 5}
+\textbf{Which techniques can be used to pass data between web pages in plain JavaScript apps?}
+
+\begin{itemize}
+  \item[a.] CSS variables
+  \item[b.] localStorage
+  \item[c.] URL parameters
+  \item[d.] React context
+  \item[e.] sessionStorage
+\end{itemize}
+
+\subsection*{Question 6}
+\textbf{Which of the following are advantages of Server-Side Rendering (SSR)?}
+
+\begin{itemize}
+  \item[a.] SSR requires localStorage
+  \item[b.] No need for a server
+  \item[c.] Better initial load time
+  \item[d.] Full interactivity before HTML arrives
+  \item[e.] Content is visible without JavaScript enabled
+\end{itemize}
+
+\subsection*{Question 7}
+\textbf{Which of the following statements about Single Page Applications (SPA) are correct?}
+
+\begin{itemize}
+  \item[a.] Each screen is rendered on the server
+  \item[b.] JavaScript dynamically updates the content without reloading
+  \item[c.] SPAs require a different browser than MPAs
+  \item[d.] The browser only loads one HTML file initially
+  \item[e.] Every navigation requires a full page reload
+\end{itemize}
+
+\subsection*{Question 8}
+\textbf{Which statements about Server-Side Rendering (SSR) are correct?}
+
+\begin{itemize}
+  \item[a.] SSR requires a JavaScript frontend to be rendered
+  \item[b.] The browser creates the initial HTML based on templates
+  \item[c.] SSR apps cannot include any client-side logic
+  \item[d.] SSR pages are usually visible faster on slow devices
+  \item[e.] The HTML is generated on the server and sent to the browser
+\end{itemize}
+
+\subsection*{Question 9}
+\textbf{Which technologies or frameworks are commonly used for server-side rendering?}
+
+\begin{itemize}
+  \item[a.] Laravel
+  \item[b.] Vue (without additional frameworks)
+  \item[c.] React (without additional frameworks)
+  \item[d.] Next.js
+  \item[e.] Django
+\end{itemize}
+
+
+\section{React}
+
+\subsection*{Question 1}
+\textbf{What is the role of Babel in React development?}
+
+\begin{itemize}
+  \item[a.] It compiles JSX into JavaScript
+  \item[b.] It replaces Webpack
+  \item[c.] It manages state
+  \item[d.] It renders the DOM
+  \item[e.] It styles components
+\end{itemize}
+
+\subsection*{Question 2}
+\textbf{What must a React component return?}
+
+\begin{itemize}
+  \item[a.] Multiple root elements
+  \item[b.] A CSS block
+  \item[c.] A Promise
+  \item[d.] A single root element (usually JSX)
+  \item[e.] An HTML string
+\end{itemize}
+
+\subsection*{Question 3}
+\textbf{Which are valid ways to define React components?}
+
+\begin{itemize}
+  \item[a.] Arrow functions
+  \item[b.] \texttt{defineComponent()}
+  \item[c.] Function declarations
+  \item[d.] XML templates
+  \item[e.] CSS functions
+\end{itemize}
+
+\subsection*{Question 4}
+\textbf{Which files are part of a standard Create React App structure?}
+
+\begin{itemize}
+  \item[a.] \texttt{build/src.js}
+  \item[b.] \texttt{App.jsx.html}
+  \item[c.] \texttt{src/App.js}
+  \item[d.] \texttt{App.vue}
+  \item[e.] \texttt{public/index.html}
+\end{itemize}
+
+\subsection*{Question 5}
+\textbf{Which commands are used to create and start a React project with Create React App?}
+
+\begin{itemize}
+  \item[a.] \texttt{react-start}
+  \item[b.] \texttt{npm start}
+  \item[c.] \texttt{npm create react-app}
+  \item[d.] \texttt{npx create-react-app my-app}
+  \item[e.] \texttt{babel-run}
+\end{itemize}
+
+\subsection*{Question 6}
+\textbf{How is data inserted into JSX expressions?}
+
+\begin{itemize}
+  \item[a.] Using curly braces \{\}
+  \item[b.] Using double quotes
+  \item[c.] Using \{\{ \}\}
+  \item[d.] Using backticks
+  \item[e.] With a special tag named \texttt{bind}
+\end{itemize}
+
+\subsection*{Question 7}
+\textbf{What is the purpose of \texttt{public/index.html} in a React project?}
+
+\begin{itemize}
+  \item[a.] It is dynamically generated by ReactDOM
+  \item[b.] It defines all components
+  \item[c.] It includes all JavaScript code
+  \item[d.] It contains the \texttt{<div id="root">} for React to mount
+  \item[e.] It provides the root HTML structure for the app
+\end{itemize}
+
+\subsection*{Question 8}
+\textbf{What is the function of \texttt{src/index.js}?}
+
+\begin{itemize}
+  \item[a.] It initializes the React app
+  \item[b.] It renders the App component
+  \item[c.] It contains all CSS styles
+  \item[d.] It defines the Virtual DOM
+  \item[e.] It loads JSX files directly
+\end{itemize}
+
+\subsection*{Question 9}
+\textbf{Which tool is required to transform JSX for the browser?}
+
+\begin{itemize}
+  \item[a.] Babel
+  \item[b.] ReactDOM
+  \item[c.] npm
+  \item[d.] Webpack
+  \item[e.] TypeScript
+\end{itemize}
+
+\subsection*{Question 10}
+\textbf{Which statements about JSX are true?}
+
+\begin{itemize}
+  \item[a.] JSX must be transformed before it can run
+  \item[b.] JSX looks like HTML but compiles to JavaScript
+  \item[c.] JSX can only be used in Node.js
+  \item[d.] JSX is valid JavaScript
+  \item[e.] JSX replaces JavaScript syntax
+\end{itemize}
+
+\subsection*{Question 11}
+\textbf{Which of the following statements about React are true?}
+
+\begin{itemize}
+  \item[a.] It is used only for server-side rendering
+  \item[b.] It replaces HTML
+  \item[c.] It is a JavaScript library for building UIs
+  \item[d.] It is a CSS framework
+  \item[e.] It uses a Virtual DOM to improve performance
+\end{itemize}
+
+\subsection*{Question 12}
+\textbf{How can React render elements without JSX?}
+
+\begin{itemize}
+  \item[a.] With string interpolation
+  \item[b.] Using document.write
+  \item[c.] Using React.createElement
+  \item[d.] With HTML templates
+  \item[e.] By using Babel directly
+\end{itemize}
+
+\subsection*{Question 13}
+\textbf{Who developed React and when?}
+
+\begin{itemize}
+  \item[a.] Microsoft, 2014
+  \item[b.] Google, 2012
+  \item[c.] Facebook, 2013
+  \item[d.] Twitter, 2011
+  \item[e.] Mozilla, 2015
+\end{itemize}
+
+\subsection*{Question 14}
+\textbf{What is React.StrictMode used for?}
+
+\begin{itemize}
+  \item[a.] It enables Babel
+  \item[b.] It disables JSX
+  \item[c.] It enforces runtime checks in production
+  \item[d.] It applies automatic code formatting
+  \item[e.] It helps identify potential problems in an application during development
+\end{itemize}
+
+\subsection*{Question 15}
+\textbf{Which statements about the Virtual DOM are true?}
+
+\begin{itemize}
+  \item[a.] React applies only differences to the real DOM
+  \item[b.] It is an in-memory representation of the DOM
+  \item[c.] It is slower than direct DOM manipulation
+  \item[d.] It renders changes directly to HTML
+  \item[e.] It uses Shadow DOM internally
+\end{itemize}
+
+\subsection*{Question 16}
+\textbf{Which statements are true about class-based components?}
+
+\begin{itemize}
+  \item[a.] They are preferred over function components
+  \item[b.] They use a \texttt{render()} method to return JSX
+  \item[c.] They do not use props
+  \item[d.] They cannot hold state
+  \item[e.] They are required for all components
+\end{itemize}
+
+\subsection*{Question 17}
+\textbf{Which of the following statements about React components are true?}
+
+\begin{itemize}
+  \item[a.] Components modify the DOM directly
+  \item[b.] Components cannot be nested
+  \item[c.] Components are reusable units of UI
+  \item[d.] Components can receive props and hold state
+  \item[e.] Components must be class-based
+\end{itemize}
+
+\subsection*{Question 18}
+\textbf{Which is a valid way to define a React component?}
+
+\begin{itemize}
+  \item[a.] As an event listener
+  \item[b.] With inline CSS
+  \item[c.] Using a function that returns JSX
+  \item[d.] Using a JSON object
+  \item[e.] Using a for loop
+\end{itemize}
+
+\subsection*{Question 19}
+\textbf{What are advantages of component composition?}
+
+\begin{itemize}
+  \item[a.] Eliminates props
+  \item[b.] Prevents dynamic rendering
+  \item[c.] Improves code reuse
+  \item[d.] Requires class components
+  \item[e.] Encourages modular design
+\end{itemize}
+
+\subsection*{Question 20}
+\textbf{Which are valid ways to implement conditional rendering in JSX?}
+
+\begin{itemize}
+  \item[a.] Using if-else outside the return block
+  \item[b.] Using ternary operator
+  \item[c.] Using HTML conditions
+  \item[d.] Using JSX if-then statements
+  \item[e.] Using switch directly in JSX
+\end{itemize}
+
+\subsection*{Question 21}
+\textbf{How do you pass a parameter to an event handler in JSX?}
+
+\begin{itemize}
+  \item[a.] Bind in render()
+  \item[b.] Add param after function name
+  \item[c.] Use apply()
+  \item[d.] Call it directly
+  \item[e.] Wrap it in an arrow function
+\end{itemize}
+
+\subsection*{Question 22}
+\textbf{How do you prevent a function from being called immediately in JSX?}
+
+\begin{itemize}
+  \item[a.] Use bind() always
+  \item[b.] Add return before call
+  \item[c.] Use function reference: \texttt{onClick=\{myFunction\}}
+  \item[d.] Use parentheses: \texttt{onClick=\{myFunction()\}}
+  \item[e.] Use eval()
+\end{itemize}
+
+\subsection*{Question 23}
+\textbf{What is true about explicit composition in React?}
+
+\begin{itemize}
+  \item[a.] Renders children automatically
+  \item[b.] Only works with arrays
+  \item[c.] Requires external libraries
+  \item[d.] Child elements are passed directly in JSX
+  \item[e.] Accessed using \texttt{props.children}
+\end{itemize}
+
+\subsection*{Question 24}
+\textbf{What is true about helper functions in components?}
+
+\begin{itemize}
+  \item[a.] They can compute derived values
+  \item[b.] They replace hooks
+  \item[c.] They have access to props and local state
+  \item[d.] They must be declared globally
+  \item[e.] They cannot return JSX
+\end{itemize}
+
+\subsection*{Question 25}
+\textbf{What describes implicit composition in React?}
+
+\begin{itemize}
+  \item[a.] Only works with \texttt{props.children}
+  \item[b.] Used for rendering dynamic collections
+  \item[c.] Parent component generates children via \texttt{map()}
+  \item[d.] Child components must control layout
+  \item[e.] Requires \texttt{useEffect}
+\end{itemize}
+
+\subsection*{Question 26}
+\textbf{What must you do when rendering lists with \texttt{map()} in JSX?}
+
+\begin{itemize}
+  \item[a.] Use a while loop
+  \item[b.] Avoid using functions
+  \item[c.] Provide a unique key for each element
+  \item[d.] Use for-of loops
+  \item[e.] Wrap each item in
+\end{itemize}
+
+\subsection*{Question 27}
+\textbf{What are props in React?}
+
+\begin{itemize}
+  \item[a.] HTML attributes
+  \item[b.] Component methods
+  \item[c.] Global variables
+  \item[d.] Input data passed from parent to child components
+  \item[e.] React internal state
+\end{itemize}
+
+\subsection*{Question 28}
+\textbf{How can you access props using destructuring?}
+
+\begin{itemize}
+  \item[a.] Access via \texttt{props.name()}
+  \item[b.] Use \texttt{(\{ name, age \})} in the function parameters
+  \item[c.] Use \texttt{const \{ name, age \} = this}
+  \item[d.] Bind props manually
+  \item[e.] Use \texttt{props[name]}
+\end{itemize}
+
+\subsection*{Question 29}
+\textbf{What does the \texttt{useState()} hook return?}
+
+\begin{itemize}
+  \item[a.] A Promise
+  \item[b.] An array with current state and a function to update it
+  \item[c.] An event object
+  \item[d.] A reference to DOM node
+  \item[e.] A single state value
+\end{itemize}
+
+\subsection*{Question 30}
+\textbf{Which is the correct way to update state in a click handler?}
+
+\begin{itemize}
+  \item[a.] Using a global counter
+  \item[b.] Direct assignment like count++
+  \item[c.] \texttt{setState(count + 1)} inside a function
+  \item[d.] Mutating the DOM
+  \item[e.] Calling \texttt{setState()} outside render
+\end{itemize}
+
+\subsection*{Question 31}
+\textbf{How does a child component communicate with its parent?}
+
+\begin{itemize}
+  \item[a.] By calling a function received via props
+  \item[b.] Using Redux only
+  \item[c.] Using global variables
+  \item[d.] Via useRef
+  \item[e.] By accessing the parent's state directly
+\end{itemize}
+
+\subsection*{Question 32}
+\textbf{What is true about event bubbling?}
+
+\begin{itemize}
+  \item[a.] Child handler is triggered before parent by default
+  \item[b.] Events are synchronous
+  \item[c.] Event propagation starts at root
+  \item[d.] Events propagate from target to ancestors
+  \item[e.] Only one handler can be called
+\end{itemize}
+
+\subsection*{Question 33}
+\textbf{Which statements about event capturing are correct?}
+
+\begin{itemize}
+  \item[a.] It processes events from root to target
+  \item[b.] It only works with hooks
+  \item[c.] It disables bubbling
+  \item[d.] It ignores stopPropagation
+  \item[e.] It requires a third argument set to \texttt{true}
+\end{itemize}
+
+\subsection*{Question 34}
+\textbf{Which statements about the \texttt{fetch} API in React are true?}
+
+\begin{itemize}
+  \item[a.] It can be used inside \texttt{useEffect} to retrieve data
+  \item[b.] It requires Redux
+  \item[c.] It runs synchronously
+  \item[d.] It directly updates the DOM
+  \item[e.] It returns a \texttt{Promise}
+\end{itemize}
+
+\subsection*{Question 35}
+\textbf{How can a form input be reset after submission?}
+
+\begin{itemize}
+  \item[a.] Using \texttt{innerHTML = ''}
+  \item[b.] Reloading the page
+  \item[c.] Calling \texttt{setTimeout()}
+  \item[d.] Removing the input element
+  \item[e.] By setting its state value to an empty string
+\end{itemize}
+
+\subsection*{Question 36}
+\textbf{How is form input typically handled in React?}
+
+\begin{itemize}
+  \item[a.] Using global variables
+  \item[b.] Using \texttt{useState} to bind input values
+  \item[c.] Updating state on each \texttt{onChange} event
+  \item[d.] Setting values via \texttt{innerHTML}
+  \item[e.] Directly modifying DOM
+\end{itemize}
+
+\subsection*{Question 37}
+\textbf{Which is a correct structure for a controlled React form component?}
+
+\begin{itemize}
+  \item[a.] Input without any event handling
+  \item[b.] Input with value bound to state and \texttt{onChange} updating state
+  \item[c.] \texttt{innerHTML} binding
+  \item[d.] Form using \texttt{ref} as default
+  \item[e.] Global event listener on \texttt{window}
+\end{itemize}
+
+\subsection*{Question 38}
+\textbf{Which of the following can be used for form validation?}
+
+\begin{itemize}
+  \item[a.] HTML attributes like \texttt{required} and \texttt{minlength}
+  \item[b.] CSS media queries
+  \item[c.] JSX attributes only
+  \item[d.] Custom validation logic in \texttt{handleSubmit}
+  \item[e.] \texttt{React.StrictMode}
+\end{itemize}
+
+\subsection*{Question 39}
+\textbf{What is 'lifting state up' in React?}
+
+\begin{itemize}
+  \item[a.] Moving state to a common parent component
+  \item[b.] Binding refs
+  \item[c.] Passing props downward
+  \item[d.] Creating CSS modules
+  \item[e.] Using session storage
+\end{itemize}
+
+\subsection*{Question 40}
+\textbf{What is the typical purpose of \texttt{onSubmit} in React forms?}
+
+\begin{itemize}
+  \item[a.] To handle form submission and prevent default behavior
+  \item[b.] To validate HTML structure
+  \item[c.] To access Redux store
+  \item[d.] To bypass event bubbling
+  \item[e.] To reset the entire app
+\end{itemize}
+
+\subsection*{Question 41}
+\textbf{What happens when \texttt{event.stopPropagation()} is called?}
+
+\begin{itemize}
+  \item[a.] The event handler is removed
+  \item[b.] The event is canceled
+  \item[c.] The DOM is re-rendered
+  \item[d.] All child events are ignored
+  \item[e.] Further propagation of the event is stopped
+\end{itemize}
+
+\subsection*{Question 42}
+\textbf{What are common use cases for the \texttt{useEffect} hook?}
+
+\begin{itemize}
+  \item[a.] Rendering JSX directly
+  \item[b.] Running before DOM updates
+  \item[c.] Handling synchronous updates
+  \item[d.] Performing side effects like data fetching
+  \item[e.] Reacting to changes in props or state
+\end{itemize}
+
+\subsection*{Question 43}
+\textbf{What does the second argument of \texttt{useEffect} control?}
+
+\begin{itemize}
+  \item[a.] When the effect function is re-executed
+  \item[b.] What values are returned
+  \item[c.] How JSX is rendered
+  \item[d.] Which variables are global
+  \item[e.] Whether props are required
+\end{itemize}
+
+\subsection*{Question 44}
+\textbf{What happens if you pass an empty array as the dependency list to \texttt{useEffect}?}
+
+\begin{itemize}
+  \item[a.] It runs before render
+  \item[b.] The effect runs only after the first render
+  \item[c.] It never runs
+  \item[d.] It causes an error
+  \item[e.] It re-runs on every state change
+\end{itemize}
+
+\subsection*{Question 45}
+\textbf{What is \texttt{useRef} commonly used for in forms?}
+
+\begin{itemize}
+  \item[a.] To create global variables
+  \item[b.] To bind event listeners
+  \item[c.] To trigger re-renders
+  \item[d.] To access DOM elements directly
+  \item[e.] To store component state
+\end{itemize}
+
+\subsection*{Question 46}
+\textbf{How do you correctly update an object state in Context API with \texttt{useState}?}
+
+\begin{itemize}
+  \item[a.] By directly changing properties
+  \item[b.] By using \texttt{Object.assign} in-place
+  \item[c.] By using \texttt{push()} or \texttt{+=} operators
+  \item[d.] By calling \texttt{setTimeout}
+  \item[e.] By using the spread syntax to create a new object
+\end{itemize}
+
+\subsection*{Question 47}
+\textbf{Which state fields are typically used in Redux for async operations?}
+
+\begin{itemize}
+  \item[a.] \texttt{error}
+  \item[b.] \texttt{HTMLString}
+  \item[c.] \texttt{loading}
+  \item[d.] \texttt{responseTime}
+  \item[e.] \texttt{retryCount}
+  \item[f.] \texttt{data} or \texttt{user}
+\end{itemize}
+
+\subsection*{Question 48}
+\textbf{What does \texttt{dispatch()} return when used with a thunk?}
+
+\begin{itemize}
+  \item[a.] The current component
+  \item[b.] A \texttt{Promise} if the thunk is async
+  \item[c.] Nothing
+  \item[d.] An action object
+  \item[e.] A DOM node
+\end{itemize}
+
+\subsection*{Question 49}
+\textbf{Why is direct mutation of state allowed in Redux reducers using Redux Toolkit?}
+
+\begin{itemize}
+  \item[a.] Because Redux Toolkit uses \texttt{Immer} to track changes
+  \item[b.] Because Redux ignores immutability
+  \item[c.] Because reducers are only used for setup
+  \item[d.] Because JavaScript allows it
+  \item[e.] \texttt{Immer} converts mutations into immutable updates internally
+\end{itemize}
+
+\subsection*{Question 50}
+\textbf{What is the purpose of middleware in Redux?}
+
+\begin{itemize}
+  \item[a.] To render UI
+  \item[b.] To intercept actions and add behavior
+  \item[c.] To handle side effects like logging or async calls
+  \item[d.] To define routes
+  \item[e.] To update CSS
+\end{itemize}
+
+\subsection*{Question 51}
+\textbf{Which of the following is a correct way to write a Redux reducer using Redux Toolkit?}
+
+\begin{itemize}
+  \item[a.] Using \texttt{event.preventDefault()}
+  \item[b.] Directly mutating the state (e.g., \texttt{state.count += 1})
+  \item[c.] Modifying props
+  \item[d.] Returning a modified state manually
+  \item[e.] Calling \texttt{setState}
+\end{itemize}
+
+\subsection*{Question 52}
+\textbf{What is a core difference between useState and Redux reducers?}
+
+\begin{itemize}
+  \item[a.] useState must be global
+  \item[b.] Reducers are only called once
+  \item[c.] Redux never stores state
+  \item[d.] useState updates require returning a new object
+  \item[e.] Redux reducers with Immer allow mutation-style syntax
+\end{itemize}
+
+\subsection*{Question 53}
+\textbf{How would a 'Retry' button typically work in Redux?}
+
+\begin{itemize}
+  \item[a.] It forces a React render
+  \item[b.] It resets the component
+  \item[c.] It reloads the entire page
+  \item[d.] It dispatches the same async thunk again
+  \item[e.] It clears all reducers
+\end{itemize}
+
+\subsection*{Question 54}
+\textbf{Where should API calls typically happen in a Redux app?}
+
+\begin{itemize}
+  \item[a.] Inside reducers
+  \item[b.] Directly in components
+  \item[c.] Inside JSX expressions
+  \item[d.] In the \texttt{index.js} file
+  \item[e.] Inside thunks or middleware
+\end{itemize}
+
+\subsection*{Question 55}
+\textbf{How should you structure Redux state for a remote fetch?}
+
+\begin{itemize}
+  \item[a.] Store HTML inside state
+  \item[b.] Separate keys for loading, error, and data
+  \item[c.] Only store raw response
+  \item[d.] Use refs instead of state
+  \item[e.] A single key with a long string
+\end{itemize}
+
+\subsection*{Question 56}
+\textbf{In what order are actions usually dispatched in a thunk for async requests?}
+
+\begin{itemize}
+  \item[a.] Start → Success or Failure
+  \item[b.] Only one action is dispatched
+  \item[c.] Success → Start → Failure
+  \item[d.] Failure → Retry → Start
+  \item[e.] Start → End → Retry
+\end{itemize}
+
+\subsection*{Question 57}
+\textbf{What does a typical Redux Thunk do?}
+
+\begin{itemize}
+  \item[a.] Modify the DOM manually
+  \item[b.] Inject middleware automatically
+  \item[c.] Dispatch multiple actions depending on async outcome
+  \item[d.] Return HTML
+  \item[e.] Render the React component directly
+\end{itemize}
+
+\subsection*{Question 58}
+\textbf{Which statements about Redux Thunks are true?}
+
+\begin{itemize}
+  \item[a.] They allow dispatching asynchronous logic
+  \item[b.] They return a function instead of an action object
+  \item[c.] They mutate reducers
+  \item[d.] They replace all reducers
+  \item[e.] They require Context API
+\end{itemize}
+
+\subsection*{Question 59}
+\textbf{What are key benefits of using Redux Toolkit?}
+
+\begin{itemize}
+  \item[a.] Built-in support for \texttt{createAsyncThunk}
+  \item[b.] Simplified reducer logic with Immer
+  \item[c.] Automatic UI testing
+  \item[d.] Global CSS injection
+  \item[e.] Less boilerplate code
+\end{itemize}
+
+\subsection*{Question 60}
+\textbf{What does \texttt{createAsyncThunk} help you do?}
+
+\begin{itemize}
+  \item[a.] Generate async thunks with built-in action types
+  \item[b.] Bind input fields
+  \item[c.] Validate forms
+  \item[d.] Replace \texttt{useEffect}
+  \item[e.] Automatically create pending, fulfilled, and rejected actions
+\end{itemize}
+
+\subsection*{Question 61}
+\textbf{Which path is used to match all unknown routes?}
+
+\begin{itemize}
+  \item[a.] *
+  \item[b.] /error
+  \item[c.] **
+  \item[d.] /notfound
+\end{itemize}
+
+\subsection*{Question 62}
+\textbf{What component must wrap your entire React app to enable routing?}
+
+\begin{itemize}
+  \item[a.] RouteManager
+  \item[b.] BrowserRouter
+  \item[c.] RouteProvider
+  \item[d.] AppRouter
+\end{itemize}
+
+\subsection*{Question 63}
+\textbf{In a nested route, how is the default child defined?}
+
+\begin{itemize}
+  \item[a.] path="/" element
+  \item[b.] element=\{\textless Default /\textgreater\}
+  \item[c.] index element
+  \item[d.] fallback element
+\end{itemize}
+
+\subsection*{Question 64}
+\textbf{Which of the following correctly defines a route to a \texttt{LoginPage} component?}
+
+\begin{itemize}
+  \item[a.] \texttt{<Router path=``/login'' component=\{<LoginPage />\}>} />
+  \item[b.] \texttt{<Route path=``/login''>\{<LoginPage />\}</Route>}
+  \item[c.] \texttt{<Route path``/login'' element=\{<LoginPage />\}>} />
+  \item[d.] \texttt{<Route url=``/login'' render=\{<LoginPage />\}>} />
+\end{itemize}
+
+\subsection*{Question 65}
+\textbf{How do you define a dynamic segment in a React Router path?}
+
+\begin{itemize}
+  \item[a.] Using dollar sign, like \$id
+  \item[b.] Using curly braces, like \{id\}
+  \item[c.] Using a colon, like :id
+  \item[d.] Using angle brackets, like <id>
+\end{itemize}
+
+\subsection*{Question 66}
+\textbf{Why might you use \texttt{HashRouter} instead of \texttt{BrowserRouter}?}
+
+\begin{itemize}
+  \item[a.] It doesn’t require server configuration for route handling
+  \item[b.] It supports more modern features
+  \item[c.] It allows usage of cookies
+  \item[d.] It’s the only router that works with JSX
+\end{itemize}
+
+\subsection*{Question 67}
+\textbf{What API does \texttt{BrowserRouter} rely on?}
+
+\begin{itemize}
+  \item[a.] Window Navigation API
+  \item[b.] React Context API
+  \item[c.] HTML5 History API
+  \item[d.] Session API
+\end{itemize}
+
+\subsection*{Question 68}
+\textbf{Which route element ensures that an invalid URL renders a fallback?}
+
+\begin{itemize}
+  \item[a.] Route with fallback
+  \item[b.] Route with no path
+  \item[c.] ErrorBoundary
+  \item[d.] Route with path="*"
+\end{itemize}
+
+\subsection*{Question 69}
+\textbf{What happens when you click a \texttt{Link} component in React Router?}
+
+\begin{itemize}
+  \item[a.] An iframe opens the target page
+  \item[b.] The URL changes without full page reload
+  \item[c.] An anchor tag redirects to the route
+  \item[d.] The server reloads the route from scratch
+\end{itemize}
+
+\subsection*{Question 70}
+\textbf{Which component provides navigation between routes in React Router?}
+
+\begin{itemize}
+  \item[a.] Anchor
+  \item[b.] Link
+  \item[c.] NavLink
+  \item[d.] Redirect
+\end{itemize}
+
+\subsection*{Question 71}
+\textbf{Which component is used as a placeholder for nested route content?}
+
+\begin{itemize}
+  \item[a.] Placeholder
+  \item[b.] Outlet
+  \item[c.] Switch
+  \item[d.] Content
+\end{itemize}
+
+\subsection*{Question 72}
+\textbf{What is the purpose of a ProtectedRoute component?}
+
+\begin{itemize}
+  \item[a.] To handle 404 errors
+  \item[b.] To define admin-only pages
+  \item[c.] To cache route components
+  \item[d.] To restrict access to certain routes based on authentication
+\end{itemize}
+
+\subsection*{Question 73}
+\textbf{What React Router hook is used to read URL parameters?}
+
+\begin{itemize}
+  \item[a.] useLocation
+  \item[b.] useRoute
+  \item[c.] useQuery
+  \item[d.] useParams
+\end{itemize}
+
+\subsection*{Question 74}
+\textbf{Which component is used to redirect the user to another path?}
+
+\begin{itemize}
+  \item[a.] RedirectTo
+  \item[b.] RouterRedirect
+  \item[c.] HistoryPush
+  \item[d.] Navigate
+\end{itemize}
+
+\subsection*{Question 75}
+\textbf{What type of data is returned by \texttt{useParams()}?}
+
+\begin{itemize}
+  \item[a.] A query string
+  \item[b.] An array of parameters
+  \item[c.] A route object
+  \item[d.] An object of strings
+\end{itemize}
+
+
+
+\section{Answers}
+
+\subsection{CSS}
+
+\subsubsection*{Question 1}
+\textbf{What does 50vw mean in CSS?}
+\begin{itemize}
+  \item[\cmark\ a.] 50\% of the viewport’s width
+  \item[\xmark\ b.] 50\% of the parent element’s width
+  \item[\xmark\ c.] 50\% of the content box
+  \item[\xmark\ d.] 50 pixels
+\end{itemize}
+
+\subsubsection*{Question 2}
+Correct answer: \textbf{c.} All \texttt{p} elements with class \texttt{"center"}
+
+\subsubsection*{Question 3}
+Correct answer: \textbf{c.} It selects all elements in the document
+
+\subsubsection*{Question 4}
+Correct answer: \textbf{c.} The total size of the element increases
+
+\subsubsection*{Question 5}
+Correct answer: \textbf{d.} It is removed from the layout and not visible
+
+\subsubsection*{Question 6}
+Correct answer: \textbf{b.} They reduce reusability and increase maintenance effort
+
+\subsubsection*{Question 7}
+Correct answer: \textbf{d.} It connects an external CSS file to the HTML document
+
+\subsubsection*{Question 8}
+\textbf{What makes \texttt{inline-block} different from \texttt{inline}?}
+\begin{itemize}
+  \item[\xmark\ a.] It is not affected by margin
+  \item[\xmark\ b.] It always starts on a new line
+  \item[\xmark\ c.] It takes full width by default
+  \item[\cmark\ d.] It allows setting width and height
+\end{itemize}
+
+\subsubsection*{Question 9}
+Correct answer: \textbf{c.} Inside a \texttt{<style>} block in the \texttt{<head>}
+
+\subsubsection*{Question 10}
+Correct answer: \textbf{a.} href
+
+\subsubsection*{Question 11}
+Correct answer: \textbf{a.} \#main-header
+
+\subsubsection*{Question 12}
+Correct answer: \textbf{a.} \texttt{\#highlight \{ color: red; \}}
+
+\subsubsection*{Question 13}
+Correct answer: \textbf{c.} \texttt{\#main}
+
+\subsubsection*{Question 14}
+Correct answer: \textbf{a.} Padding is inside the element's border, margin is outside
+
+\subsubsection*{Question 15}
+Correct answer: \textbf{b.} Inline style
+
+\subsubsection*{Question 16}
+\textbf{Which of the following is NOT a flex container property?}
+\begin{itemize}
+  \item[\xmark\ a.] justify-content
+  \item[\cmark\ b.] flex-grow (It is a property applied to individual flex items)
+  \item[\xmark\ c.] flex-direction
+  \item[\xmark\ d.] align-items
+\end{itemize}
+
+\subsubsection*{Question 17}
+\textbf{What happens to a floated element?}
+\begin{itemize}
+  \item[\xmark\ a.] It becomes inline-level and centered
+  \item[\cmark\ b.] It is taken out of normal document flow
+  \item[\xmark\ c.] It cannot contain any content
+\end{itemize}
+
+\subsubsection*{Question 18}
+\textbf{Which of the following CSS properties are inherited by default?}
+\begin{itemize}
+  \item[\xmark\ a.] margin
+  \item[\xmark\ b.] border
+  \item[\cmark\ c.] color
+  \item[\cmark\ c.] font-family
+\end{itemize}
+
+\subsubsection*{Question 19}
+Correct answer: \textbf{c.} \texttt{@media (max-width: 800px)}
+
+\subsubsection*{Question 20}
+Correct answer: \textbf{d.} relative
+
+\subsubsection*{Question 21}
+Correct answer: \textbf{b.} The nearest ancestor with a positioned value other than static
+
+\subsubsection*{Question 22}
+Correct answer: \textbf{a.} \texttt{.important \{ color: red !important; \}}
+
+\subsubsection*{Question 23}
+Correct answer: \textbf{a.} Sticky elements scroll with the page until a threshold is reached
+
+\subsubsection*{Question 24}
+Correct answer: \textbf{clearfix}
+
+\subsubsection*{Question 25}
+\textbf{What is the specificity of the selector \texttt{\#main .highlight p}?} \\
+Correct answer: \textbf{1,1,1}
+
+\subsection{JavaScript}
+
+\subsubsection*{Question 1}
+\textbf{What is the difference between async and defer in loading external scripts?}
+\begin{itemize}
+  \item[\xmark\ a.] \texttt{defer} cannot be used with external scripts.
+  \item[\xmark\ b.] \texttt{async} scripts are guaranteed to execute in the order they appear in the document.
+  \item[\xmark\ c.] Both \texttt{async} and \texttt{defer} delay the script download until after HTML parsing is complete.
+  \item[\cmark\ d.] \texttt{async} scripts execute as soon as they are downloaded, potentially out of order.
+  \item[\cmark\ e.] \texttt{defer} scripts wait for HTML parsing to finish before executing.
+\end{itemize}
+
+
+\subsubsection*{Question 2}
+\textbf{Which statements about JavaScript execution are correct?}
+\begin{itemize}
+  \item[\cmark\ a.] It is Just-In-Time compiled
+  \item[\xmark\ b.] It is compiled ahead of time like C
+  \item[\cmark\ c.] It is heavily optimized by modern browsers
+  \item[\xmark\ d.] It is interpreted only with no compilation
+  \item[\xmark\ e.] It must be compiled manually by the user
+\end{itemize}
+
+\subsubsection*{Question 3}
+\textbf{Which ways can JavaScript be included in HTML?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Inline with \texttt{<script>}
+  \item[\xmark\ b.] Inside \texttt{<style>} tags
+  \item[\xmark\ c.] As a link to \texttt{.js}
+  \item[\cmark\ d.] As an external file with \texttt{<script src="...">}
+  \item[\xmark\ e.] In XML comments
+\end{itemize}
+
+\subsubsection*{Question 4}
+\textbf{What was the original purpose of JavaScript?}
+
+\begin{itemize}
+  \item[\xmark\ a.] To build mobile apps
+  \item[\xmark\ b.] To style HTML pages
+  \item[\xmark\ c.] To manage databases
+  \item[\xmark\ d.] To replace Java
+  \item[\cmark\ e.] To add interactivity to web pages
+\end{itemize}
+
+\subsubsection*{Question 5}
+\textbf{Which statements about JavaScript functions are true?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Functions are always synchronous
+  \item[\cmark\ b.] Functions are first-class objects
+  \item[\cmark\ c.] Functions can be passed as arguments
+  \item[\xmark\ d.] Functions must be declared before use
+  \item[\xmark\ e.] Functions cannot be assigned to variables
+\end{itemize}
+ 
+\subsubsection*{Question 6}
+\textbf{What is a commonly used name for modern JavaScript versions starting from ES6?}
+
+\begin{itemize}
+  \item[\xmark\ a.] DOMScript
+  \item[\xmark\ b.] NextScript
+  \item[\xmark\ c.] TypeScript
+  \item[\xmark\ d.] JSX
+  \item[\cmark\ e.] ES6+
+\end{itemize}
+
+\subsubsection*{Question 7}
+\textbf{Which model of object orientation does JavaScript use?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Trait-based
+  \item[\xmark\ b.] Classical inheritance
+  \item[\xmark\ c.] Aspect-oriented
+  \item[\xmark\ d.] Functional-only
+  \item[\cmark\ e.] Prototype-based
+\end{itemize}
+
+\subsubsection*{Question 8}
+\textbf{Who created JavaScript?}
+
+\begin{itemize}
+  \item[\xmark\ a.] James Gosling
+  \item[\xmark\ b.] Douglas Crockford
+  \item[\cmark\ c.] Brendan Eich
+  \item[\xmark\ d.] Tim Berners-Lee
+  \item[\xmark\ e.] Bjarne Stroustrup
+\end{itemize}
+
+\subsubsection*{Question 9}
+\textbf{What was the original name of JavaScript?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Mocha
+  \item[\xmark\ b.] LiveWire
+  \item[\xmark\ c.] JavaLite
+  \item[\xmark\ d.] ScriptEase
+  \item[\xmark\ e.] CoffeeScript
+\end{itemize}
+
+\subsubsection*{Question 10}
+\textbf{What are Promises in JavaScript used for?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Defining variables
+  \item[\xmark\ b.] Debugging
+  \item[\xmark\ c.] Handling user input
+  \item[\xmark\ d.] Error logging
+  \item[\cmark\ e.] Asynchronous programming
+\end{itemize}
+
+\subsubsection*{Question 11}
+\textbf{Where can JavaScript code run?}
+
+\begin{itemize}
+  \item[\cmark\ a.] In the browser
+  \item[\xmark\ b.] In a Java Virtual Machine
+  \item[\xmark\ c.] In a database engine
+  \item[\xmark\ d.] Only in HTML files
+  \item[\cmark\ e.] On the server using Node.js
+\end{itemize}
+
+\subsubsection*{Question 12}
+\textbf{JavaScript is standardized under which specification?}
+
+\begin{itemize}
+  \item[\xmark\ a.] JavaSpec
+  \item[\cmark\ b.] ECMAScript
+  \item[\xmark\ c.] DOMSpec
+  \item[\xmark\ d.] ISO-JavaScript
+  \item[\xmark\ e.] WebScript
+\end{itemize}
+
+\subsubsection*{Question 13}
+\textbf{Which languages does JavaScript share syntactic similarities with?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Ruby
+  \item[\xmark\ b.] Lisp
+  \item[\cmark\ c.] Java
+  \item[\xmark\ d.] Python
+  \item[\cmark\ e.] C
+\end{itemize}
+
+\subsubsection*{Question 14}
+\textbf{Which statements about JavaScript's concurrency model are true?}
+
+\begin{itemize}
+  \item[\cmark\ a.] JavaScript uses an event-driven model
+  \item[\xmark\ b.] JavaScript uses blocking I/O
+  \item[\cmark\ c.] JavaScript is single-threaded
+  \item[\xmark\ d.] JavaScript supports native threads
+  \item[\xmark\ e.] JavaScript uses multithreading
+\end{itemize}
+
+\subsubsection*{Question 15}
+\textbf{Which of the following best describe JavaScript's type system?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Type-safe
+  \item[\xmark\ b.] Nominally typed
+  \item[\cmark\ c.] Dynamically typed
+  \item[\xmark\ d.] Strongly typed
+  \item[\xmark\ e.] Statically typed
+\end{itemize}
+
+\subsubsection*{Question 16}
+\textbf{Which feature is unique to JavaScript compared to many other languages?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It allows prototype-based inheritance
+  \item[\xmark\ b.] It compiles to machine code
+  \item[\xmark\ c.] It requires semicolons
+  \item[\xmark\ d.] It has static typing
+  \item[\xmark\ e.] It uses manual memory management
+\end{itemize}
+
+\subsubsection*{Question 17}
+\textbf{Which of the following statements are true about the \texttt{defer} attribute in a \texttt{<script>} tag?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Scripts with \texttt{defer} maintain execution order.
+  \item[\cmark\ b.] The script is executed after the HTML is parsed.
+  \item[\xmark\ c.] The script blocks HTML parsing until it finishes loading.
+  \item[\cmark\ d.] \texttt{defer} scripts are executed before \texttt{DOMContentLoaded} is fired.
+  \item[\xmark\ e.] \texttt{defer} only works for inline scripts.
+\end{itemize}
+
+\subsubsection*{Question 18}
+\textbf{Which statements about async/await are true?}
+\begin{itemize}
+  \item[\xmark\ a.] \texttt{await} works outside async functions
+  \item[\xmark\ b.] async code is executed synchronously
+  \item[\xmark\ c.] \texttt{await} can only be used globally
+  \item[\cmark\ d.] \texttt{await} pauses execution inside async functions
+  \item[\cmark\ e.] async functions return Promises
+\end{itemize}
+
+\subsubsection*{Question 19}
+\textbf{Why is 'callback hell' considered a problem?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It makes code harder to read
+  \item[\cmark\ b.] It leads to deeply nested functions
+  \item[\xmark\ c.] It causes memory leaks
+  \item[\xmark\ d.] It improves performance
+  \item[\xmark\ e.] It is required for asynchronous programming
+\end{itemize}
+
+\subsubsection*{Question 20}
+\textbf{What is true about the 'class' syntax in JavaScript?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Classes use prototypes under the hood
+  \item[\xmark\ b.] Classes are compiled like in Java
+  \item[\xmark\ c.] Classes cannot have private fields
+  \item[\cmark\ d.] It is syntactic sugar for function constructors
+  \item[\xmark\ e.] Only one class per file is allowed
+\end{itemize}
+
+\subsubsection*{Question 21}
+\textbf{What happens when you forget \texttt{new} with a constructor function?}
+
+\begin{itemize}
+  \item[\xmark\ a.] It creates a global object
+  \item[\xmark\ b.] It binds \texttt{this} correctly
+  \item[\cmark\ c.] It may return undefined or cause an error
+  \item[\xmark\ d.] The prototype chain is still applied
+  \item[\xmark\ e.] It automatically uses \texttt{new}
+\end{itemize}
+
+\subsubsection*{Question 22}
+\textbf{Which statements about the JavaScript event loop are correct?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It moves tasks from the queue when the call stack is empty
+  \item[\xmark\ b.] Microtasks are executed after all macrotasks
+  \item[\xmark\ c.] It uses multithreading
+  \item[\cmark\ d.] Microtasks are executed before macrotasks
+  \item[\xmark\ e.] Tasks are executed in parallel
+\end{itemize}
+
+\subsubsection*{Question 23}
+\textbf{Which statements about the fetch API are true?}
+
+\begin{itemize}
+  \item[\xmark\ a.] It returns data directly
+  \item[\cmark\ b.] It replaces XMLHttpRequest
+  \item[\xmark\ c.] It cannot be used with async/await
+  \item[\xmark\ d.] It blocks the event loop
+  \item[\cmark\ e.] It returns a Promise
+\end{itemize}
+
+\subsubsection*{Question 24}
+\textbf{How does inheritance work in JavaScript?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Subclasses can override inherited methods
+  \item[\xmark\ b.] Only static methods are inherited
+  \item[\cmark\ c.] It uses the prototype chain
+  \item[\xmark\ d.] Objects must use mixins for inheritance
+  \item[\xmark\ e.] It uses classical class-based inheritance
+\end{itemize}
+
+\subsubsection*{Question 25}
+\textbf{Which ways to parse JSON are valid?}
+
+\begin{itemize}
+  \item[\cmark\ a.] \texttt{response.json()}
+  \item[\xmark\ b.] \texttt{string.toJSON()}
+  \item[\cmark\ c.] \texttt{JSON.parse(string)}
+  \item[\xmark\ d.] \texttt{eval(string)}
+  \item[\xmark\ e.] \texttt{fetch.parse()}
+\end{itemize}
+
+\subsubsection*{Question 26}
+\textbf{Which statements about JavaScript modules are correct?}
+
+\begin{itemize}
+  \item[\xmark\ a.] import must always use *
+  \item[\cmark\ b.] Modules use export/import
+  \item[\xmark\ c.] Modules can only be used with Node.js
+  \item[\cmark\ d.] Default exports must be unique
+  \item[\xmark\ e.] All exports must be default
+\end{itemize}
+
+\subsubsection*{Question 27}
+\textbf{Which of the following statements about objects in JavaScript are true?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Keys must be numbers
+  \item[\cmark\ b.] Keys can be strings or Symbols
+  \item[\xmark\ c.] Objects must be declared with class
+  \item[\xmark\ d.] Methods are not allowed in objects
+  \item[\cmark\ e.] Objects are collections of key-value pairs
+\end{itemize}
+
+\subsubsection*{Question 28}
+\textbf{How can private fields be defined in modern JavaScript classes?}
+
+\begin{itemize}
+  \item[\xmark\ a.] By using 'private' keyword
+  \item[\xmark\ b.] They are public by default and cannot be private
+  \item[\xmark\ c.] With underscore '\_'
+  \item[\xmark\ d.] Through constructor scoping
+  \item[\cmark\ e.] By using the '\#' syntax
+\end{itemize}
+
+\subsubsection*{Question 29}
+\textbf{What happens when a Promise is fulfilled?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It calls the \texttt{.then()} handler
+  \item[\xmark\ b.] It immediately returns the value
+  \item[\xmark\ c.] It creates a new thread
+  \item[\cmark\ d.] It queues the handler as a microtask
+  \item[\xmark\ e.] It blocks the call stack
+\end{itemize}
+
+\subsubsection*{Question 30}
+\textbf{Which are valid states of a JavaScript Promise?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Resolved and Failed
+  \item[\cmark\ b.] Rejected
+  \item[\cmark\ c.] Pending
+  \item[\xmark\ d.] Executing
+  \item[\cmark\ e.] Fulfilled
+\end{itemize}
+
+\subsubsection*{Question 31}
+\textbf{Which of the following are true about prototypes in JavaScript?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Prototype methods are shared between instances
+  \item[\xmark\ b.] Prototypes cannot be used with classes
+  \item[\cmark\ c.] All objects have a prototype
+  \item[\xmark\ d.] Prototypes are used only in modules
+  \item[\xmark\ e.] Prototypes must be defined manually
+\end{itemize}
+
+\subsubsection*{Question 32}
+\textbf{What is true about Web Workers?}
+
+\begin{itemize}
+  \item[\xmark\ a.] They are executed in the same thread
+  \item[\xmark\ b.] They handle UI rendering
+  \item[\cmark\ c.] They cannot access the DOM
+  \item[\xmark\ d.] They replace Promises
+  \item[\cmark\ e.] They run in background threads
+\end{itemize}
+
+\subsection{Web Architecture}
+
+\subsubsection*{Question 1}
+\textbf{What is true about Client-Side Rendering (CSR)?}
+
+\begin{itemize}
+  \item[\cmark\ a.] The DOM is updated dynamically in the browser
+  \item[\xmark\ b.] CSR means rendering happens on the server
+  \item[\xmark\ c.] The browser never interacts with APIs
+  \item[\xmark\ d.] The HTML is fully generated on the server
+  \item[\cmark\ e.] JavaScript generates the content based on data
+\end{itemize}
+
+\subsubsection*{Question 2}
+\textbf{Which frameworks typically use client-side rendering?}
+
+\begin{itemize}
+  \item[\cmark\ a.] React
+  \item[\xmark\ b.] Django
+  \item[\cmark\ c.] Vue
+  \item[\xmark\ d.] Laravel
+  \item[\cmark\ e.] Angular
+\end{itemize}
+
+\subsubsection*{Question 3}
+\textbf{Which comparison between CSR and SSR is accurate?}
+
+\begin{itemize}
+  \item[\cmark\ a.] CSR puts more load on the client, SSR on the server
+  \item[\xmark\ b.] SSR cannot support interactive web apps
+  \item[\cmark\ c.] SSR can show content faster for slow devices
+  \item[\xmark\ d.] CSR does not require a build step
+  \item[\xmark\ e.] CSR is generally better for SEO without extra effort
+\end{itemize}
+
+\subsubsection*{Question 4}
+\textbf{Which of the following statements are true for client-side rendering (CSR)?}
+
+\begin{itemize}
+  \item[\cmark\ a.] The browser uses JavaScript to dynamically generate content
+  \item[\xmark\ b.] The server generates complete HTML pages for each request
+  \item[\cmark\ c.] The browser updates the DOM after loading a minimal HTML file
+  \item[\xmark\ d.] No JavaScript is needed at all for CSR
+  \item[\xmark\ e.] The browser is only used for layouting, not logic
+\end{itemize}
+
+\subsubsection*{Question 5}
+\textbf{Which techniques can be used to pass data between web pages in plain JavaScript apps?}
+
+\begin{itemize}
+  \item[\xmark\ a.] CSS variables
+  \item[\cmark\ b.] localStorage
+  \item[\cmark\ c.] URL parameters
+  \item[\xmark\ d.] React context
+  \item[\cmark\ e.] sessionStorage
+\end{itemize}
+
+\subsubsection*{Question 6}
+\textbf{Which of the following are advantages of Server-Side Rendering (SSR)?}
+
+\begin{itemize}
+  \item[\xmark\ a.] SSR requires localStorage
+  \item[\xmark\ b.] No need for a server
+  \item[\cmark\ c.] Better initial load time
+  \item[\xmark\ d.] Full interactivity before HTML arrives
+  \item[\cmark\ e.] Content is visible without JavaScript enabled
+\end{itemize}
+
+\subsubsection*{Question 7}
+\textbf{Which of the following statements about Single Page Applications (SPA) are correct?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Each screen is rendered on the server
+  \item[\cmark\ b.] JavaScript dynamically updates the content without reloading
+  \item[\xmark\ c.] SPAs require a different browser than MPAs
+  \item[\cmark\ d.] The browser only loads one HTML file initially
+  \item[\xmark\ e.] Every navigation requires a full page reload
+\end{itemize}
+
+\subsubsection*{Question 8}
+\textbf{Which statements about Server-Side Rendering (SSR) are correct?}
+
+\begin{itemize}
+  \item[\xmark\ a.] SSR requires a JavaScript frontend to be rendered
+  \item[\xmark\ b.] The browser creates the initial HTML based on templates
+  \item[\xmark\ c.] SSR apps cannot include any client-side logic
+  \item[\cmark\ d.] SSR pages are usually visible faster on slow devices
+  \item[\cmark\ e.] The HTML is generated on the server and sent to the browser
+\end{itemize}
+
+\subsubsection*{Question 9}
+\textbf{Which technologies or frameworks are commonly used for server-side rendering?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Laravel
+  \item[\xmark\ b.] Vue (without additional frameworks)
+  \item[\xmark\ c.] React (without additional frameworks)
+  \item[\cmark\ d.] Next.js
+  \item[\cmark\ e.] Django
+\end{itemize}
+
+\subsection{React}
+
+\subsubsection*{Question 1}
+\textbf{What is the role of Babel in React development?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It compiles JSX into JavaScript
+  \item[\xmark\ b.] It replaces Webpack
+  \item[\xmark\ c.] It manages state
+  \item[\xmark\ d.] It renders the DOM
+  \item[\xmark\ e.] It styles components
+\end{itemize}
+
+\subsubsection*{Question 2}
+\textbf{What must a React component return?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Multiple root elements
+  \item[\xmark\ b.] A CSS block
+  \item[\xmark\ c.] A Promise
+  \item[\cmark\ d.] A single root element (usually JSX)
+  \item[\xmark\ e.] An HTML string
+\end{itemize}
+
+\subsubsection*{Question 3}
+\textbf{Which are valid ways to define React components?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Arrow functions
+  \item[\xmark\ b.] \texttt{defineComponent()}
+  \item[\cmark\ c.] Function declarations
+  \item[\xmark\ d.] XML templates
+  \item[\xmark\ e.] CSS functions
+\end{itemize}
+
+\subsubsection*{Question 4}
+\textbf{Which files are part of a standard Create React App structure?}
+
+\begin{itemize}
+  \item[\xmark\ a.] \texttt{build/src.js}
+  \item[\xmark\ b.] \texttt{App.jsx.html}
+  \item[\cmark\ c.] \texttt{src/App.js}
+  \item[\xmark\ d.] \texttt{App.vue}
+  \item[\cmark\ e.] \texttt{public/index.html}
+\end{itemize}
+
+\subsubsection*{Question 5}
+\textbf{Which commands are used to create and start a React project with Create React App?}
+
+\begin{itemize}
+  \item[\xmark\ a.] \texttt{react-start}
+  \item[\cmark\ b.] \texttt{npm start}
+  \item[\xmark\ c.] \texttt{npm create react-app}
+  \item[\cmark\ d.] \texttt{npx create-react-app my-app}
+  \item[\xmark\ e.] \texttt{babel-run}
+\end{itemize}
+
+\subsubsection*{Question 6}
+\textbf{How is data inserted into JSX expressions?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Using curly braces \{\}
+  \item[\xmark\ b.] Using double quotes
+  \item[\xmark\ c.] Using \{\{ \}\}
+  \item[\xmark\ d.] Using backticks
+  \item[\xmark\ e.] With a special tag named \texttt{bind}
+\end{itemize}
+
+\subsubsection*{Question 7}
+\textbf{What is the purpose of \texttt{public/index.html} in a React project?}
+
+\begin{itemize}
+  \item[\xmark\ a.] It is dynamically generated by ReactDOM
+  \item[\xmark\ b.] It defines all components
+  \item[\xmark\ c.] It includes all JavaScript code
+  \item[\cmark\ d.] It contains the \texttt{<div id="root">} for React to mount
+  \item[\cmark\ e.] It provides the root HTML structure for the app
+\end{itemize}
+
+\subsubsection*{Question 8}
+\textbf{What is the function of \texttt{src/index.js}?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It initializes the React app
+  \item[\cmark\ b.] It renders the App component
+  \item[\xmark\ c.] It contains all CSS styles
+  \item[\xmark\ d.] It defines the Virtual DOM
+  \item[\xmark\ e.] It loads JSX files directly
+\end{itemize}
+
+\subsubsection*{Question 9}
+\textbf{Which tool is required to transform JSX for the browser?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Babel
+  \item[\xmark\ b.] ReactDOM
+  \item[\xmark\ c.] npm
+  \item[\xmark\ d.] Webpack
+  \item[\xmark\ e.] TypeScript
+\end{itemize}
+
+\subsubsection*{Question 10}
+\textbf{Which statements about JSX are true?}
+
+\begin{itemize}
+  \item[\cmark\ a.] JSX must be transformed before it can run
+  \item[\cmark\ b.] JSX looks like HTML but compiles to JavaScript
+  \item[\xmark\ c.] JSX can only be used in Node.js
+  \item[\xmark\ d.] JSX is valid JavaScript
+  \item[\xmark\ e.] JSX replaces JavaScript syntax
+\end{itemize}
+
+\subsubsection*{Question 11}
+\textbf{Which of the following statements about React are true?}
+
+\begin{itemize}
+  \item[\xmark\ a.] It is used only for server-side rendering
+  \item[\cmark\ b.] It replaces HTML
+  \item[\xmark\ c.] It is a JavaScript library for building UIs
+  \item[\xmark\ d.] It is a CSS framework
+  \item[\cmark\ e.] It uses a Virtual DOM to improve performance
+\end{itemize}
+
+\subsubsection*{Question 12}
+\textbf{How can React render elements without JSX?}
+
+\begin{itemize}
+  \item[\xmark\ a.] With string interpolation
+  \item[\xmark\ b.] Using document.write
+  \item[\cmark\ c.] Using React.createElement
+  \item[\xmark\ d.] With HTML templates
+  \item[\xmark\ e.] By using Babel directly
+\end{itemize}
+
+\subsubsection*{Question 13}
+\textbf{Who developed React and when?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Microsoft, 2014
+  \item[\xmark\ b.] Google, 2012
+  \item[\cmark\ c.] Facebook, 2013
+  \item[\xmark\ d.] Twitter, 2011
+  \item[\xmark\ e.] Mozilla, 2015
+\end{itemize}
+
+\subsubsection*{Question 14}
+\textbf{What is React.StrictMode used for?}
+
+\begin{itemize}
+  \item[\xmark\ a.] It enables Babel
+  \item[\xmark\ b.] It disables JSX
+  \item[\xmark\ c.] It enforces runtime checks in production
+  \item[\xmark\ d.] It applies automatic code formatting
+  \item[\cmark\ e.] It helps identify potential problems in an application during development
+\end{itemize}
+
+\subsubsection*{Question 15}
+\textbf{Which statements about the Virtual DOM are true?}
+
+\begin{itemize}
+  \item[\cmark\ a.] React applies only differences to the real DOM
+  \item[\cmark\ b.] It is an in-memory representation of the DOM
+  \item[\xmark\ c.] It is slower than direct DOM manipulation
+  \item[\xmark\ d.] It renders changes directly to HTML
+  \item[\xmark\ e.] It uses Shadow DOM internally
+\end{itemize}
+
+\subsubsection*{Question 16}
+\textbf{Which statements are true about class-based components?}
+
+\begin{itemize}
+  \item[\xmark\ a.] They are preferred over function components
+  \item[\cmark\ b.] They use a \texttt{render()} method to return JSX
+  \item[\xmark\ c.] They do not use props
+  \item[\xmark\ d.] They cannot hold state
+  \item[\xmark\ e.] They are required for all components
+\end{itemize}
+
+\subsubsection*{Question 17}
+\textbf{Which of the following statements about React components are true?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Components modify the DOM directly
+  \item[\xmark\ b.] Components cannot be nested
+  \item[\cmark\ c.] Components are reusable units of UI
+  \item[\cmark\ d.] Components can receive props and hold state
+  \item[\xmark\ e.] Components must be class-based
+\end{itemize}
+
+\subsubsection*{Question 18}
+\textbf{Which is a valid way to define a React component?}
+
+\begin{itemize}
+  \item[\xmark\ a.] As an event listener
+  \item[\xmark\ b.] With inline CSS
+  \item[\cmark\ c.] Using a function that returns JSX
+  \item[\xmark\ d.] Using a JSON object
+  \item[\xmark\ e.] Using a for loop
+\end{itemize}
+
+\subsubsection*{Question 19}
+\textbf{What are advantages of component composition?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Eliminates props
+  \item[\xmark\ b.] Prevents dynamic rendering
+  \item[\cmark\ c.] Improves code reuse
+  \item[\xmark\ d.] Requires class components
+  \item[\cmark\ e.] Encourages modular design
+\end{itemize}
+
+\subsubsection*{Question 20}
+\textbf{Which are valid ways to implement conditional rendering in JSX?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Using if-else outside the return block
+  \item[\cmark\ b.] Using ternary operator
+  \item[\xmark\ c.] Using HTML conditions
+  \item[\xmark\ d.] Using JSX if-then statements
+  \item[\xmark\ e.] Using switch directly in JSX
+\end{itemize}
+
+\subsubsection*{Question 21}
+\textbf{How do you pass a parameter to an event handler in JSX?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Bind in render()
+  \item[\xmark\ b.] Add param after function name
+  \item[\xmark\ c.] Use apply()
+  \item[\xmark\ d.] Call it directly
+  \item[\cmark\ e.] Wrap it in an arrow function
+\end{itemize}
+
+\subsubsection*{Question 22}
+\textbf{How do you prevent a function from being called immediately in JSX?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Use bind() always
+  \item[\xmark\ b.] Add return before call
+  \item[\cmark\ c.] Use function reference: \texttt{onClick=\{myFunction\}}
+  \item[\xmark\ d.] Use parentheses: \texttt{onClick=\{myFunction()\}}
+  \item[\xmark\ e.] Use eval()
+\end{itemize}
+
+\subsubsection*{Question 23}
+\textbf{What is true about explicit composition in React?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Renders children automatically
+  \item[\xmark\ b.] Only works with arrays
+  \item[\xmark\ c.] Requires external libraries
+  \item[\cmark\ d.] Child elements are passed directly in JSX
+  \item[\cmark\ e.] Accessed using \texttt{props.children}
+\end{itemize}
+
+\subsubsection*{Question 24}
+\textbf{What is true about helper functions in components?}
+
+\begin{itemize}
+  \item[\cmark\ a.] They can compute derived values
+  \item[\xmark\ b.] They replace hooks
+  \item[\cmark\ c.] They have access to props and local state
+  \item[\xmark\ d.] They must be declared globally
+  \item[\xmark\ e.] They cannot return JSX
+\end{itemize}
+
+\subsubsection*{Question 25}
+\textbf{What describes implicit composition in React?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Only works with \texttt{props.children}
+  \item[\cmark\ b.] Used for rendering dynamic collections
+  \item[\cmark\ c.] Parent component generates children via \texttt{map()}
+  \item[\xmark\ d.] Child components must control layout
+  \item[\xmark\ e.] Requires \texttt{useEffect}
+\end{itemize}
+
+\subsubsection*{Question 26}
+\textbf{What must you do when rendering lists with \texttt{map()} in JSX?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Use a while loop
+  \item[\xmark\ b.] Avoid using functions
+  \item[\cmark\ c.] Provide a unique key for each element
+  \item[\xmark\ d.] Use for-of loops
+  \item[\xmark\ e.] Wrap each item in
+\end{itemize}
+
+\subsubsection*{Question 27}
+\textbf{What are props in React?}
+
+\begin{itemize}
+  \item[\xmark\ a.] HTML attributes
+  \item[\xmark\ b.] Component methods
+  \item[\xmark\ c.] Global variables
+  \item[\cmark\ d.] Input data passed from parent to child components
+  \item[\xmark\ e.] React internal state
+\end{itemize}
+
+\subsubsection*{Question 28}
+\textbf{How can you access props using destructuring?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Access via \texttt{props.name()}
+  \item[\cmark\ b.] Use \texttt{(\{ name, age \})} in the function parameters
+  \item[\xmark\ c.] Use \texttt{const \{ name, age \} = this}
+  \item[\xmark\ d.] Bind props manually
+  \item[\xmark\ e.] Use \texttt{props[name]}
+\end{itemize}
+
+\subsubsection*{Question 29}
+\textbf{What does the \texttt{useState()} hook return?}
+
+\begin{itemize}
+  \item[\xmark\ a.] A Promise
+  \item[\cmark\ b.] An array with current state and a function to update it
+  \item[\xmark\ c.] An event object
+  \item[\xmark\ d.] A reference to DOM node
+  \item[\xmark\ e.] A single state value
+\end{itemize}
+
+\subsubsection*{Question 30}
+\textbf{Which is the correct way to update state in a click handler?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Using a global counter
+  \item[\xmark\ b.] Direct assignment like count++
+  \item[\cmark\ c.] \texttt{setState(count + 1)} inside a function
+  \item[\xmark\ d.] Mutating the DOM
+  \item[\xmark\ e.] Calling \texttt{setState()} outside render
+\end{itemize}
+
+
+\subsubsection*{Question 31}
+\textbf{How does a child component communicate with its parent?}
+
+\begin{itemize}
+  \item[\cmark\ a.] By calling a function received via props
+  \item[\xmark\ b.] Using Redux only
+  \item[\xmark\ c.] Using global variables
+  \item[\xmark\ d.] Via useRef
+  \item[\xmark\ e.] By accessing the parent's state directly
+\end{itemize}
+
+
+\subsubsection*{Question 32}
+\textbf{What is true about event bubbling?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Child handler is triggered before parent by default
+  \item[\xmark\ b.] Events are synchronous
+  \item[\xmark\ c.] Event propagation starts at root
+  \item[\cmark\ d.] Events propagate from target to ancestors
+  \item[\xmark\ e.] Only one handler can be called
+\end{itemize}
+
+\subsubsection*{Question 33}
+\textbf{Which statements about event capturing are correct?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It processes events from root to target
+  \item[\xmark\ b.] It only works with hooks
+  \item[\xmark\ c.] It disables bubbling
+  \item[\xmark\ d.] It ignores stopPropagation
+  \item[\cmark\ e.] It requires a third argument set to \texttt{true}
+\end{itemize}
+
+\subsubsection*{Question 34}
+\textbf{Which statements about the \texttt{fetch} API in React are true?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It can be used inside \texttt{useEffect} to retrieve data
+  \item[\xmark\ b.] It requires Redux
+  \item[\xmark\ c.] It runs synchronously
+  \item[\xmark\ d.] It directly updates the DOM
+  \item[\cmark\ e.] It returns a \texttt{Promise}
+\end{itemize}
+
+\subsubsection*{Question 35}
+\textbf{How can a form input be reset after submission?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Using \texttt{innerHTML = ''}
+  \item[\xmark\ b.] Reloading the page
+  \item[\xmark\ c.] Calling \texttt{setTimeout()}
+  \item[\xmark\ d.] Removing the input element
+  \item[\cmark\ e.] By setting its state value to an empty string
+\end{itemize}
+
+\subsubsection*{Question 36}
+\textbf{How is form input typically handled in React?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Using global variables
+  \item[\cmark\ b.] Using \texttt{useState} to bind input values
+  \item[\cmark\ c.] Updating state on each \texttt{onChange} event
+  \item[\xmark\ d.] Setting values via \texttt{innerHTML}
+  \item[\xmark\ e.] Directly modifying DOM
+\end{itemize}
+
+\subsubsection*{Question 37}
+\textbf{Which is a correct structure for a controlled React form component?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Input without any event handling
+  \item[\cmark\ b.] Input with value bound to state and \texttt{onChange} updating state
+  \item[\xmark\ c.] \texttt{innerHTML} binding
+  \item[\xmark\ d.] Form using \texttt{ref} as default
+  \item[\xmark\ e.] Global event listener on \texttt{window}
+\end{itemize}
+
+\subsubsection*{Question 38}
+\textbf{Which of the following can be used for form validation?}
+
+\begin{itemize}
+  \item[\cmark\ a.] HTML attributes like \texttt{required} and \texttt{minlength}
+  \item[\xmark\ b.] CSS media queries
+  \item[\xmark\ c.] JSX attributes only
+  \item[\cmark\ d.] Custom validation logic in \texttt{handleSubmit}
+  \item[\xmark\ e.] \texttt{React.StrictMode}
+\end{itemize}
+
+\subsubsection*{Question 39}
+\textbf{What is 'lifting state up' in React?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Moving state to a common parent component
+  \item[\xmark\ b.] Binding refs
+  \item[\xmark\ c.] Passing props downward
+  \item[\xmark\ d.] Creating CSS modules
+  \item[\xmark\ e.] Using session storage
+\end{itemize}
+
+\subsubsection*{Question 40}
+\textbf{What is the typical purpose of \texttt{onSubmit} in React forms?}
+
+\begin{itemize}
+  \item[\cmark\ a.] To handle form submission and prevent default behavior
+  \item[\xmark\ b.] To validate HTML structure
+  \item[\xmark\ c.] To access Redux store
+  \item[\xmark\ d.] To bypass event bubbling
+  \item[\xmark\ e.] To reset the entire app
+\end{itemize}
+
+\subsubsection*{Question 41}
+\textbf{What happens when \texttt{event.stopPropagation()} is called?}
+
+\begin{itemize}
+  \item[\xmark\ a.] The event handler is removed
+  \item[\xmark\ b.] The event is canceled
+  \item[\xmark\ c.] The DOM is re-rendered
+  \item[\xmark\ d.] All child events are ignored
+  \item[\cmark\ e.] Further propagation of the event is stopped
+\end{itemize}
+
+\subsubsection*{Question 42}
+\textbf{What are common use cases for the \texttt{useEffect} hook?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Rendering JSX directly
+  \item[\xmark\ b.] Running before DOM updates
+  \item[\xmark\ c.] Handling synchronous updates
+  \item[\cmark\ d.] Performing side effects like data fetching
+  \item[\cmark\ e.] Reacting to changes in props or state
+\end{itemize}
+
+\subsubsection*{Question 43}
+\textbf{What does the second argument of \texttt{useEffect} control?}
+
+\begin{itemize}
+  \item[\cmark\ a.] When the effect function is re-executed
+  \item[\xmark\ b.] What values are returned
+  \item[\xmark\ c.] How JSX is rendered
+  \item[\xmark\ d.] Which variables are global
+  \item[\xmark\ e.] Whether props are required
+\end{itemize}
+
+\subsubsection*{Question 44}
+\textbf{What happens if you pass an empty array as the dependency list to \texttt{useEffect}?}
+
+\begin{itemize}
+  \item[\xmark\ a.] It runs before render
+  \item[\cmark\ b.] The effect runs only after the first render
+  \item[\xmark\ c.] It never runs
+  \item[\xmark\ d.] It causes an error
+  \item[\xmark\ e.] It re-runs on every state change
+\end{itemize}
+
+\subsubsection*{Question 45}
+\textbf{What is \texttt{useRef} commonly used for in forms?}
+
+\begin{itemize}
+  \item[\xmark\ a.] To create global variables
+  \item[\xmark\ b.] To bind event listeners
+  \item[\xmark\ c.] To trigger re-renders
+  \item[\cmark\ d.] To access DOM elements directly
+  \item[\xmark\ e.] To store component state
+\end{itemize}
+
+\subsubsection*{Question 46}
+\textbf{How do you correctly update an object state in Context API with \texttt{useState}?}
+
+\begin{itemize}
+  \item[\xmark\ a.] By directly changing properties
+  \item[\xmark\ b.] By using \texttt{Object.assign} in-place
+  \item[\xmark\ c.] By using \texttt{push()} or \texttt{+=} operators
+  \item[\xmark\ d.] By calling \texttt{setTimeout}
+  \item[\cmark\ e.] By using the spread syntax to create a new object
+\end{itemize}
+
+\subsubsection*{Question 47}
+\textbf{Which state fields are typically used in Redux for async operations?}
+
+\begin{itemize}
+  \item[\cmark\ a.] \texttt{error}
+  \item[\xmark\ b.] \texttt{HTMLString}
+  \item[\cmark\ c.] \texttt{loading}
+  \item[\xmark\ d.] \texttt{responseTime}
+  \item[\xmark\ e.] \texttt{retryCount}
+  \item[\cmark\ f.] \texttt{data} or \texttt{user}
+\end{itemize}
+
+\subsubsection*{Question 48}
+\textbf{What does \texttt{dispatch()} return when used with a thunk?}
+
+\begin{itemize}
+  \item[\xmark\ a.] The current component
+  \item[\cmark\ b.] A \texttt{Promise} if the thunk is async
+  \item[\xmark\ c.] Nothing
+  \item[\xmark\ d.] An action object
+  \item[\xmark\ e.] A DOM node
+\end{itemize}
+
+\subsubsection*{Question 49}
+\textbf{Why is direct mutation of state allowed in Redux reducers using Redux Toolkit?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Because Redux Toolkit uses \texttt{Immer} to track changes
+  \item[\xmark\ b.] Because Redux ignores immutability
+  \item[\xmark\ c.] Because reducers are only used for setup
+  \item[\xmark\ d.] Because JavaScript allows it
+  \item[\cmark\ e.] \texttt{Immer} converts mutations into immutable updates internally
+\end{itemize}
+
+\subsubsection*{Question 50}
+\textbf{What is the purpose of middleware in Redux?}
+
+\begin{itemize}
+  \item[\xmark\ a.] To render UI
+  \item[\cmark\ b.] To intercept actions and add behavior
+  \item[\xmark\ c.] To handle side effects like logging or async calls
+  \item[\xmark\ d.] To define routes
+  \item[\xmark\ e.] To update CSS
+\end{itemize}
+
+\subsubsection*{Question 51}
+\textbf{Which of the following is a correct way to write a Redux reducer using Redux Toolkit?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Using \texttt{event.preventDefault()}
+  \item[\cmark\ b.] Directly mutating the state (e.g., \texttt{state.count += 1})
+  \item[\xmark\ c.] Modifying props
+  \item[\xmark\ d.] Returning a modified state manually
+  \item[\cmark\ e.] Calling \texttt{setState}
+\end{itemize}
+
+\subsubsection*{Question 52}
+\textbf{What is a core difference between useState and Redux reducers?}
+
+\begin{itemize}
+  \item[\xmark\ a.] useState must be global
+  \item[\xmark\ b.] Reducers are only called once
+  \item[\xmark\ c.] Redux never stores state
+  \item[\cmark\ d.] useState updates require returning a new object
+  \item[\cmark\ e.] Redux reducers with Immer allow mutation-style syntax
+\end{itemize}
+
+\subsubsection*{Question 53}
+\textbf{How would a 'Retry' button typically work in Redux?}
+
+\begin{itemize}
+  \item[\xmark\ a.] It forces a React render
+  \item[\xmark\ b.] It resets the component
+  \item[\xmark\ c.] It reloads the entire page
+  \item[\cmark\ d.] It dispatches the same async thunk again
+  \item[\xmark\ e.] It clears all reducers
+\end{itemize}
+
+\subsubsection*{Question 54}
+\textbf{Where should API calls typically happen in a Redux app?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Inside reducers
+  \item[\xmark\ b.] Directly in components
+  \item[\xmark\ c.] Inside JSX expressions
+  \item[\xmark\ d.] In the \texttt{index.js} file
+  \item[\cmark\ e.] Inside thunks or middleware
+\end{itemize}
+
+\subsubsection*{Question 55}
+\textbf{How should you structure Redux state for a remote fetch?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Store HTML inside state
+  \item[\cmark\ b.] Separate keys for loading, error, and data
+  \item[\xmark\ c.] Only store raw response
+  \item[\xmark\ d.] Use refs instead of state
+  \item[\xmark\ e.] A single key with a long string
+\end{itemize}
+
+\subsubsection*{Question 56}
+\textbf{In what order are actions usually dispatched in a thunk for async requests?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Start → Success or Failure
+  \item[\xmark\ b.] Only one action is dispatched
+  \item[\xmark\ c.] Success → Start → Failure
+  \item[\xmark\ d.] Failure → Retry → Start
+  \item[\xmark\ e.] Start → End → Retry
+\end{itemize}
+
+\subsubsection*{Question 57}
+\textbf{What does a typical Redux Thunk do?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Modify the DOM manually
+  \item[\xmark\ b.] Inject middleware automatically
+  \item[\cmark\ c.] Dispatch multiple actions depending on async outcome
+  \item[\xmark\ d.] Return HTML
+  \item[\xmark\ e.] Render the React component directly
+\end{itemize}
+
+\subsubsection*{Question 58}
+\textbf{Which statements about Redux Thunks are true?}
+
+\begin{itemize}
+  \item[\cmark\ a.] They allow dispatching asynchronous logic
+  \item[\cmark\ b.] They return a function instead of an action object
+  \item[\xmark\ c.] They mutate reducers
+  \item[\xmark\ d.] They replace all reducers
+  \item[\xmark\ e.] They require Context API
+\end{itemize}
+
+\subsubsection*{Question 59}
+\textbf{What are key benefits of using Redux Toolkit?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Built-in support for \texttt{createAsyncThunk}
+  \item[\cmark\ b.] Simplified reducer logic with Immer
+  \item[\xmark\ c.] Automatic UI testing
+  \item[\xmark\ d.] Global CSS injection
+  \item[\cmark\ e.] Less boilerplate code
+\end{itemize}
+
+\subsubsection*{Question 60}
+\textbf{What does \texttt{createAsyncThunk} help you do?}
+
+\begin{itemize}
+  \item[\cmark\ a.] Generate async thunks with built-in action types
+  \item[\xmark\ b.] Bind input fields
+  \item[\xmark\ c.] Validate forms
+  \item[\xmark\ d.] Replace \texttt{useEffect}
+  \item[\cmark\ e.] Automatically create pending, fulfilled, and rejected actions
+\end{itemize}
+
+\subsubsection*{Question 61}
+\textbf{Which path is used to match all unknown routes?}
+
+\begin{itemize}
+  \item[\cmark\ a.] *
+  \item[\xmark\ b.] /error
+  \item[\xmark\ c.] **
+  \item[\xmark\ d.] /notfound
+\end{itemize}
+
+\subsubsection*{Question 62}
+\textbf{What component must wrap your entire React app to enable routing?}
+
+\begin{itemize}
+  \item[\xmark\ a.] RouteManager
+  \item[\cmark\ b.] BrowserRouter
+  \item[\xmark\ c.] RouteProvider
+  \item[\xmark\ d.] AppRouter
+\end{itemize}
+
+\subsubsection*{Question 63}
+\textbf{In a nested route, how is the default child defined?}
+
+\begin{itemize}
+  \item[\xmark\ a.] path="/" element
+  \item[\xmark\ b.] element=\{\textless Default /\textgreater\}
+  \item[\cmark\ c.] index element
+  \item[\xmark\ d.] fallback element
+\end{itemize}
+
+\subsubsection*{Question 64}
+\textbf{Which of the following correctly defines a route to a \texttt{LoginPage} component?}
+
+\begin{itemize}
+  \item[\xmark\ a.] \texttt{<Router path=``/login'' component=\{<LoginPage />\}>} />
+  \item[\xmark\ b.] \texttt{<Route path=``/login''>\{<LoginPage />\}</Route>}
+  \item[\cmark\ c.] \texttt{<Route path=``/login'' element=\{<LoginPage />\}>} />
+  \item[\xmark\ d.] \texttt{<Route url=``/login'' render=\{<LoginPage />\}>} />
+\end{itemize}
+
+\subsubsection*{Question 65}
+\textbf{How do you define a dynamic segment in a React Router path?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Using dollar sign, like \$id
+  \item[\xmark\ b.] Using curly braces, like \{id\}
+  \item[\cmark\ c.] Using a colon, like :id
+  \item[\xmark\ d.] Using angle brackets, like <id>
+\end{itemize}
+
+\subsubsection*{Question 66}
+\textbf{Why might you use \texttt{HashRouter} instead of \texttt{BrowserRouter}?}
+
+\begin{itemize}
+  \item[\cmark\ a.] It doesn’t require server configuration for route handling
+  \item[\xmark\ b.] It supports more modern features
+  \item[\xmark\ c.] It allows usage of cookies
+  \item[\xmark\ d.] It’s the only router that works with JSX
+\end{itemize}
+
+\subsubsection*{Question 67}
+\textbf{What API does \texttt{BrowserRouter} rely on?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Window Navigation API
+  \item[\xmark\ b.] React Context API
+  \item[\cmark\ c.] HTML5 History API
+  \item[\xmark\ d.] Session API
+\end{itemize}
+
+\subsubsection*{Question 68}
+\textbf{Which route element ensures that an invalid URL renders a fallback?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Route with fallback
+  \item[\xmark\ b.] Route with no path
+  \item[\xmark\ c.] ErrorBoundary
+  \item[\cmark\ d.] Route with path="*"
+\end{itemize}
+
+\subsubsection*{Question 69}
+\textbf{What happens when you click a \texttt{Link} component in React Router?}
+
+\begin{itemize}
+  \item[\xmark\ a.] An iframe opens the target page
+  \item[\cmark\ b.] The URL changes without full page reload
+  \item[\xmark\ c.] An anchor tag redirects to the route
+  \item[\xmark\ d.] The server reloads the route from scratch
+\end{itemize}
+
+\subsubsection*{Question 70}
+\textbf{Which component provides navigation between routes in React Router?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Anchor
+  \item[\cmark\ b.] Link
+  \item[\xmark\ c.] NavLink (Note: I also think it is correct but the Prof not)
+  \item[\xmark\ d.] Redirect
+\end{itemize}
+
+\subsubsection*{Question 71}
+\textbf{Which component is used as a placeholder for nested route content?}
+
+\begin{itemize}
+  \item[\xmark\ a.] Placeholder
+  \item[\cmark\ b.] Outlet
+  \item[\xmark\ c.] Switch
+  \item[\xmark\ d.] Content
+\end{itemize}
+
+\subsubsection*{Question 72}
+\textbf{What is the purpose of a ProtectedRoute component?}
+
+\begin{itemize}
+  \item[\xmark\ a.] To handle 404 errors
+  \item[\xmark\ b.] To define admin-only pages
+  \item[\xmark\ c.] To cache route components
+  \item[\cmark\ d.] To restrict access to certain routes based on authentication
+\end{itemize}
+
+\subsubsection*{Question 73}
+\textbf{What React Router hook is used to read URL parameters?}
+
+\begin{itemize}
+  \item[\xmark\ a.] useLocation
+  \item[\xmark\ b.] useRoute
+  \item[\xmark\ c.] useQuery
+  \item[\cmark\ d.] useParams
+\end{itemize}
+
+\subsubsection*{Question 74}
+\textbf{Which component is used to redirect the user to another path?}
+
+\begin{itemize}
+  \item[\xmark\ a.] RedirectTo
+  \item[\xmark\ b.] RouterRedirect
+  \item[\xmark\ c.] HistoryPush
+  \item[\cmark\ d.] Navigate
+\end{itemize}
+
+\subsubsection*{Question 75}
+\textbf{What type of data is returned by \texttt{useParams()}?}
+
+\begin{itemize}
+  \item[\xmark\ a.] A query string
+  \item[\xmark\ b.] An array of parameters
+  \item[\xmark\ c.] A route object
+  \item[\cmark\ d.] An object of strings
+\end{itemize}
+
+
+\end{document}
