@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Display Property Example</title>
+    <style>
+        .box {
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            border: 1px solid blue;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .inline {
+            display: inline;
+        }
+
+        .inline-block {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+        }
+
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Display: block</h2>
+    <div class="box block">This is a block element</div>
+    <div class="box block">Another block element</div>
+
+    <h2>Display: inline</h2>
+    <span class="box inline">Inline 1</span>
+    <span class="box inline">Inline 2</span>
+    <span class="box inline">Inline 3</span>
+
+    <h2>Display: inline-block</h2>
+    <span class="box inline-block">Inline-Block 1</span>
+    <span class="box inline-block">Inline-Block 2</span>
+
+    <h2>Display: none</h2>
+    <div class="box none">You should not see this</div>
+    <p>The element above is hidden using <code>display: none</code>.</p>
+
+</body>
+</html>

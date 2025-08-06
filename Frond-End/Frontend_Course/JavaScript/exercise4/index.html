@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .calculator {
+            max-width: 300px;
+            margin: auto;
+        }
+
+        input,
+        button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h2>Simple Calculator</h2>
+        <input type="number" id="num1" placeholder="Enter first number">
+        <input type="number" id="num2" placeholder="Enter second number">
+        <input type="text" id="op" placeholder="Enter operation">
+        <button onclick="calculate()">Calculate</button>
+        <input type="text" id="result" placeholder="Result" readonly>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

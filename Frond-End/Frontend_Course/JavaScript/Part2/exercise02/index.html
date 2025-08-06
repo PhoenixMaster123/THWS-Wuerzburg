@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Async Loading Example</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2em;
+        }
+
+        #spinner {
+            display: none;
+            margin-top: 1em;
+            font-style: italic;
+        }
+
+        #output {
+            margin-top: 1em;
+            font-weight: bold;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Load Data (Simulated)</h1>
+    <p>Click the button to simulate loading some data. A loading indicator should appear for two seconds.</p>
+
+    <button id="loadBtn">Load Data</button>
+    <div id="spinner">Loading...</div>
+    <div id="output"></div>
+
+    <script>
+        const button = document.getElementById("loadBtn");
+        const spinner = document.getElementById("spinner");
+        const output = document.getElementById("output");
+
+        async function loadData() {
+            
+            // TODO: Disable the button
+            // TODO: Show the spinner
+
+            try {
+                // TODO: Simulate a delay using await and a Promise
+                // Hint: You can create a helper function like:
+                //       function delay(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+                // TODO: After delay, set output.textContent = "Data loaded!";
+            } catch (error) {
+                // TODO: Optional – Display an error message in #output
+            } finally {
+                // TODO: Hide the spinner again
+                // TODO: Re-enable the button
+            }
+        }
+
+        button.addEventListener("click", loadData);
+    </script>
+
+</body>
+
+</html>

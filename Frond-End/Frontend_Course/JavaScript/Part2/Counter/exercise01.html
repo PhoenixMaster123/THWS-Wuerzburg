@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Broken JavaScript Counter</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2em;
+        }
+
+        #counter {
+            font-size: 2em;
+            margin-top: 1em;
+        }
+
+        button {
+            padding: 0.5em 1em;
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Counter – Debugging Exercise</h1>
+    <p>
+        Click the "Start Counter" button. You would expect the number below to increase every second.
+        However, something is broken. Investigate the code and try to find out what the problem is.
+    </p>
+
+    <button id="startBtn">Start Counter</button>
+    <div id="counter">0</div>
+
+    <script>
+        class Counter {
+            constructor() {
+                this.count = 0;
+                this.counterElement = document.getElementById('counter');
+            }
+
+            start() {
+                setInterval(function () {
+                    this.count++;
+                    this.counterElement.textContent = this.count;
+                }.bind(this), 1000);
+            }
+        }
+
+        const myCounter = new Counter();
+        document.getElementById('startBtn').addEventListener('click', function () {
+            myCounter.start();
+        });
+    </script>
+
+</body>
+
+</html>

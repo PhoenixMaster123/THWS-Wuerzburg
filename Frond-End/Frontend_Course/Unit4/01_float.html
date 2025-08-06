@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Display Property Example</title>
+    <style>
+        .box {
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            border: 1px solid blue;
+        }
+
+        .container {
+            border: 2px solid red;
+        }
+
+        .container::after {
+            content: "";
+            display: block;
+            clear: both; /* we mark and end */
+        }
+
+        .block {
+            display: block;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        .fixedwidth {
+            width: 300px;
+        }
+
+        .float {
+            float: left;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Display: block</h2>
+    <div class="box block">This is a block element</div>
+    <div class="box block">Another block element</div>
+
+    <h2>Display: inline-block</h2>
+    <span class="box inline fixedwidth">Inline 1</span>
+    <span class="box inline fixedwidth">Inline 2</span>
+
+    <h2>Float</h2>
+    <span class="box float fixedwidth">Inline 1</span>
+    <span class="box float fixedwidth">Inline 2</span>
+
+    <h2>Collapsing Container</h2>
+    <div class="container">
+        <div class="box block float">Block 1</div>
+        <div class="box block float">Block 2</div>
+        <div class="box block float">Block 3</div>
+    </div>
+
+    <h2>Horizontal Lists</h2>
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+
+</body>
+
+</html>

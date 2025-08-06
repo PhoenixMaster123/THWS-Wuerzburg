@@ -1,0 +1,32 @@
+div {
+    color: blue;
+    border-style: groove;
+}
+div span {
+    color: red;
+}
+/* Child Combinator (>):*/
+ul > li{
+    list-style-type: square;
+}
+ul li ul > li {
+    list-style-type: circle;
+}
+
+/*
+    This rule uses the adjacent sibling combinator to select a <p> element that is the 
+    immediate sibling of another preceding <p> element. 
+    Both elements must share the same parent. Short: Select every <p> element (paragraph) But only if it comes immediately after another <p> element
+*/
+/* next sibling */
+p + p {
+    background-color: gainsboro;
+}
+/*  This rule uses the general sibling combinator to select all <span> 
+elements that are siblings of a <p> element and come after it in the HTML structure. 
+They don't have to be immediately adjacent. Short: That comes after a <p> element and share the same parent.
+*/
+/*subsequent sibling*/
+p ~ span {
+    font-weight: bold;
+}
